@@ -1,0 +1,6 @@
+[submodule "tidb-test"]
+	path = tidb-test
+	url = git@github.com:pingcap/tidb-test.git
+[submodule "tidb"]
+	path = tidb
+	url = git@github.com:pingcap/tidb.git
