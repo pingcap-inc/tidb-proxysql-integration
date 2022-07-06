@@ -1,0 +1,872 @@
+starting tidb-servers, log file: local_tidb_proxysql.log
+tidb-server(PID: 30599) started
+build mysql_test successfully
+run test cases with whitelist: alias alter_table1 alter_table-big alter_table_partition alter_table_PK alter_table analyze ansi auto_increment bigint binary bool boot_coll_server_binary bug28940878 bug33509 bug46760 builtin bulk_replace case cast charset check comment_column2 comment_column comments comment_table compare composite_index concurrent_ddl count_distinct2 count_distinct3 count_distinct create_database create_index create_table csv_alter_table ctype_ascii ctype_filename ctype_gbk ctype_latin1 ctype_mb ctype_recoding ctype_uca ctype_utf8mb4 date_formats date_time_ddl datetime_insert datetime_update daylight_saving_time ddl_i18n_utf8 decimal default delete_myisam delete derived_cs derived distinct_innodb do drop ds_mrr-big echo empty_table endspace error_simulation exec_selection explain expression_index field_length filesort_json filesort_merge filesort filter_single_col_idx_big func_aes func_bitwise_ops func_compress func_concat func_date_add_myisam func_date_add func_default func_digest func_equal func_gconcat func_group_innodb_16k func_group_innodb func_group func_if func_isnull func_math func_op func_prefix_key func_rand func_regexp func_sapdb func_set func_str_myisam func_system func_test func_time function_defaults func_uuid gcol_alter_table gcol_blocked_sql_funcs gcol_column_def_options gcol_dependenies_on_vcol gcol_illegal_expression gcol_ins_upd gcol_non_stored_columns gcol_partition gcol_select gcol_supported_sql_funcs gcol_view groupby group_min_max_innodb group_min_max_ps_protocol having_myisam having heap_btree_myisam heap_btree histogram_singleton ignore_strict implicit_char_to_num_conversion index_merge1 index_merge2 index_merge_bug29952775 index_merge_bugs index_merge_delete index_merge_innodb index_merge_sqlgen_exprs_orandor_1_no_out_trans index_merge_sqlgen_exprs index_merge_update index infoschema innodb_log_file_size_functionality innodb_tmp_table_heap_to_disk insert_select_myisam insert_select insert_update_myisam insert_update in invisible_indexes issue_11208 issue_165 issue_20571 issue_207 issue_227 issue_266 issue_294 join_crash join_outer join json_functions json_gcol json key_primary key keywords lead_lag_explain lead_lag like limit_myisam limit long_tmpdir lowercase_mixed_tmpdir lowercase_table2 lowercase_table5 lowercase_table lowercase_utf8 lowercase_view lpad mariadb_cte_nonrecursive mariadb_cte_recursive math metadata_myisam metadata multi_update_innodb multi_update_tiny_hash mysql_replace negation_elimination nth null_key_all_innodb odbc operator opt_hints_join_order opt_hints_subquery opt_hint_timeout optimizer_bug12837084 order_by_limit order_by_sortkey orderby overflow packet_myisam packet parser_precedence parser partition_bug18198 partition_column_prune partition_hash partition_innodb partition_list partition_locking_ps_protocol partition_order partition_range partition precedence prepare qualified regexp replace round rowid_order_innodb row rpad savepoint2 savepoint_in_optimistic_txn savepoint_in_pessimistic_txn savepoint_issue_26288 savepoint select_all select_qualified show_check_cs_myisam show_profile show show_variables single_delete_update sqllogic strict_autoinc_2innodb strict str_quoted subquery_all subquery_antijoin subquery_bugs subquery_mat sub_query_more subquery_sj_innodb_all sub_query sum_distinct-big sum_distinct temptable_256_fields temptable_disk temp_table timestamp_insert timestamp_update time tpcc transaction_isolation_func truth_value_transform type_binary type_bit_myisam type_datetime type_decimal type_enum type_float type_nchar type_newdecimal type_ranges type_set type type_timestamp_explicit type_timestamp_myisam type_timestamp type_time type_uint type_unit type_varchar type_year update_myisam update_stmt update user_var varbinary variables variable view_myisam view warnings window_bitwise_ops window_functions_big window_functions_bugs window_functions_interesting_orders window_functions window_min_max with_non_recursive_bugs with_non_recursive with_recursive_bugs with_recursive_innodb_tmp_table with_recursive xd year_innodb
+time="2022-07-06T19:32:28+08:00" level=info msg="recording tests: [alias alter_table1 alter_table-big alter_table_partition alter_table_PK alter_table analyze ansi auto_increment bigint binary bool boot_coll_server_binary bug28940878 bug33509 bug46760 builtin bulk_replace case cast charset check comment_column2 comment_column comments comment_table compare composite_index concurrent_ddl count_distinct2 count_distinct3 count_distinct create_database create_index create_table csv_alter_table ctype_ascii ctype_filename ctype_gbk ctype_latin1 ctype_mb ctype_recoding ctype_uca ctype_utf8mb4 date_formats date_time_ddl datetime_insert datetime_update daylight_saving_time ddl_i18n_utf8 decimal default delete_myisam delete derived_cs derived distinct_innodb do drop ds_mrr-big echo empty_table endspace error_simulation exec_selection explain expression_index field_length filesort_json filesort_merge filesort filter_single_col_idx_big func_aes func_bitwise_ops func_compress func_concat func_date_add_myisam func_date_add func_default func_digest func_equal func_gconcat func_group_innodb_16k func_group_innodb func_group func_if func_isnull func_math func_op func_prefix_key func_rand func_regexp func_sapdb func_set func_str_myisam func_system func_test func_time function_defaults func_uuid gcol_alter_table gcol_blocked_sql_funcs gcol_column_def_options gcol_dependenies_on_vcol gcol_illegal_expression gcol_ins_upd gcol_non_stored_columns gcol_partition gcol_select gcol_supported_sql_funcs gcol_view groupby group_min_max_innodb group_min_max_ps_protocol having_myisam having heap_btree_myisam heap_btree histogram_singleton ignore_strict implicit_char_to_num_conversion index_merge1 index_merge2 index_merge_bug29952775 index_merge_bugs index_merge_delete index_merge_innodb index_merge_sqlgen_exprs_orandor_1_no_out_trans index_merge_sqlgen_exprs index_merge_update index infoschema innodb_log_file_size_functionality innodb_tmp_table_heap_to_disk insert_select_myisam insert_select insert_update_myisam insert_update in invisible_indexes issue_11208 issue_165 issue_20571 issue_207 issue_227 issue_266 issue_294 join_crash join_outer join json_functions json_gcol json key_primary key keywords lead_lag_explain lead_lag like limit_myisam limit long_tmpdir lowercase_mixed_tmpdir lowercase_table2 lowercase_table5 lowercase_table lowercase_utf8 lowercase_view lpad mariadb_cte_nonrecursive mariadb_cte_recursive math metadata_myisam metadata multi_update_innodb multi_update_tiny_hash mysql_replace negation_elimination nth null_key_all_innodb odbc operator opt_hints_join_order opt_hints_subquery opt_hint_timeout optimizer_bug12837084 order_by_limit order_by_sortkey orderby overflow packet_myisam packet parser_precedence parser partition_bug18198 partition_column_prune partition_hash partition_innodb partition_list partition_locking_ps_protocol partition_order partition_range partition precedence prepare qualified regexp replace round rowid_order_innodb row rpad savepoint2 savepoint_in_optimistic_txn savepoint_in_pessimistic_txn savepoint_issue_26288 savepoint select_all select_qualified show_check_cs_myisam show_profile show show_variables single_delete_update sqllogic strict_autoinc_2innodb strict str_quoted subquery_all subquery_antijoin subquery_bugs subquery_mat sub_query_more subquery_sj_innodb_all sub_query sum_distinct-big sum_distinct temptable_256_fields temptable_disk temp_table timestamp_insert timestamp_update time tpcc transaction_isolation_func truth_value_transform type_binary type_bit_myisam type_datetime type_decimal type_enum type_float type_nchar type_newdecimal type_ranges type_set type type_timestamp_explicit type_timestamp_myisam type_timestamp type_time type_uint type_unit type_varchar type_year update_myisam update_stmt update user_var varbinary variables variable view_myisam view warnings window_bitwise_ops window_functions_big window_functions_bugs window_functions_interesting_orders window_functions window_min_max with_non_recursive_bugs with_non_recursive with_recursive_bugs with_recursive_innodb_tmp_table with_recursive xd year_innodb]"
+time="2022-07-06T19:32:28+08:00" level=warning msg="Create new db&{0 0xc0000100a0 0 {0 0} [0xc000304000] map[] 0 1 0xc000038240 false map[0xc000304000:map[0xc000304000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/show.test: ok! 110 test cases passed, take time 0.260580641 s
+time="2022-07-06T19:32:28+08:00" level=info msg="run test [show] ok"
+time="2022-07-06T19:32:28+08:00" level=warning msg="Create new db&{0 0xc00030c478 0 {0 0} [0xc0002a4990] map[] 0 1 0xc00033f3e0 false map[0xc0002a4990:map[0xc0002a4990:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/infoschema.test: ok! 18 test cases passed, take time 0.07446019 s
+time="2022-07-06T19:32:28+08:00" level=info msg="run test [infoschema] ok"
+time="2022-07-06T19:32:28+08:00" level=warning msg="Create new db&{0 0xc0000b4458 0 {0 0} [0xc0000c2ab0] map[] 0 1 0xc000097320 false map[0xc0000c2ab0:map[0xc0000c2ab0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/alias.test: ok! 74 test cases passed, take time 0.132590596 s
+time="2022-07-06T19:32:29+08:00" level=info msg="run test [alias] ok"
+time="2022-07-06T19:32:29+08:00" level=warning msg="Create new db&{0 0xc00030ca18 0 {0 0} [0xc0000c2ea0] map[] 0 1 0xc0003e0480 false map[0xc0000c2ea0:map[0xc0000c2ea0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/alter_table1.test: ok! 491 test cases passed, take time 1.521974491 s
+time="2022-07-06T19:32:30+08:00" level=info msg="run test [alter_table1] ok"
+time="2022-07-06T19:32:30+08:00" level=warning msg="Create new db&{0 0xc0000b51c0 0 {0 0} [0xc000526e10] map[] 0 1 0xc00012c5a0 false map[0xc000526e10:map[0xc000526e10:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/alter_table-big.test: ok! 49 test cases passed, take time 0.121575376 s
+time="2022-07-06T19:32:30+08:00" level=info msg="run test [alter_table-big] ok"
+time="2022-07-06T19:32:30+08:00" level=warning msg="Create new db&{0 0xc0000b53b0 0 {0 0} [0xc0005273b0] map[] 0 1 0xc00012d1a0 false map[0xc0005273b0:map[0xc0005273b0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/alter_table_partition.test: ok! 30 test cases passed, take time 0.097437128 s
+time="2022-07-06T19:32:30+08:00" level=info msg="run test [alter_table_partition] ok"
+time="2022-07-06T19:32:30+08:00" level=warning msg="Create new db&{0 0xc00030ce60 0 {0 0} [0xc0004fcc60] map[] 0 1 0xc00009b320 false map[0xc0004fcc60:map[0xc0004fcc60:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/alter_table_PK.test: ok! 82 test cases passed, take time 0.163513411 s
+time="2022-07-06T19:32:31+08:00" level=info msg="run test [alter_table_PK] ok"
+time="2022-07-06T19:32:31+08:00" level=warning msg="Create new db&{0 0xc0000b5d88 0 {0 0} [0xc000527710] map[] 0 1 0xc000317740 false map[0xc000527710:map[0xc000527710:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/alter_table.test: ok! 81 test cases passed, take time 0.259675352 s
+time="2022-07-06T19:32:31+08:00" level=info msg="run test [alter_table] ok"
+time="2022-07-06T19:32:31+08:00" level=warning msg="Create new db&{0 0xc00034e5e8 0 {0 0} [0xc0001658c0] map[] 0 1 0xc0003514a0 false map[0xc0001658c0:map[0xc0001658c0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/analyze.test: ok! 33 test cases passed, take time 0.171203263 s
+time="2022-07-06T19:32:31+08:00" level=info msg="run test [analyze] ok"
+time="2022-07-06T19:32:31+08:00" level=warning msg="Create new db&{0 0xc000011570 0 {0 0} [0xc000165b90] map[] 0 1 0xc0001c9620 false map[0xc000165b90:map[0xc000165b90:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/ansi.test: ok! 9 test cases passed, take time 0.014921458 s
+time="2022-07-06T19:32:31+08:00" level=info msg="run test [ansi] ok"
+time="2022-07-06T19:32:31+08:00" level=warning msg="Create new db&{0 0xc00034e6e0 0 {0 0} [0xc000164000] map[] 0 1 0xc0003518c0 false map[0xc000164000:map[0xc000164000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/auto_increment.test: ok! 323 test cases passed, take time 0.66368302 s
+time="2022-07-06T19:32:32+08:00" level=info msg="run test [auto_increment] ok"
+time="2022-07-06T19:32:32+08:00" level=warning msg="Create new db&{0 0xc00030c7b0 0 {0 0} [0xc00041ba70] map[] 0 1 0xc000485da0 false map[0xc00041ba70:map[0xc00041ba70:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/bigint.test: ok! 152 test cases passed, take time 0.677707184 s
+time="2022-07-06T19:32:32+08:00" level=info msg="run test [bigint] ok"
+time="2022-07-06T19:32:32+08:00" level=warning msg="Create new db&{0 0xc000010eb8 0 {0 0} [0xc000383830] map[] 0 1 0xc000403b60 false map[0xc000383830:map[0xc000383830:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/binary.test: ok! 83 test cases passed, take time 0.177549684 s
+time="2022-07-06T19:32:33+08:00" level=info msg="run test [binary] ok"
+time="2022-07-06T19:32:33+08:00" level=warning msg="Create new db&{0 0xc00034e178 0 {0 0} [0xc0003827e0] map[] 0 1 0xc0003e86c0 false map[0xc0003827e0:map[0xc0003827e0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/bool.test: ok! 30 test cases passed, take time 0.06281947 s
+time="2022-07-06T19:32:33+08:00" level=info msg="run test [bool] ok"
+time="2022-07-06T19:32:33+08:00" level=warning msg="Create new db&{0 0xc00034e380 0 {0 0} [0xc00054e870] map[] 0 1 0xc0003e8fc0 false map[0xc00054e870:map[0xc00054e870:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/boot_coll_server_binary.test: ok! 2 test cases passed, take time 0.006244351 s
+time="2022-07-06T19:32:33+08:00" level=info msg="run test [boot_coll_server_binary] ok"
+time="2022-07-06T19:32:33+08:00" level=warning msg="Create new db&{0 0xc00034e418 0 {0 0} [0xc000382ea0] map[] 0 1 0xc0003e9200 false map[0xc000382ea0:map[0xc000382ea0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/bug28940878.test: ok! 8 test cases passed, take time 0.016158219 s
+time="2022-07-06T19:32:33+08:00" level=info msg="run test [bug28940878] ok"
+time="2022-07-06T19:32:33+08:00" level=warning msg="Create new db&{0 0xc00030c2c8 0 {0 0} [0xc00054ea20] map[] 0 1 0xc0004c09c0 false map[0xc00054ea20:map[0xc00054ea20:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/bug33509.test: ok! 4 test cases passed, take time 0.050499036 s
+time="2022-07-06T19:32:33+08:00" level=info msg="run test [bug33509] ok"
+time="2022-07-06T19:32:33+08:00" level=warning msg="Create new db&{0 0xc00034e500 0 {0 0} [0xc0003830e0] map[] 0 1 0xc0003e9440 false map[0xc0003830e0:map[0xc0003830e0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/bug46760.test: ok! 5 test cases passed, take time 0.013052565 s
+time="2022-07-06T19:32:33+08:00" level=info msg="run test [bug46760] ok"
+time="2022-07-06T19:32:33+08:00" level=warning msg="Create new db&{0 0xc00030c3b0 0 {0 0} [0xc00054eb40] map[] 0 1 0xc0004c0d80 false map[0xc00054eb40:map[0xc00054eb40:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/builtin.test: ok! 82 test cases passed, take time 0.098763766 s
+time="2022-07-06T19:32:33+08:00" level=info msg="run test [builtin] ok"
+time="2022-07-06T19:32:33+08:00" level=warning msg="Create new db&{0 0xc00034ed08 0 {0 0} [0xc00059e000] map[] 0 1 0xc000039740 false map[0xc00059e000:map[0xc00059e000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/bulk_replace.test: ok! 5 test cases passed, take time 0.011546176 s
+time="2022-07-06T19:32:33+08:00" level=info msg="run test [bulk_replace] ok"
+time="2022-07-06T19:32:33+08:00" level=warning msg="Create new db&{0 0xc00034ed68 0 {0 0} [0xc00059e120] map[] 0 1 0xc000039920 false map[0xc00059e120:map[0xc00059e120:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/case.test: ok! 89 test cases passed, take time 0.247536801 s
+time="2022-07-06T19:32:33+08:00" level=info msg="run test [case] ok"
+time="2022-07-06T19:32:33+08:00" level=warning msg="Create new db&{0 0xc00034f048 0 {0 0} [0xc00059efc0] map[] 0 1 0xc0002646c0 false map[0xc00059efc0:map[0xc00059efc0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/cast.test: ok! 406 test cases passed, take time 0.602371286 s
+time="2022-07-06T19:32:34+08:00" level=info msg="run test [cast] ok"
+time="2022-07-06T19:32:34+08:00" level=warning msg="Create new db&{0 0xc00030c4d0 0 {0 0} [0xc000382e10] map[] 0 1 0xc00037e720 false map[0xc000382e10:map[0xc000382e10:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/charset.test: ok! 46 test cases passed, take time 0.067436057 s
+time="2022-07-06T19:32:34+08:00" level=info msg="run test [charset] ok"
+time="2022-07-06T19:32:34+08:00" level=warning msg="Create new db&{0 0xc0000b4bf8 0 {0 0} [0xc000406cf0] map[] 0 1 0xc0003b40c0 false map[0xc000406cf0:map[0xc000406cf0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/check.test: ok! 19 test cases passed, take time 0.060171526 s
+time="2022-07-06T19:32:34+08:00" level=info msg="run test [check] ok"
+time="2022-07-06T19:32:34+08:00" level=warning msg="Create new db&{0 0xc00030c570 0 {0 0} [0xc0003833b0] map[] 0 1 0xc00037eea0 false map[0xc0003833b0:map[0xc0003833b0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/comment_column2.test: ok! 34 test cases passed, take time 0.550851768 s
+time="2022-07-06T19:32:34+08:00" level=info msg="run test [comment_column2] ok"
+time="2022-07-06T19:32:34+08:00" level=warning msg="Create new db&{0 0xc00030c358 0 {0 0} [0xc000382a20] map[] 0 1 0xc0004185a0 false map[0xc000382a20:map[0xc000382a20:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/comment_column.test: ok! 73 test cases passed, take time 0.284284709 s
+time="2022-07-06T19:32:35+08:00" level=info msg="run test [comment_column] ok"
+time="2022-07-06T19:32:35+08:00" level=warning msg="Create new db&{0 0xc0000b42b0 0 {0 0} [0xc000165710] map[] 0 1 0xc000418de0 false map[0xc000165710:map[0xc000165710:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/comments.test: ok! 21 test cases passed, take time 0.025047928 s
+time="2022-07-06T19:32:35+08:00" level=info msg="run test [comments] ok"
+time="2022-07-06T19:32:35+08:00" level=warning msg="Create new db&{0 0xc00030c430 0 {0 0} [0xc000165830] map[] 0 1 0xc000039140 false map[0xc000165830:map[0xc000165830:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/comment_table.test: ok! 30 test cases passed, take time 0.113186701 s
+time="2022-07-06T19:32:35+08:00" level=info msg="run test [comment_table] ok"
+time="2022-07-06T19:32:35+08:00" level=warning msg="Create new db&{0 0xc000010538 0 {0 0} [0xc0002c4900] map[] 0 1 0xc0004c0fc0 false map[0xc0002c4900:map[0xc0002c4900:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/compare.test: ok! 46 test cases passed, take time 0.107089847 s
+time="2022-07-06T19:32:35+08:00" level=info msg="run test [compare] ok"
+time="2022-07-06T19:32:35+08:00" level=warning msg="Create new db&{0 0xc00030c8c0 0 {0 0} [0xc0002c4a20] map[] 0 1 0xc0003f6300 false map[0xc0002c4a20:map[0xc0002c4a20:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/composite_index.test: ok! 14 test cases passed, take time 0.032805603 s
+time="2022-07-06T19:32:35+08:00" level=info msg="run test [composite_index] ok"
+time="2022-07-06T19:32:35+08:00" level=warning msg="Create new db&{0 0xc0000b45e0 0 {0 0} [0xc0003dfb00] map[] 0 1 0xc000419a40 false map[0xc0003dfb00:map[0xc0003dfb00:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/concurrent_ddl.test: ok! 8 test cases passed, take time 0.023486621 s
+time="2022-07-06T19:32:35+08:00" level=info msg="run test [concurrent_ddl] ok"
+time="2022-07-06T19:32:35+08:00" level=warning msg="Create new db&{0 0xc0000b4660 0 {0 0} [0xc0003dfcb0] map[] 0 1 0xc000496120 false map[0xc0003dfcb0:map[0xc0003dfcb0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/count_distinct2.test: ok! 27 test cases passed, take time 0.045750093 s
+time="2022-07-06T19:32:35+08:00" level=info msg="run test [count_distinct2] ok"
+time="2022-07-06T19:32:35+08:00" level=warning msg="Create new db&{0 0xc0000b4118 0 {0 0} [0xc000164630] map[] 0 1 0xc000496480 false map[0xc000164630:map[0xc000164630:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/count_distinct3.test: ok! 9 test cases passed, take time 0.015871812 s
+time="2022-07-06T19:32:35+08:00" level=info msg="run test [count_distinct3] ok"
+time="2022-07-06T19:32:35+08:00" level=warning msg="Create new db&{0 0xc000010238 0 {0 0} [0xc000382ab0] map[] 0 1 0xc0004c0600 false map[0xc000382ab0:map[0xc000382ab0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/count_distinct.test: ok! 110 test cases passed, take time 0.264358623 s
+time="2022-07-06T19:32:35+08:00" level=info msg="run test [count_distinct] ok"
+time="2022-07-06T19:32:35+08:00" level=warning msg="Create new db&{0 0xc0000106b8 0 {0 0} [0xc000383ef0] map[] 0 1 0xc0004c15c0 false map[0xc000383ef0:map[0xc000383ef0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/create_database.test: ok! 6 test cases passed, take time 0.009152932 s
+time="2022-07-06T19:32:36+08:00" level=info msg="run test [create_database] ok"
+time="2022-07-06T19:32:36+08:00" level=warning msg="Create new db&{0 0xc00030c558 0 {0 0} [0xc0000e7440] map[] 0 1 0xc0003f77a0 false map[0xc0000e7440:map[0xc0000e7440:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/create_index.test: ok! 6 test cases passed, take time 0.014795432 s
+time="2022-07-06T19:32:36+08:00" level=info msg="run test [create_index] ok"
+time="2022-07-06T19:32:36+08:00" level=warning msg="Create new db&{0 0xc0000107c8 0 {0 0} [0xc0004f6000] map[] 0 1 0xc0004c19e0 false map[0xc0004f6000:map[0xc0004f6000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/create_table.test: ok! 42 test cases passed, take time 0.112289761 s
+time="2022-07-06T19:32:36+08:00" level=info msg="run test [create_table] ok"
+time="2022-07-06T19:32:36+08:00" level=warning msg="Create new db&{0 0xc00030ca18 0 {0 0} [0xc0000e7950] map[] 0 1 0xc000038e40 false map[0xc0000e7950:map[0xc0000e7950:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/csv_alter_table.test: ok! 20 test cases passed, take time 0.05648145 s
+time="2022-07-06T19:32:36+08:00" level=info msg="run test [csv_alter_table] ok"
+time="2022-07-06T19:32:36+08:00" level=warning msg="Create new db&{0 0xc00030cac8 0 {0 0} [0xc0000e7b90] map[] 0 1 0xc0000392c0 false map[0xc0000e7b90:map[0xc0000e7b90:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/ctype_ascii.test: ok! 13 test cases passed, take time 0.026877557 s
+time="2022-07-06T19:32:36+08:00" level=info msg="run test [ctype_ascii] ok"
+time="2022-07-06T19:32:36+08:00" level=warning msg="Create new db&{0 0xc000010a78 0 {0 0} [0xc0004f77a0] map[] 0 1 0xc000418420 false map[0xc0004f77a0:map[0xc0004f77a0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/ctype_filename.test: ok! 13 test cases passed, take time 0.045398531 s
+time="2022-07-06T19:32:36+08:00" level=info msg="run test [ctype_filename] ok"
+time="2022-07-06T19:32:36+08:00" level=warning msg="Create new db&{0 0xc00030cc78 0 {0 0} [0xc0003262d0] map[] 0 1 0xc000039980 false map[0xc0003262d0:map[0xc0003262d0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/ctype_gbk.test: ok! 42 test cases passed, take time 1.075853517 s
+time="2022-07-06T19:32:37+08:00" level=info msg="run test [ctype_gbk] ok"
+time="2022-07-06T19:32:37+08:00" level=warning msg="Create new db&{0 0xc000010dd8 0 {0 0} [0xc0004f79e0] map[] 0 1 0xc0004195c0 false map[0xc0004f79e0:map[0xc0004f79e0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/ctype_latin1.test: ok! 16 test cases passed, take time 0.023113031 s
+time="2022-07-06T19:32:37+08:00" level=info msg="run test [ctype_latin1] ok"
+time="2022-07-06T19:32:37+08:00" level=warning msg="Create new db&{0 0xc00030ce40 0 {0 0} [0xc0003f37a0] map[] 0 1 0xc0002ba0c0 false map[0xc0003f37a0:map[0xc0003f37a0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/ctype_mb.test: ok! 22 test cases passed, take time 0.170642259 s
+time="2022-07-06T19:32:37+08:00" level=info msg="run test [ctype_mb] ok"
+time="2022-07-06T19:32:37+08:00" level=warning msg="Create new db&{0 0xc00030c0a8 0 {0 0} [0xc0003f2000] map[] 0 1 0xc0002ba4e0 false map[0xc0003f2000:map[0xc0003f2000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/ctype_recoding.test: ok! 44 test cases passed, take time 0.0657146 s
+time="2022-07-06T19:32:37+08:00" level=info msg="run test [ctype_recoding] ok"
+time="2022-07-06T19:32:37+08:00" level=warning msg="Create new db&{0 0xc0000b42a8 0 {0 0} [0xc0003262d0] map[] 0 1 0xc000418d80 false map[0xc0003262d0:map[0xc0003262d0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/ctype_uca.test: ok! 29 test cases passed, take time 0.046095465 s
+time="2022-07-06T19:32:37+08:00" level=info msg="run test [ctype_uca] ok"
+time="2022-07-06T19:32:37+08:00" level=warning msg="Create new db&{0 0xc0000b4318 0 {0 0} [0xc0003f23f0] map[] 0 1 0xc000419080 false map[0xc0003f23f0:map[0xc0003f23f0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/ctype_utf8mb4.test: ok! 772 test cases passed, take time 1.9304341809999999 s
+time="2022-07-06T19:32:39+08:00" level=info msg="run test [ctype_utf8mb4] ok"
+time="2022-07-06T19:32:39+08:00" level=warning msg="Create new db&{0 0xc0000b51c8 0 {0 0} [0xc000511680] map[] 0 1 0xc0004c1140 false map[0xc000511680:map[0xc000511680:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/date_formats.test: ok! 104 test cases passed, take time 0.283849574 s
+time="2022-07-06T19:32:39+08:00" level=info msg="run test [date_formats] ok"
+time="2022-07-06T19:32:40+08:00" level=warning msg="Create new db&{0 0xc0000b55c8 0 {0 0} [0xc000165680] map[] 0 1 0xc0001e24e0 false map[0xc000165680:map[0xc000165680:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/date_time_ddl.test: ok! 75 test cases passed, take time 0.366616044 s
+time="2022-07-06T19:32:40+08:00" level=info msg="run test [date_time_ddl] ok"
+time="2022-07-06T19:32:40+08:00" level=warning msg="Create new db&{0 0xc0000b5928 0 {0 0} [0xc000290cf0] map[] 0 1 0xc0001e3380 false map[0xc000290cf0:map[0xc000290cf0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/datetime_insert.test: ok! 205 test cases passed, take time 0.352557517 s
+time="2022-07-06T19:32:40+08:00" level=info msg="run test [datetime_insert] ok"
+time="2022-07-06T19:32:40+08:00" level=warning msg="Create new db&{0 0xc000010a18 0 {0 0} [0xc000383b00] map[] 0 1 0xc000038600 false map[0xc000383b00:map[0xc000383b00:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/datetime_update.test: ok! 74 test cases passed, take time 0.13031748 s
+time="2022-07-06T19:32:40+08:00" level=info msg="run test [datetime_update] ok"
+time="2022-07-06T19:32:40+08:00" level=warning msg="Create new db&{0 0xc0000b4980 0 {0 0} [0xc0000b7680] map[] 0 1 0xc0004c0e40 false map[0xc0000b7680:map[0xc0000b7680:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/daylight_saving_time.test: ok! 27 test cases passed, take time 0.065222133 s
+time="2022-07-06T19:32:40+08:00" level=info msg="run test [daylight_saving_time] ok"
+time="2022-07-06T19:32:40+08:00" level=warning msg="Create new db&{0 0xc0000b4a28 0 {0 0} [0xc0000b7c20] map[] 0 1 0xc0004c1200 false map[0xc0000b7c20:map[0xc0000b7c20:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/ddl_i18n_utf8.test: ok! 55 test cases passed, take time 0.123240117 s
+time="2022-07-06T19:32:41+08:00" level=info msg="run test [ddl_i18n_utf8] ok"
+time="2022-07-06T19:32:41+08:00" level=warning msg="Create new db&{0 0xc0000b4d98 0 {0 0} [0xc000190120] map[] 0 1 0xc0003167e0 false map[0xc000190120:map[0xc000190120:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/decimal.test: ok! 13 test cases passed, take time 0.025224883 s
+time="2022-07-06T19:32:41+08:00" level=info msg="run test [decimal] ok"
+time="2022-07-06T19:32:41+08:00" level=warning msg="Create new db&{0 0xc00030c908 0 {0 0} [0xc0000b7d40] map[] 0 1 0xc0001c6600 false map[0xc0000b7d40:map[0xc0000b7d40:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/default.test: ok! 46 test cases passed, take time 0.10303217 s
+time="2022-07-06T19:32:41+08:00" level=info msg="run test [default] ok"
+time="2022-07-06T19:32:41+08:00" level=warning msg="Create new db&{0 0xc000011320 0 {0 0} [0xc000191440] map[] 0 1 0xc000298c60 false map[0xc000191440:map[0xc000191440:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/delete_myisam.test: ok! 14 test cases passed, take time 0.039740688 s
+time="2022-07-06T19:32:41+08:00" level=info msg="run test [delete_myisam] ok"
+time="2022-07-06T19:32:41+08:00" level=warning msg="Create new db&{0 0xc000011390 0 {0 0} [0xc000191830] map[] 0 1 0xc000298e40 false map[0xc000191830:map[0xc000191830:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/delete.test: ok! 213 test cases passed, take time 0.638453564 s
+time="2022-07-06T19:32:41+08:00" level=info msg="run test [delete] ok"
+time="2022-07-06T19:32:41+08:00" level=warning msg="Create new db&{0 0xc000010350 0 {0 0} [0xc000382000] map[] 0 1 0xc0004c0ba0 false map[0xc000382000:map[0xc000382000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/derived_cs.test: ok! 10 test cases passed, take time 0.011793249 s
+time="2022-07-06T19:32:41+08:00" level=info msg="run test [derived_cs] ok"
+time="2022-07-06T19:32:41+08:00" level=warning msg="Create new db&{0 0xc0000b41b8 0 {0 0} [0xc000164000] map[] 0 1 0xc000038660 false map[0xc000164000:map[0xc000164000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/derived.test: ok! 687 test cases passed, take time 2.609416762 s
+time="2022-07-06T19:32:44+08:00" level=info msg="run test [derived] ok"
+time="2022-07-06T19:32:44+08:00" level=warning msg="Create new db&{0 0xc00030c328 0 {0 0} [0xc000164750] map[] 0 1 0xc000038e40 false map[0xc000164750:map[0xc000164750:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/distinct_innodb.test: ok! 213 test cases passed, take time 0.649420532 s
+time="2022-07-06T19:32:45+08:00" level=info msg="run test [distinct_innodb] ok"
+time="2022-07-06T19:32:45+08:00" level=warning msg="Create new db&{0 0xc0005c0fa0 0 {0 0} [0xc000173170] map[] 0 1 0xc00029d740 false map[0xc000173170:map[0xc000173170:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/do.test: ok! 2 test cases passed, take time 0.00191774 s
+time="2022-07-06T19:32:45+08:00" level=info msg="run test [do] ok"
+time="2022-07-06T19:32:45+08:00" level=warning msg="Create new db&{0 0xc000010338 0 {0 0} [0xc00039d830] map[] 0 1 0xc0001c6ea0 false map[0xc00039d830:map[0xc00039d830:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/drop.test: ok! 50 test cases passed, take time 0.119105492 s
+time="2022-07-06T19:32:45+08:00" level=info msg="run test [drop] ok"
+time="2022-07-06T19:32:45+08:00" level=warning msg="Create new db&{0 0xc0005c1250 0 {0 0} [0xc000306510] map[] 0 1 0xc0003d48a0 false map[0xc000306510:map[0xc000306510:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/ds_mrr-big.test: ok! 18 test cases passed, take time 0.106717802 s
+time="2022-07-06T19:32:45+08:00" level=info msg="run test [ds_mrr-big] ok"
+time="2022-07-06T19:32:45+08:00" level=warning msg="Create new db&{0 0xc0005c1370 0 {0 0} [0xc000173320] map[] 0 1 0xc0003d4ba0 false map[0xc000173320:map[0xc000173320:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/echo.test: ok! 2 test cases passed, take time 0.002091205 s
+time="2022-07-06T19:32:45+08:00" level=info msg="run test [echo] ok"
+time="2022-07-06T19:32:45+08:00" level=warning msg="Create new db&{0 0xc0000105e0 0 {0 0} [0xc0003e21b0] map[] 0 1 0xc000424180 false map[0xc0003e21b0:map[0xc0003e21b0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/empty_table.test: ok! 6 test cases passed, take time 0.018704137 s
+time="2022-07-06T19:32:45+08:00" level=info msg="run test [empty_table] ok"
+time="2022-07-06T19:32:45+08:00" level=warning msg="Create new db&{0 0xc00030d150 0 {0 0} [0xc0003e25a0] map[] 0 1 0xc0003222a0 false map[0xc0003e25a0:map[0xc0003e25a0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/endspace.test: ok! 63 test cases passed, take time 2.073229106 s
+time="2022-07-06T19:32:47+08:00" level=info msg="run test [endspace] ok"
+time="2022-07-06T19:32:47+08:00" level=warning msg="Create new db&{0 0xc0000b4610 0 {0 0} [0xc0003e2240] map[] 0 1 0xc000419740 false map[0xc0003e2240:map[0xc0003e2240:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/error_simulation.test: ok! 18 test cases passed, take time 0.090866815 s
+time="2022-07-06T19:32:47+08:00" level=info msg="run test [error_simulation] ok"
+time="2022-07-06T19:32:47+08:00" level=warning msg="Create new db&{0 0xc00030c260 0 {0 0} [0xc000382ea0] map[] 0 1 0xc000322e40 false map[0xc000382ea0:map[0xc000382ea0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/exec_selection.test: ok! 13 test cases passed, take time 0.025391211 s
+time="2022-07-06T19:32:47+08:00" level=info msg="run test [exec_selection] ok"
+time="2022-07-06T19:32:47+08:00" level=warning msg="Create new db&{0 0xc0005c00b0 0 {0 0} [0xc0003e2ea0] map[] 0 1 0xc000038360 false map[0xc0003e2ea0:map[0xc0003e2ea0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/explain.test: ok! 187 test cases passed, take time 0.420231699 s
+time="2022-07-06T19:32:48+08:00" level=info msg="run test [explain] ok"
+time="2022-07-06T19:32:48+08:00" level=warning msg="Create new db&{0 0xc0000b4c40 0 {0 0} [0xc000173200] map[] 0 1 0xc000273380 false map[0xc000173200:map[0xc000173200:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/expression_index.test: ok! 165 test cases passed, take time 0.722045163 s
+time="2022-07-06T19:32:48+08:00" level=info msg="run test [expression_index] ok"
+time="2022-07-06T19:32:48+08:00" level=warning msg="Create new db&{0 0xc0005c03b0 0 {0 0} [0xc000382240] map[] 0 1 0xc0004190e0 false map[0xc000382240:map[0xc000382240:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/field_length.test: ok! 9 test cases passed, take time 0.013895177 s
+time="2022-07-06T19:32:48+08:00" level=info msg="run test [field_length] ok"
+time="2022-07-06T19:32:48+08:00" level=warning msg="Create new db&{0 0xc00030c408 0 {0 0} [0xc000165320] map[] 0 1 0xc0004c0b40 false map[0xc000165320:map[0xc000165320:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/filesort_json.test: ok! 15 test cases passed, take time 0.070918042 s
+time="2022-07-06T19:32:49+08:00" level=info msg="run test [filesort_json] ok"
+time="2022-07-06T19:32:49+08:00" level=warning msg="Create new db&{0 0xc00030c0f8 0 {0 0} [0xc000276000] map[] 0 1 0xc000418d80 false map[0xc000276000:map[0xc000276000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/filesort_merge.test: ok! 33 test cases passed, take time 0.545440659 s
+time="2022-07-06T19:32:49+08:00" level=info msg="run test [filesort_merge] ok"
+time="2022-07-06T19:32:49+08:00" level=warning msg="Create new db&{0 0xc0000b4170 0 {0 0} [0xc000164f30] map[] 0 1 0xc0000385a0 false map[0xc000164f30:map[0xc000164f30:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/filesort.test: ok! 52 test cases passed, take time 0.221966652 s
+time="2022-07-06T19:32:49+08:00" level=info msg="run test [filesort] ok"
+time="2022-07-06T19:32:49+08:00" level=warning msg="Create new db&{0 0xc0005c0148 0 {0 0} [0xc0001c25a0] map[] 0 1 0xc0002726c0 false map[0xc0001c25a0:map[0xc0001c25a0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/filter_single_col_idx_big.test: ok! 25 test cases passed, take time 0.116836684 s
+time="2022-07-06T19:32:49+08:00" level=info msg="run test [filter_single_col_idx_big] ok"
+time="2022-07-06T19:32:49+08:00" level=warning msg="Create new db&{0 0xc0005c0298 0 {0 0} [0xc000276000] map[] 0 1 0xc000272fc0 false map[0xc000276000:map[0xc000276000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_aes.test: ok! 77 test cases passed, take time 0.100864467 s
+time="2022-07-06T19:32:50+08:00" level=info msg="run test [func_aes] ok"
+time="2022-07-06T19:32:50+08:00" level=warning msg="Create new db&{0 0xc0000b4428 0 {0 0} [0xc0002763f0] map[] 0 1 0xc0000394a0 false map[0xc0002763f0:map[0xc0002763f0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_bitwise_ops.test: ok! 463 test cases passed, take time 0.965542575 s
+time="2022-07-06T19:32:51+08:00" level=info msg="run test [func_bitwise_ops] ok"
+time="2022-07-06T19:32:51+08:00" level=warning msg="Create new db&{0 0xc0005c12f0 0 {0 0} [0xc000608ab0] map[] 0 1 0xc000521c80 false map[0xc000608ab0:map[0xc000608ab0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_compress.test: ok! 44 test cases passed, take time 0.12783989 s
+time="2022-07-06T19:32:51+08:00" level=info msg="run test [func_compress] ok"
+time="2022-07-06T19:32:51+08:00" level=warning msg="Create new db&{0 0xc0000b56b0 0 {0 0} [0xc0005d5b90] map[] 0 1 0xc000636780 false map[0xc0005d5b90:map[0xc0005d5b90:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_concat.test: ok! 40 test cases passed, take time 0.175292731 s
+time="2022-07-06T19:32:51+08:00" level=info msg="run test [func_concat] ok"
+time="2022-07-06T19:32:51+08:00" level=warning msg="Create new db&{0 0xc0000b5768 0 {0 0} [0xc0006a8090] map[] 0 1 0xc000636c00 false map[0xc0006a8090:map[0xc0006a8090:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_date_add_myisam.test: ok! 26 test cases passed, take time 0.03892802 s
+time="2022-07-06T19:32:51+08:00" level=info msg="run test [func_date_add_myisam] ok"
+time="2022-07-06T19:32:51+08:00" level=warning msg="Create new db&{0 0xc0005c16b0 0 {0 0} [0xc0006a9050] map[] 0 1 0xc0006a0de0 false map[0xc0006a9050:map[0xc0006a9050:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_date_add.test: ok! 22 test cases passed, take time 0.037663629 s
+time="2022-07-06T19:32:51+08:00" level=info msg="run test [func_date_add] ok"
+time="2022-07-06T19:32:51+08:00" level=warning msg="Create new db&{0 0xc0000b5830 0 {0 0} [0xc0005ffc20] map[] 0 1 0xc000637020 false map[0xc0005ffc20:map[0xc0005ffc20:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_default.test: ok! 13 test cases passed, take time 0.064245942 s
+time="2022-07-06T19:32:51+08:00" level=info msg="run test [func_default] ok"
+time="2022-07-06T19:32:51+08:00" level=warning msg="Create new db&{0 0xc0005c1890 0 {0 0} [0xc000642c60] map[] 0 1 0xc0006a15c0 false map[0xc000642c60:map[0xc000642c60:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_digest.test: ok! 482 test cases passed, take time 0.525030315 s
+time="2022-07-06T19:32:52+08:00" level=info msg="run test [func_digest] ok"
+time="2022-07-06T19:32:52+08:00" level=warning msg="Create new db&{0 0xc000baa3e0 0 {0 0} [0xc000642510] map[] 0 1 0xc000b83200 false map[0xc000642510:map[0xc000642510:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_equal.test: ok! 21 test cases passed, take time 0.046031184 s
+time="2022-07-06T19:32:52+08:00" level=info msg="run test [func_equal] ok"
+time="2022-07-06T19:32:52+08:00" level=warning msg="Create new db&{0 0xc000baa580 0 {0 0} [0xc000642ab0] map[] 0 1 0xc000b83980 false map[0xc000642ab0:map[0xc000642ab0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_gconcat.test: ok! 421 test cases passed, take time 1.174616637 s
+time="2022-07-06T19:32:53+08:00" level=info msg="run test [func_gconcat] ok"
+time="2022-07-06T19:32:53+08:00" level=warning msg="Create new db&{0 0xc0005c0c38 0 {0 0} [0xc000382990] map[] 0 1 0xc0004195c0 false map[0xc000382990:map[0xc000382990:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_group_innodb_16k.test: ok! 6 test cases passed, take time 0.054363733 s
+time="2022-07-06T19:32:53+08:00" level=info msg="run test [func_group_innodb_16k] ok"
+time="2022-07-06T19:32:53+08:00" level=warning msg="Create new db&{0 0xc00030d030 0 {0 0} [0xc0002eecf0] map[] 0 1 0xc000272000 false map[0xc0002eecf0:map[0xc0002eecf0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_group_innodb.test: ok! 70 test cases passed, take time 0.140349985 s
+time="2022-07-06T19:32:53+08:00" level=info msg="run test [func_group_innodb] ok"
+time="2022-07-06T19:32:53+08:00" level=warning msg="Create new db&{0 0xc000010750 0 {0 0} [0xc000325950] map[] 0 1 0xc000f69b00 false map[0xc000325950:map[0xc000325950:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_group.test: ok! 642 test cases passed, take time 3.161285452 s
+time="2022-07-06T19:32:56+08:00" level=info msg="run test [func_group] ok"
+time="2022-07-06T19:32:56+08:00" level=warning msg="Create new db&{0 0xc00030d108 0 {0 0} [0xc0003bcab0] map[] 0 1 0xc0005141e0 false map[0xc0003bcab0:map[0xc0003bcab0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_if.test: ok! 82 test cases passed, take time 0.203277834 s
+time="2022-07-06T19:32:56+08:00" level=info msg="run test [func_if] ok"
+time="2022-07-06T19:32:56+08:00" level=warning msg="Create new db&{0 0xc00030c540 0 {0 0} [0xc000165170] map[] 0 1 0xc0005755c0 false map[0xc000165170:map[0xc000165170:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_isnull.test: ok! 38 test cases passed, take time 0.084905204 s
+time="2022-07-06T19:32:57+08:00" level=info msg="run test [func_isnull] ok"
+time="2022-07-06T19:32:57+08:00" level=warning msg="Create new db&{0 0xc00030c620 0 {0 0} [0xc0002774d0] map[] 0 1 0xc000575a40 false map[0xc0002774d0:map[0xc0002774d0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_math.test: ok! 382 test cases passed, take time 0.653965927 s
+time="2022-07-06T19:32:57+08:00" level=info msg="run test [func_math] ok"
+time="2022-07-06T19:32:57+08:00" level=warning msg="Create new db&{0 0xc00030cfc0 0 {0 0} [0xc0003bc2d0] map[] 0 1 0xc000376c60 false map[0xc0003bc2d0:map[0xc0003bc2d0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_op.test: ok! 18 test cases passed, take time 0.032144958 s
+time="2022-07-06T19:32:57+08:00" level=info msg="run test [func_op] ok"
+time="2022-07-06T19:32:57+08:00" level=warning msg="Create new db&{0 0xc00030c138 0 {0 0} [0xc0002ca870] map[] 0 1 0xc00059a5a0 false map[0xc0002ca870:map[0xc0002ca870:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_prefix_key.test: ok! 32 test cases passed, take time 0.447960896 s
+time="2022-07-06T19:32:58+08:00" level=info msg="run test [func_prefix_key] ok"
+time="2022-07-06T19:32:58+08:00" level=warning msg="Create new db&{0 0xc00030c228 0 {0 0} [0xc0003bcd80] map[] 0 1 0xc00059aae0 false map[0xc0003bcd80:map[0xc0003bcd80:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_rand.test: ok! 1 test cases passed, take time 0.001049221 s
+time="2022-07-06T19:32:58+08:00" level=info msg="run test [func_rand] ok"
+time="2022-07-06T19:32:58+08:00" level=warning msg="Create new db&{0 0xc000010210 0 {0 0} [0xc0003bcea0] map[] 0 1 0xc0004c0960 false map[0xc0003bcea0:map[0xc0003bcea0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_regexp.test: ok! 37 test cases passed, take time 0.094115128 s
+time="2022-07-06T19:32:58+08:00" level=info msg="run test [func_regexp] ok"
+time="2022-07-06T19:32:58+08:00" level=warning msg="Create new db&{0 0xc00030c430 0 {0 0} [0xc0002cb5f0] map[] 0 1 0xc00059b5c0 false map[0xc0002cb5f0:map[0xc0002cb5f0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_sapdb.test: ok! 86 test cases passed, take time 0.106317602 s
+time="2022-07-06T19:32:58+08:00" level=info msg="run test [func_sapdb] ok"
+time="2022-07-06T19:32:58+08:00" level=warning msg="Create new db&{0 0xc000010ac0 0 {0 0} [0xc0003bd200] map[] 0 1 0xc0002736e0 false map[0xc0003bd200:map[0xc0003bd200:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_set.test: ok! 68 test cases passed, take time 0.130720315 s
+time="2022-07-06T19:32:58+08:00" level=info msg="run test [func_set] ok"
+time="2022-07-06T19:32:58+08:00" level=warning msg="Create new db&{0 0xc000010f08 0 {0 0} [0xc0001c3e60] map[] 0 1 0xc000038ae0 false map[0xc0001c3e60:map[0xc0001c3e60:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_str_myisam.test: ok! 41 test cases passed, take time 0.099617282 s
+time="2022-07-06T19:32:58+08:00" level=info msg="run test [func_str_myisam] ok"
+time="2022-07-06T19:32:58+08:00" level=warning msg="Create new db&{0 0xc000011258 0 {0 0} [0xc0000ea1b0] map[] 0 1 0xc0000397a0 false map[0xc0000ea1b0:map[0xc0000ea1b0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_system.test: ok! 34 test cases passed, take time 0.06017711 s
+time="2022-07-06T19:32:58+08:00" level=info msg="run test [func_system] ok"
+time="2022-07-06T19:32:58+08:00" level=warning msg="Create new db&{0 0xc00030c7c0 0 {0 0} [0xc0002d8750] map[] 0 1 0xc000418780 false map[0xc0002d8750:map[0xc0002d8750:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_test.test: ok! 111 test cases passed, take time 0.186869008 s
+time="2022-07-06T19:32:58+08:00" level=info msg="run test [func_test] ok"
+time="2022-07-06T19:32:58+08:00" level=warning msg="Create new db&{0 0xc0005c0558 0 {0 0} [0xc0003823f0] map[] 0 1 0xc0004c1aa0 false map[0xc0003823f0:map[0xc0003823f0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_time.test: ok! 559 test cases passed, take time 0.904077204 s
+time="2022-07-06T19:32:59+08:00" level=info msg="run test [func_time] ok"
+time="2022-07-06T19:32:59+08:00" level=warning msg="Create new db&{0 0xc0005c09d8 0 {0 0} [0xc000173170] map[] 0 1 0xc000273e60 false map[0xc000173170:map[0xc000173170:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/function_defaults.test: ok! 318 test cases passed, take time 0.936152063 s
+time="2022-07-06T19:33:00+08:00" level=info msg="run test [function_defaults] ok"
+time="2022-07-06T19:33:00+08:00" level=warning msg="Create new db&{0 0xc0005c12f0 0 {0 0} [0xc00044c3f0] map[] 0 1 0xc0000d9d40 false map[0xc00044c3f0:map[0xc00044c3f0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/func_uuid.test: ok! 63 test cases passed, take time 0.104876979 s
+time="2022-07-06T19:33:00+08:00" level=info msg="run test [func_uuid] ok"
+time="2022-07-06T19:33:00+08:00" level=warning msg="Create new db&{0 0xc0000103b8 0 {0 0} [0xc000308870] map[] 0 1 0xc00043ef60 false map[0xc000308870:map[0xc000308870:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/gcol_alter_table.test: ok! 62 test cases passed, take time 0.177551399 s
+time="2022-07-06T19:33:01+08:00" level=info msg="run test [gcol_alter_table] ok"
+time="2022-07-06T19:33:01+08:00" level=warning msg="Create new db&{0 0xc000010708 0 {0 0} [0xc000308990] map[] 0 1 0xc00043f9e0 false map[0xc000308990:map[0xc000308990:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/gcol_blocked_sql_funcs.test: ok! 143 test cases passed, take time 0.173113541 s
+time="2022-07-06T19:33:01+08:00" level=info msg="run test [gcol_blocked_sql_funcs] ok"
+time="2022-07-06T19:33:01+08:00" level=warning msg="Create new db&{0 0xc000010a18 0 {0 0} [0xc00044da70] map[] 0 1 0xc0002727e0 false map[0xc00044da70:map[0xc00044da70:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/gcol_column_def_options.test: ok! 181 test cases passed, take time 0.535456213 s
+time="2022-07-06T19:33:01+08:00" level=info msg="run test [gcol_column_def_options] ok"
+time="2022-07-06T19:33:01+08:00" level=warning msg="Create new db&{0 0xc0005c10b8 0 {0 0} [0xc0001c2630] map[] 0 1 0xc0004289c0 false map[0xc0001c2630:map[0xc0001c2630:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/gcol_dependenies_on_vcol.test: ok! 7 test cases passed, take time 1.021867793 s
+time="2022-07-06T19:33:02+08:00" level=info msg="run test [gcol_dependenies_on_vcol] ok"
+time="2022-07-06T19:33:02+08:00" level=warning msg="Create new db&{0 0xc00030d660 0 {0 0} [0xc0001c26c0] map[] 0 1 0xc0002c1740 false map[0xc0001c26c0:map[0xc0001c26c0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/gcol_illegal_expression.test: ok! 19 test cases passed, take time 0.051308831 s
+time="2022-07-06T19:33:02+08:00" level=info msg="run test [gcol_illegal_expression] ok"
+time="2022-07-06T19:33:02+08:00" level=warning msg="Create new db&{0 0xc0005c11c0 0 {0 0} [0xc000276d80] map[] 0 1 0xc000428ea0 false map[0xc000276d80:map[0xc000276d80:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/gcol_ins_upd.test: ok! 203 test cases passed, take time 0.448812621 s
+time="2022-07-06T19:33:03+08:00" level=info msg="run test [gcol_ins_upd] ok"
+time="2022-07-06T19:33:03+08:00" level=warning msg="Create new db&{0 0xc000010d58 0 {0 0} [0xc0005a8480] map[] 0 1 0xc0004c1b60 false map[0xc0005a8480:map[0xc0005a8480:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/gcol_non_stored_columns.test: ok! 84 test cases passed, take time 0.199383446 s
+time="2022-07-06T19:33:03+08:00" level=info msg="run test [gcol_non_stored_columns] ok"
+time="2022-07-06T19:33:03+08:00" level=warning msg="Create new db&{0 0xc0005c0530 0 {0 0} [0xc0004b6ea0] map[] 0 1 0xc000039860 false map[0xc0004b6ea0:map[0xc0004b6ea0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/gcol_partition.test: ok! 28 test cases passed, take time 0.064869528 s
+time="2022-07-06T19:33:03+08:00" level=info msg="run test [gcol_partition] ok"
+time="2022-07-06T19:33:03+08:00" level=warning msg="Create new db&{0 0xc00030c900 0 {0 0} [0xc0005a8cf0] map[] 0 1 0xc0002c0540 false map[0xc0005a8cf0:map[0xc0005a8cf0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/gcol_select.test: ok! 122 test cases passed, take time 0.708123487 s
+time="2022-07-06T19:33:04+08:00" level=info msg="run test [gcol_select] ok"
+time="2022-07-06T19:33:04+08:00" level=warning msg="Create new db&{0 0xc0005c0120 0 {0 0} [0xc0002761b0] map[] 0 1 0xc0005e8540 false map[0xc0002761b0:map[0xc0002761b0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/gcol_supported_sql_funcs.test: ok! 1291 test cases passed, take time 2.568004782 s
+time="2022-07-06T19:33:06+08:00" level=info msg="run test [gcol_supported_sql_funcs] ok"
+time="2022-07-06T19:33:06+08:00" level=warning msg="Create new db&{0 0xc0005c0360 0 {0 0} [0xc000172f30] map[] 0 1 0xc0004d0f00 false map[0xc000172f30:map[0xc000172f30:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/gcol_view.test: ok! 60 test cases passed, take time 0.165588508 s
+time="2022-07-06T19:33:07+08:00" level=info msg="run test [gcol_view] ok"
+time="2022-07-06T19:33:07+08:00" level=warning msg="Create new db&{0 0xc0000108a0 0 {0 0} [0xc000277a70] map[] 0 1 0xc00057c060 false map[0xc000277a70:map[0xc000277a70:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/groupby.test: ok! 98 test cases passed, take time 0.151821089 s
+time="2022-07-06T19:33:07+08:00" level=info msg="run test [groupby] ok"
+time="2022-07-06T19:33:07+08:00" level=warning msg="Create new db&{0 0xc00030c510 0 {0 0} [0xc000308fc0] map[] 0 1 0xc00039ede0 false map[0xc000308fc0:map[0xc000308fc0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/group_min_max_innodb.test: ok! 131 test cases passed, take time 0.852045 s
+time="2022-07-06T19:33:08+08:00" level=info msg="run test [group_min_max_innodb] ok"
+time="2022-07-06T19:33:08+08:00" level=warning msg="Create new db&{0 0xc0005c0628 0 {0 0} [0xc000309320] map[] 0 1 0xc000299740 false map[0xc000309320:map[0xc000309320:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/group_min_max_ps_protocol.test: ok! 21 test cases passed, take time 0.059358656 s
+time="2022-07-06T19:33:08+08:00" level=info msg="run test [group_min_max_ps_protocol] ok"
+time="2022-07-06T19:33:08+08:00" level=warning msg="Create new db&{0 0xc00030c520 0 {0 0} [0xc0000b61b0] map[] 0 1 0xc00039f440 false map[0xc0000b61b0:map[0xc0000b61b0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/having_myisam.test: ok! 16 test cases passed, take time 0.059387762 s
+time="2022-07-06T19:33:08+08:00" level=info msg="run test [having_myisam] ok"
+time="2022-07-06T19:33:08+08:00" level=warning msg="Create new db&{0 0xc0005c06b0 0 {0 0} [0xc000173440] map[] 0 1 0xc000299f20 false map[0xc000173440:map[0xc000173440:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/having.test: ok! 272 test cases passed, take time 0.748085202 s
+time="2022-07-06T19:33:09+08:00" level=info msg="run test [having] ok"
+time="2022-07-06T19:33:09+08:00" level=warning msg="Create new db&{0 0xc00030c260 0 {0 0} [0xc000276cf0] map[] 0 1 0xc000418f60 false map[0xc000276cf0:map[0xc000276cf0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/heap_btree_myisam.test: ok! 11 test cases passed, take time 0.045387303 s
+time="2022-07-06T19:33:09+08:00" level=info msg="run test [heap_btree_myisam] ok"
+time="2022-07-06T19:33:09+08:00" level=warning msg="Create new db&{0 0xc0005c05c8 0 {0 0} [0xc000382c60] map[] 0 1 0xc0002736e0 false map[0xc000382c60:map[0xc000382c60:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/heap_btree.test: ok! 146 test cases passed, take time 0.418020933 s
+time="2022-07-06T19:33:09+08:00" level=info msg="run test [heap_btree] ok"
+time="2022-07-06T19:33:09+08:00" level=warning msg="Create new db&{0 0xc0005c0cc8 0 {0 0} [0xc000288fc0] map[] 0 1 0xc0002992c0 false map[0xc000288fc0:map[0xc000288fc0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/histogram_singleton.test: ok! 265 test cases passed, take time 0.645911823 s
+time="2022-07-06T19:33:10+08:00" level=info msg="run test [histogram_singleton] ok"
+time="2022-07-06T19:33:10+08:00" level=warning msg="Create new db&{0 0xc0005c02b8 0 {0 0} [0xc0001655f0] map[] 0 1 0xc000272e40 false map[0xc0001655f0:map[0xc0001655f0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/ignore_strict.test: ok! 156 test cases passed, take time 0.354904736 s
+time="2022-07-06T19:33:10+08:00" level=info msg="run test [ignore_strict] ok"
+time="2022-07-06T19:33:10+08:00" level=warning msg="Create new db&{0 0xc000010648 0 {0 0} [0xc000173680] map[] 0 1 0xc000418180 false map[0xc000173680:map[0xc000173680:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/implicit_char_to_num_conversion.test: ok! 109 test cases passed, take time 0.201400516 s
+time="2022-07-06T19:33:10+08:00" level=info msg="run test [implicit_char_to_num_conversion] ok"
+time="2022-07-06T19:33:10+08:00" level=warning msg="Create new db&{0 0xc0000b5398 0 {0 0} [0xc0003273b0] map[] 0 1 0xc0004c08a0 false map[0xc0003273b0:map[0xc0003273b0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/index_merge1.test: ok! 165 test cases passed, take time 16.803894481 s
+time="2022-07-06T19:33:27+08:00" level=info msg="run test [index_merge1] ok"
+time="2022-07-06T19:33:27+08:00" level=warning msg="Create new db&{0 0xc000010240 0 {0 0} [0xc000164cf0] map[] 0 1 0xc0004c0780 false map[0xc000164cf0:map[0xc000164cf0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/index_merge2.test: ok! 331 test cases passed, take time 2.021838009 s
+time="2022-07-06T19:33:29+08:00" level=info msg="run test [index_merge2] ok"
+time="2022-07-06T19:33:29+08:00" level=warning msg="Create new db&{0 0xc0000b4bf8 0 {0 0} [0xc0002baea0] map[] 0 1 0xc000299b00 false map[0xc0002baea0:map[0xc0002baea0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/index_merge_bug29952775.test: ok! 6 test cases passed, take time 0.01317072 s
+time="2022-07-06T19:33:29+08:00" level=info msg="run test [index_merge_bug29952775] ok"
+time="2022-07-06T19:33:29+08:00" level=warning msg="Create new db&{0 0xc000010de8 0 {0 0} [0xc000365170] map[] 0 1 0xc0002b2c00 false map[0xc000365170:map[0xc000365170:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/index_merge_bugs.test: ok! 10 test cases passed, take time 0.063210516 s
+time="2022-07-06T19:33:29+08:00" level=info msg="run test [index_merge_bugs] ok"
+time="2022-07-06T19:33:29+08:00" level=warning msg="Create new db&{0 0xc000010e50 0 {0 0} [0xc0002bb320] map[] 0 1 0xc0002b2e40 false map[0xc0002bb320:map[0xc0002bb320:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/index_merge_delete.test: ok! 213 test cases passed, take time 9.545945728 s
+time="2022-07-06T19:33:39+08:00" level=info msg="run test [index_merge_delete] ok"
+time="2022-07-06T19:33:39+08:00" level=warning msg="Create new db&{0 0xc00030c7c0 0 {0 0} [0xc0003882d0] map[] 0 1 0xc0002b26c0 false map[0xc0003882d0:map[0xc0003882d0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/index_merge_innodb.test: ok! 11 test cases passed, take time 0.180614569 s
+time="2022-07-06T19:33:39+08:00" level=info msg="run test [index_merge_innodb] ok"
+time="2022-07-06T19:33:39+08:00" level=warning msg="Create new db&{0 0xc0005c0470 0 {0 0} [0xc0001c9c20] map[] 0 1 0xc000419b60 false map[0xc0001c9c20:map[0xc0001c9c20:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/index_merge_sqlgen_exprs_orandor_1_no_out_trans.test: ok! 10173 test cases passed, take time 35.15115448 s
+time="2022-07-06T19:34:14+08:00" level=info msg="run test [index_merge_sqlgen_exprs_orandor_1_no_out_trans] ok"
+time="2022-07-06T19:34:14+08:00" level=warning msg="Create new db&{0 0xc0005c1798 0 {0 0} [0xc00178b560] map[] 0 1 0xc0004c0060 false map[0xc00178b560:map[0xc00178b560:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/index_merge_sqlgen_exprs.test: ok! 533 test cases passed, take time 1.9203890179999998 s
+time="2022-07-06T19:34:16+08:00" level=info msg="run test [index_merge_sqlgen_exprs] ok"
+time="2022-07-06T19:34:16+08:00" level=warning msg="Create new db&{0 0xc0000b4170 0 {0 0} [0xc0003175f0] map[] 0 1 0xc000418480 false map[0xc0003175f0:map[0xc0003175f0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/index_merge_update.test: ok! 102 test cases passed, take time 4.605909834 s
+time="2022-07-06T19:34:21+08:00" level=info msg="run test [index_merge_update] ok"
+time="2022-07-06T19:34:21+08:00" level=warning msg="Create new db&{0 0xc0000103e8 0 {0 0} [0xc000174990] map[] 0 1 0xc000ffcf60 false map[0xc000174990:map[0xc000174990:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/index.test: ok! 32 test cases passed, take time 0.128426172 s
+time="2022-07-06T19:34:21+08:00" level=info msg="run test [index] ok"
+time="2022-07-06T19:34:21+08:00" level=warning msg="Create new db&{0 0xc000010620 0 {0 0} [0xc000174fc0] map[] 0 1 0xc000ffd8c0 false map[0xc000174fc0:map[0xc000174fc0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/innodb_log_file_size_functionality.test: ok! 10 test cases passed, take time 0.011399013 s
+time="2022-07-06T19:34:21+08:00" level=info msg="run test [innodb_log_file_size_functionality] ok"
+time="2022-07-06T19:34:21+08:00" level=warning msg="Create new db&{0 0xc0005c09d0 0 {0 0} [0xc0000f87e0] map[] 0 1 0xc000039560 false map[0xc0000f87e0:map[0xc0000f87e0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/innodb_tmp_table_heap_to_disk.test: ok! 48 test cases passed, take time 3.96485346 s
+time="2022-07-06T19:34:25+08:00" level=info msg="run test [innodb_tmp_table_heap_to_disk] ok"
+time="2022-07-06T19:34:25+08:00" level=warning msg="Create new db&{0 0xc0000103a8 0 {0 0} [0xc0003838c0] map[] 0 1 0xc000418de0 false map[0xc0003838c0:map[0xc0003838c0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/insert_select_myisam.test: ok! 20 test cases passed, take time 0.122079437 s
+time="2022-07-06T19:34:25+08:00" level=info msg="run test [insert_select_myisam] ok"
+time="2022-07-06T19:34:25+08:00" level=warning msg="Create new db&{0 0xc0005c0438 0 {0 0} [0xc000164a20] map[] 0 1 0xc000038d20 false map[0xc000164a20:map[0xc000164a20:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/insert_select.test: ok! 157 test cases passed, take time 1.461488266 s
+time="2022-07-06T19:34:26+08:00" level=info msg="run test [insert_select] ok"
+time="2022-07-06T19:34:26+08:00" level=warning msg="Create new db&{0 0xc0000106e0 0 {0 0} [0xc0001c5e60] map[] 0 1 0xc000272300 false map[0xc0001c5e60:map[0xc0001c5e60:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/insert_update_myisam.test: ok! 37 test cases passed, take time 0.069666021 s
+time="2022-07-06T19:34:27+08:00" level=info msg="run test [insert_update_myisam] ok"
+time="2022-07-06T19:34:27+08:00" level=warning msg="Create new db&{0 0xc000010a08 0 {0 0} [0xc0003b4750] map[] 0 1 0xc0002732c0 false map[0xc0003b4750:map[0xc0003b4750:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/insert_update.test: ok! 248 test cases passed, take time 0.637632475 s
+time="2022-07-06T19:34:27+08:00" level=info msg="run test [insert_update] ok"
+time="2022-07-06T19:34:27+08:00" level=warning msg="Create new db&{0 0xc00030c038 0 {0 0} [0xc000382120] map[] 0 1 0xc0002720c0 false map[0xc000382120:map[0xc000382120:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/in.test: ok! 12 test cases passed, take time 0.022966238 s
+time="2022-07-06T19:34:27+08:00" level=info msg="run test [in] ok"
+time="2022-07-06T19:34:27+08:00" level=warning msg="Create new db&{0 0xc0000b4210 0 {0 0} [0xc000276090] map[] 0 1 0xc0003bd020 false map[0xc000276090:map[0xc000276090:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/invisible_indexes.test: ok! 22 test cases passed, take time 0.134306058 s
+time="2022-07-06T19:34:27+08:00" level=info msg="run test [invisible_indexes] ok"
+time="2022-07-06T19:34:27+08:00" level=warning msg="Create new db&{0 0xc0005c0a90 0 {0 0} [0xc0001c2090] map[] 0 1 0xc0004c0c00 false map[0xc0001c2090:map[0xc0001c2090:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/issue_11208.test: ok! 8 test cases passed, take time 0.015016295 s
+time="2022-07-06T19:34:27+08:00" level=info msg="run test [issue_11208] ok"
+time="2022-07-06T19:34:27+08:00" level=warning msg="Create new db&{0 0xc00030c170 0 {0 0} [0xc000276c60] map[] 0 1 0xc0002727e0 false map[0xc000276c60:map[0xc000276c60:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/issue_165.test: ok! 2 test cases passed, take time 0.005234778 s
+time="2022-07-06T19:34:27+08:00" level=info msg="run test [issue_165] ok"
+time="2022-07-06T19:34:27+08:00" level=warning msg="Create new db&{0 0xc00030c198 0 {0 0} [0xc000172000] map[] 0 1 0xc000272a80 false map[0xc000172000:map[0xc000172000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/issue_20571.test: ok! 41 test cases passed, take time 0.204769297 s
+time="2022-07-06T19:34:28+08:00" level=info msg="run test [issue_20571] ok"
+time="2022-07-06T19:34:28+08:00" level=warning msg="Create new db&{0 0xc0000101c0 0 {0 0} [0xc0001c2000] map[] 0 1 0xc000038600 false map[0xc0001c2000:map[0xc0001c2000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/issue_207.test: ok! 16 test cases passed, take time 0.060618164 s
+time="2022-07-06T19:34:28+08:00" level=info msg="run test [issue_207] ok"
+time="2022-07-06T19:34:28+08:00" level=warning msg="Create new db&{0 0xc0000102e0 0 {0 0} [0xc000382000] map[] 0 1 0xc000038cc0 false map[0xc000382000:map[0xc000382000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/issue_227.test: ok! 7 test cases passed, take time 0.011832927 s
+time="2022-07-06T19:34:28+08:00" level=info msg="run test [issue_227] ok"
+time="2022-07-06T19:34:28+08:00" level=warning msg="Create new db&{0 0xc0000b4110 0 {0 0} [0xc000172cf0] map[] 0 1 0xc0002723c0 false map[0xc000172cf0:map[0xc000172cf0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/issue_266.test: ok! 46 test cases passed, take time 0.088463516 s
+time="2022-07-06T19:34:28+08:00" level=info msg="run test [issue_266] ok"
+time="2022-07-06T19:34:28+08:00" level=warning msg="Create new db&{0 0xc000010518 0 {0 0} [0xc0001c27e0] map[] 0 1 0xc000039680 false map[0xc0001c27e0:map[0xc0001c27e0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/issue_294.test: ok! 15 test cases passed, take time 0.031357749 s
+time="2022-07-06T19:34:28+08:00" level=info msg="run test [issue_294] ok"
+time="2022-07-06T19:34:28+08:00" level=warning msg="Create new db&{0 0xc0000b4350 0 {0 0} [0xc000382a20] map[] 0 1 0xc000272e40 false map[0xc000382a20:map[0xc000382a20:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/join_crash.test: ok! 35 test cases passed, take time 0.076129671 s
+time="2022-07-06T19:34:28+08:00" level=info msg="run test [join_crash] ok"
+time="2022-07-06T19:34:28+08:00" level=warning msg="Create new db&{0 0xc0000b4560 0 {0 0} [0xc000383200] map[] 0 1 0xc000273860 false map[0xc000383200:map[0xc000383200:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/join_outer.test: ok! 864 test cases passed, take time 3.160937345 s
+time="2022-07-06T19:34:31+08:00" level=info msg="run test [join_outer] ok"
+time="2022-07-06T19:34:31+08:00" level=warning msg="Create new db&{0 0xc00030ca50 0 {0 0} [0xc0003a9050] map[] 0 1 0xc0000f4c00 false map[0xc0003a9050:map[0xc0003a9050:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/join.test: ok! 580 test cases passed, take time 3.4971002110000002 s
+time="2022-07-06T19:34:35+08:00" level=info msg="run test [join] ok"
+time="2022-07-06T19:34:35+08:00" level=warning msg="Create new db&{0 0xc000010300 0 {0 0} [0xc000164750] map[] 0 1 0xc000272960 false map[0xc000164750:map[0xc000164750:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/json_functions.test: ok! 712 test cases passed, take time 0.986783066 s
+time="2022-07-06T19:34:36+08:00" level=info msg="run test [json_functions] ok"
+time="2022-07-06T19:34:36+08:00" level=warning msg="Create new db&{0 0xc0000b4168 0 {0 0} [0xc000382120] map[] 0 1 0xc000272600 false map[0xc000382120:map[0xc000382120:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/json_gcol.test: ok! 71 test cases passed, take time 0.186019466 s
+time="2022-07-06T19:34:36+08:00" level=info msg="run test [json_gcol] ok"
+time="2022-07-06T19:34:36+08:00" level=warning msg="Create new db&{0 0xc00030c320 0 {0 0} [0xc0001725a0] map[] 0 1 0xc000038e40 false map[0xc0001725a0:map[0xc0001725a0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/json.test: ok! 70 test cases passed, take time 0.211589458 s
+time="2022-07-06T19:34:36+08:00" level=info msg="run test [json] ok"
+time="2022-07-06T19:34:36+08:00" level=warning msg="Create new db&{0 0xc000010530 0 {0 0} [0xc000173b00] map[] 0 1 0xc000419200 false map[0xc000173b00:map[0xc000173b00:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/key_primary.test: ok! 11 test cases passed, take time 0.018138224 s
+time="2022-07-06T19:34:36+08:00" level=info msg="run test [key_primary] ok"
+time="2022-07-06T19:34:36+08:00" level=warning msg="Create new db&{0 0xc0005c0588 0 {0 0} [0xc000383b90] map[] 0 1 0xc0004c0660 false map[0xc000383b90:map[0xc000383b90:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/key.test: ok! 193 test cases passed, take time 0.649039124 s
+time="2022-07-06T19:34:37+08:00" level=info msg="run test [key] ok"
+time="2022-07-06T19:34:37+08:00" level=warning msg="Create new db&{0 0xc00030ca00 0 {0 0} [0xc000490990] map[] 0 1 0xc000330f00 false map[0xc000490990:map[0xc000490990:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/keywords.test: ok! 50 test cases passed, take time 0.112615324 s
+time="2022-07-06T19:34:37+08:00" level=info msg="run test [keywords] ok"
+time="2022-07-06T19:34:37+08:00" level=warning msg="Create new db&{0 0xc0005c1348 0 {0 0} [0xc0004d07e0] map[] 0 1 0xc00044f8c0 false map[0xc0004d07e0:map[0xc0004d07e0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/lead_lag_explain.test: ok! 80 test cases passed, take time 0.245428101 s
+time="2022-07-06T19:34:37+08:00" level=info msg="run test [lead_lag_explain] ok"
+time="2022-07-06T19:34:37+08:00" level=warning msg="Create new db&{0 0xc0000102e0 0 {0 0} [0xc000316240] map[] 0 1 0xc0005a3680 false map[0xc000316240:map[0xc000316240:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/lead_lag.test: ok! 212 test cases passed, take time 0.422371759 s
+time="2022-07-06T19:34:38+08:00" level=info msg="run test [lead_lag] ok"
+time="2022-07-06T19:34:38+08:00" level=warning msg="Create new db&{0 0xc0005c0768 0 {0 0} [0xc000316000] map[] 0 1 0xc000039980 false map[0xc000316000:map[0xc000316000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/like.test: ok! 7 test cases passed, take time 0.011646181 s
+time="2022-07-06T19:34:38+08:00" level=info msg="run test [like] ok"
+time="2022-07-06T19:34:38+08:00" level=warning msg="Create new db&{0 0xc000010128 0 {0 0} [0xc0001c2c60] map[] 0 1 0xc0005a2360 false map[0xc0001c2c60:map[0xc0001c2c60:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/limit_myisam.test: ok! 4 test cases passed, take time 0.009488395 s
+time="2022-07-06T19:34:38+08:00" level=info msg="run test [limit_myisam] ok"
+time="2022-07-06T19:34:38+08:00" level=warning msg="Create new db&{0 0xc0005c0808 0 {0 0} [0xc000382870] map[] 0 1 0xc000039ce0 false map[0xc000382870:map[0xc000382870:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/limit.test: ok! 173 test cases passed, take time 0.451840421 s
+time="2022-07-06T19:34:38+08:00" level=info msg="run test [limit] ok"
+time="2022-07-06T19:34:38+08:00" level=warning msg="Create new db&{0 0xc0005c1040 0 {0 0} [0xc0003174d0] map[] 0 1 0xc000273ec0 false map[0xc0003174d0:map[0xc0003174d0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/long_tmpdir.test: ok! 2 test cases passed, take time 0.006506077 s
+time="2022-07-06T19:34:38+08:00" level=info msg="run test [long_tmpdir] ok"
+time="2022-07-06T19:34:38+08:00" level=warning msg="Create new db&{0 0xc00030c368 0 {0 0} [0xc0003310e0] map[] 0 1 0xc0000c2ae0 false map[0xc0003310e0:map[0xc0003310e0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/lowercase_mixed_tmpdir.test: ok! 7 test cases passed, take time 0.012891556 s
+time="2022-07-06T19:34:38+08:00" level=info msg="run test [lowercase_mixed_tmpdir] ok"
+time="2022-07-06T19:34:38+08:00" level=warning msg="Create new db&{0 0xc0005c1158 0 {0 0} [0xc00039a900] map[] 0 1 0xc0004c0300 false map[0xc00039a900:map[0xc00039a900:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/lowercase_table2.test: ok! 85 test cases passed, take time 0.213754855 s
+time="2022-07-06T19:34:38+08:00" level=info msg="run test [lowercase_table2] ok"
+time="2022-07-06T19:34:38+08:00" level=warning msg="Create new db&{0 0xc000010ff0 0 {0 0} [0xc000317ef0] map[] 0 1 0xc0003de540 false map[0xc000317ef0:map[0xc000317ef0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/lowercase_table5.test: ok! 11 test cases passed, take time 0.023099711 s
+time="2022-07-06T19:34:38+08:00" level=info msg="run test [lowercase_table5] ok"
+time="2022-07-06T19:34:38+08:00" level=warning msg="Create new db&{0 0xc0005c1300 0 {0 0} [0xc000331830] map[] 0 1 0xc0004c0cc0 false map[0xc000331830:map[0xc000331830:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/lowercase_table.test: ok! 71 test cases passed, take time 0.159467952 s
+time="2022-07-06T19:34:39+08:00" level=info msg="run test [lowercase_table] ok"
+time="2022-07-06T19:34:39+08:00" level=warning msg="Create new db&{0 0xc0005c0140 0 {0 0} [0xc000276090] map[] 0 1 0xc000038780 false map[0xc000276090:map[0xc000276090:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/lowercase_utf8.test: ok! 5 test cases passed, take time 0.009007817 s
+time="2022-07-06T19:34:39+08:00" level=info msg="run test [lowercase_utf8] ok"
+time="2022-07-06T19:34:39+08:00" level=warning msg="Create new db&{0 0xc000010190 0 {0 0} [0xc0004f06c0] map[] 0 1 0xc0004c0420 false map[0xc0004f06c0:map[0xc0004f06c0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/lowercase_view.test: ok! 82 test cases passed, take time 0.187090506 s
+time="2022-07-06T19:34:39+08:00" level=info msg="run test [lowercase_view] ok"
+time="2022-07-06T19:34:39+08:00" level=warning msg="Create new db&{0 0xc0000b44f8 0 {0 0} [0xc0004f1320] map[] 0 1 0xc000418000 false map[0xc0004f1320:map[0xc0004f1320:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/lpad.test: ok! 25 test cases passed, take time 0.026653726 s
+time="2022-07-06T19:34:39+08:00" level=info msg="run test [lpad] ok"
+time="2022-07-06T19:34:39+08:00" level=warning msg="Create new db&{0 0xc0005c04e8 0 {0 0} [0xc0003835f0] map[] 0 1 0xc000039920 false map[0xc0003835f0:map[0xc0003835f0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/mariadb_cte_nonrecursive.test: ok! 381 test cases passed, take time 0.94432198 s
+time="2022-07-06T19:34:40+08:00" level=info msg="run test [mariadb_cte_nonrecursive] ok"
+time="2022-07-06T19:34:40+08:00" level=warning msg="Create new db&{0 0xc000010a28 0 {0 0} [0xc0003259e0] map[] 0 1 0xc000304660 false map[0xc0003259e0:map[0xc0003259e0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/mariadb_cte_recursive.test: ok! 311 test cases passed, take time 3.152477539 s
+time="2022-07-06T19:34:43+08:00" level=info msg="run test [mariadb_cte_recursive] ok"
+time="2022-07-06T19:34:43+08:00" level=warning msg="Create new db&{0 0xc00030c460 0 {0 0} [0xc0001722d0] map[] 0 1 0xc000419020 false map[0xc0001722d0:map[0xc0001722d0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/math.test: ok! 5 test cases passed, take time 0.0135209 s
+time="2022-07-06T19:34:43+08:00" level=info msg="run test [math] ok"
+time="2022-07-06T19:34:43+08:00" level=warning msg="Create new db&{0 0xc0000102a8 0 {0 0} [0xc000164240] map[] 0 1 0xc0002727e0 false map[0xc000164240:map[0xc000164240:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/metadata_myisam.test: ok! 13 test cases passed, take time 0.041851369 s
+time="2022-07-06T19:34:43+08:00" level=info msg="run test [metadata_myisam] ok"
+time="2022-07-06T19:34:43+08:00" level=warning msg="Create new db&{0 0xc00030c648 0 {0 0} [0xc000172900] map[] 0 1 0xc0004196e0 false map[0xc000172900:map[0xc000172900:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/metadata.test: ok! 88 test cases passed, take time 0.297354046 s
+time="2022-07-06T19:34:43+08:00" level=info msg="run test [metadata] ok"
+time="2022-07-06T19:34:43+08:00" level=warning msg="Create new db&{0 0xc00030c880 0 {0 0} [0xc000594120] map[] 0 1 0xc000419f20 false map[0xc000594120:map[0xc000594120:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/multi_update_innodb.test: ok! 61 test cases passed, take time 0.18486137 s
+time="2022-07-06T19:34:43+08:00" level=info msg="run test [multi_update_innodb] ok"
+time="2022-07-06T19:34:43+08:00" level=warning msg="Create new db&{0 0xc0000109d8 0 {0 0} [0xc000594fc0] map[] 0 1 0xc0003c4c00 false map[0xc000594fc0:map[0xc000594fc0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/multi_update_tiny_hash.test: ok! 22 test cases passed, take time 0.063720802 s
+time="2022-07-06T19:34:44+08:00" level=info msg="run test [multi_update_tiny_hash] ok"
+time="2022-07-06T19:34:44+08:00" level=warning msg="Create new db&{0 0xc000010ae8 0 {0 0} [0xc000595a70] map[] 0 1 0xc0003c50e0 false map[0xc000595a70:map[0xc000595a70:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/mysql_replace.test: ok! 18 test cases passed, take time 0.033188833 s
+time="2022-07-06T19:34:44+08:00" level=info msg="run test [mysql_replace] ok"
+time="2022-07-06T19:34:44+08:00" level=warning msg="Create new db&{0 0xc0005c0a00 0 {0 0} [0xc00031e870] map[] 0 1 0xc0003047e0 false map[0xc00031e870:map[0xc00031e870:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/negation_elimination.test: ok! 65 test cases passed, take time 0.166796013 s
+time="2022-07-06T19:34:44+08:00" level=info msg="run test [negation_elimination] ok"
+time="2022-07-06T19:34:44+08:00" level=warning msg="Create new db&{0 0xc000010078 0 {0 0} [0xc00031e3f0] map[] 0 1 0xc0004c00c0 false map[0xc00031e3f0:map[0xc00031e3f0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/nth.test: ok! 85 test cases passed, take time 0.150321686 s
+time="2022-07-06T19:34:44+08:00" level=info msg="run test [nth] ok"
+time="2022-07-06T19:34:44+08:00" level=warning msg="Create new db&{0 0xc0005c0550 0 {0 0} [0xc0005e6cf0] map[] 0 1 0xc000273380 false map[0xc0005e6cf0:map[0xc0005e6cf0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/null_key_all_innodb.test: ok! 68 test cases passed, take time 0.989629926 s
+time="2022-07-06T19:34:45+08:00" level=info msg="run test [null_key_all_innodb] ok"
+time="2022-07-06T19:34:45+08:00" level=warning msg="Create new db&{0 0xc00030c530 0 {0 0} [0xc000142120] map[] 0 1 0xc000305bc0 false map[0xc000142120:map[0xc000142120:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/odbc.test: ok! 31 test cases passed, take time 0.235395627 s
+time="2022-07-06T19:34:45+08:00" level=info msg="run test [odbc] ok"
+time="2022-07-06T19:34:45+08:00" level=warning msg="Create new db&{0 0xc0005c0848 0 {0 0} [0xc0003165a0] map[] 0 1 0xc000418120 false map[0xc0003165a0:map[0xc0003165a0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/operator.test: ok! 27 test cases passed, take time 0.030005655 s
+time="2022-07-06T19:34:45+08:00" level=info msg="run test [operator] ok"
+time="2022-07-06T19:34:45+08:00" level=warning msg="Create new db&{0 0xc00030c8c0 0 {0 0} [0xc0001c1710] map[] 0 1 0xc000038cc0 false map[0xc0001c1710:map[0xc0001c1710:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/opt_hints_join_order.test: ok! 82 test cases passed, take time 0.355271476 s
+time="2022-07-06T19:34:46+08:00" level=info msg="run test [opt_hints_join_order] ok"
+time="2022-07-06T19:34:46+08:00" level=warning msg="Create new db&{0 0xc0005c07d8 0 {0 0} [0xc0003c0fc0] map[] 0 1 0xc000039500 false map[0xc0003c0fc0:map[0xc0003c0fc0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/opt_hints_subquery.test: ok! 186 test cases passed, take time 0.422453166 s
+time="2022-07-06T19:34:46+08:00" level=info msg="run test [opt_hints_subquery] ok"
+time="2022-07-06T19:34:46+08:00" level=warning msg="Create new db&{0 0xc000010598 0 {0 0} [0xc0003c0cf0] map[] 0 1 0xc0002ccf60 false map[0xc0003c0cf0:map[0xc0003c0cf0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/opt_hint_timeout.test: ok! 28 test cases passed, take time 0.137881315 s
+time="2022-07-06T19:34:46+08:00" level=info msg="run test [opt_hint_timeout] ok"
+time="2022-07-06T19:34:46+08:00" level=warning msg="Create new db&{0 0xc00030c668 0 {0 0} [0xc00032a000] map[] 0 1 0xc0004192c0 false map[0xc00032a000:map[0xc00032a000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/optimizer_bug12837084.test: ok! 9 test cases passed, take time 0.049409563 s
+time="2022-07-06T19:34:46+08:00" level=info msg="run test [optimizer_bug12837084] ok"
+time="2022-07-06T19:34:46+08:00" level=warning msg="Create new db&{0 0xc0005c0028 0 {0 0} [0xc00032a120] map[] 0 1 0xc0002720c0 false map[0xc00032a120:map[0xc00032a120:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/order_by_limit.test: ok! 44 test cases passed, take time 0.527987488 s
+time="2022-07-06T19:34:47+08:00" level=info msg="run test [order_by_limit] ok"
+time="2022-07-06T19:34:47+08:00" level=warning msg="Create new db&{0 0xc0000b4448 0 {0 0} [0xc0000ec240] map[] 0 1 0xc0004c0f60 false map[0xc0000ec240:map[0xc0000ec240:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/order_by_sortkey.test: ok! 40 test cases passed, take time 2.549053517 s
+time="2022-07-06T19:34:49+08:00" level=info msg="run test [order_by_sortkey] ok"
+time="2022-07-06T19:34:49+08:00" level=warning msg="Create new db&{0 0xc00030c388 0 {0 0} [0xc0001c22d0] map[] 0 1 0xc000419080 false map[0xc0001c22d0:map[0xc0001c22d0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/orderby.test: ok! 52 test cases passed, take time 0.315110335 s
+time="2022-07-06T19:34:50+08:00" level=info msg="run test [orderby] ok"
+time="2022-07-06T19:34:50+08:00" level=warning msg="Create new db&{0 0xc00030c6c8 0 {0 0} [0xc000276900] map[] 0 1 0xc000419ce0 false map[0xc000276900:map[0xc000276900:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/overflow.test: ok! 1 test cases passed, take time 0.004811347 s
+time="2022-07-06T19:34:50+08:00" level=info msg="run test [overflow] ok"
+time="2022-07-06T19:34:50+08:00" level=warning msg="Create new db&{0 0xc0000b45c0 0 {0 0} [0xc000165200] map[] 0 1 0xc0004c19e0 false map[0xc000165200:map[0xc000165200:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/packet_myisam.test: ok! 10 test cases passed, take time 0.513940581 s
+time="2022-07-06T19:34:50+08:00" level=info msg="run test [packet_myisam] ok"
+time="2022-07-06T19:34:50+08:00" level=warning msg="Create new db&{0 0xc00030c8a8 0 {0 0} [0xc0001c3d40] map[] 0 1 0xc0002cc4e0 false map[0xc0001c3d40:map[0xc0001c3d40:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+[mysql] 2022/07/06 19:34:50 packets.go:37: unexpected EOF
+./t/packet.test: ok! 49 test cases passed, take time 0.112140489 s
+time="2022-07-06T19:34:50+08:00" level=info msg="run test [packet] ok"
+time="2022-07-06T19:34:50+08:00" level=warning msg="Create new db&{0 0xc0005c09e8 0 {0 0} [0xc00037c360] map[] 0 1 0xc000039620 false map[0xc00037c360:map[0xc00037c360:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/parser_precedence.test: ok! 137 test cases passed, take time 0.177485538 s
+time="2022-07-06T19:34:51+08:00" level=info msg="run test [parser_precedence] ok"
+time="2022-07-06T19:34:51+08:00" level=warning msg="Create new db&{0 0xc0005c01d8 0 {0 0} [0xc0001646c0] map[] 0 1 0xc0004189c0 false map[0xc0001646c0:map[0xc0001646c0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/parser.test: ok! 692 test cases passed, take time 1.6963643369999999 s
+time="2022-07-06T19:34:52+08:00" level=info msg="run test [parser] ok"
+time="2022-07-06T19:34:52+08:00" level=warning msg="Create new db&{0 0xc00030c760 0 {0 0} [0xc000164480] map[] 0 1 0xc000039f80 false map[0xc000164480:map[0xc000164480:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/partition_bug18198.test: ok! 44 test cases passed, take time 0.062506052 s
+time="2022-07-06T19:34:52+08:00" level=info msg="run test [partition_bug18198] ok"
+time="2022-07-06T19:34:52+08:00" level=warning msg="Create new db&{0 0xc0000b4520 0 {0 0} [0xc000309dd0] map[] 0 1 0xc000273980 false map[0xc000309dd0:map[0xc000309dd0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/partition_column_prune.test: ok! 26 test cases passed, take time 0.19773819 s
+time="2022-07-06T19:34:52+08:00" level=info msg="run test [partition_column_prune] ok"
+time="2022-07-06T19:34:52+08:00" level=warning msg="Create new db&{0 0xc0000b46a8 0 {0 0} [0xc0002ae2d0] map[] 0 1 0xc0004c0000 false map[0xc0002ae2d0:map[0xc0002ae2d0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/partition_hash.test: ok! 305 test cases passed, take time 1.7356863470000001 s
+time="2022-07-06T19:34:54+08:00" level=info msg="run test [partition_hash] ok"
+time="2022-07-06T19:34:54+08:00" level=warning msg="Create new db&{0 0xc000010770 0 {0 0} [0xc0002ae000] map[] 0 1 0xc0004a46c0 false map[0xc0002ae000:map[0xc0002ae000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/partition_innodb.test: ok! 111 test cases passed, take time 0.347444906 s
+time="2022-07-06T19:34:55+08:00" level=info msg="run test [partition_innodb] ok"
+time="2022-07-06T19:34:55+08:00" level=warning msg="Create new db&{0 0xc000010ab0 0 {0 0} [0xc000276cf0] map[] 0 1 0xc0004a51a0 false map[0xc000276cf0:map[0xc000276cf0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/partition_list.test: ok! 105 test cases passed, take time 0.291859052 s
+time="2022-07-06T19:34:55+08:00" level=info msg="run test [partition_list] ok"
+time="2022-07-06T19:34:55+08:00" level=warning msg="Create new db&{0 0xc00030cf38 0 {0 0} [0xc000172120] map[] 0 1 0xc0002cbda0 false map[0xc000172120:map[0xc000172120:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/partition_locking_ps_protocol.test: ok! 28 test cases passed, take time 0.087919319 s
+time="2022-07-06T19:34:55+08:00" level=info msg="run test [partition_locking_ps_protocol] ok"
+time="2022-07-06T19:34:55+08:00" level=warning msg="Create new db&{0 0xc000011060 0 {0 0} [0xc000383c20] map[] 0 1 0xc000419500 false map[0xc000383c20:map[0xc000383c20:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/partition_order.test: ok! 270 test cases passed, take time 0.693587562 s
+time="2022-07-06T19:34:56+08:00" level=info msg="run test [partition_order] ok"
+time="2022-07-06T19:34:56+08:00" level=warning msg="Create new db&{0 0xc00030c680 0 {0 0} [0xc000360000] map[] 0 1 0xc000039bc0 false map[0xc000360000:map[0xc000360000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/partition_range.test: ok! 245 test cases passed, take time 0.548505833 s
+time="2022-07-06T19:34:56+08:00" level=info msg="run test [partition_range] ok"
+time="2022-07-06T19:34:56+08:00" level=warning msg="Create new db&{0 0xc0000b4610 0 {0 0} [0xc0003b3e60] map[] 0 1 0xc0002f46c0 false map[0xc0003b3e60:map[0xc0003b3e60:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/partition.test: ok! 534 test cases passed, take time 5.674694789 s
+time="2022-07-06T19:35:02+08:00" level=info msg="run test [partition] ok"
+time="2022-07-06T19:35:02+08:00" level=warning msg="Create new db&{0 0xc000010818 0 {0 0} [0xc0001c26c0] map[] 0 1 0xc000419d40 false map[0xc0001c26c0:map[0xc0001c26c0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/precedence.test: ok! 130 test cases passed, take time 0.182854444 s
+time="2022-07-06T19:35:02+08:00" level=info msg="run test [precedence] ok"
+time="2022-07-06T19:35:02+08:00" level=warning msg="Create new db&{0 0xc0000b4778 0 {0 0} [0xc00033f200] map[] 0 1 0xc0003bc420 false map[0xc00033f200:map[0xc00033f200:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/prepare.test: ok! 18 test cases passed, take time 0.022724166 s
+time="2022-07-06T19:35:02+08:00" level=info msg="run test [prepare] ok"
+time="2022-07-06T19:35:02+08:00" level=warning msg="Create new db&{0 0xc0000b47a0 0 {0 0} [0xc00033f680] map[] 0 1 0xc0003bc600 false map[0xc00033f680:map[0xc00033f680:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/qualified.test: ok! 58 test cases passed, take time 0.0947227 s
+time="2022-07-06T19:35:02+08:00" level=info msg="run test [qualified] ok"
+time="2022-07-06T19:35:02+08:00" level=warning msg="Create new db&{0 0xc000011230 0 {0 0} [0xc0002d43f0] map[] 0 1 0xc00036eba0 false map[0xc0002d43f0:map[0xc0002d43f0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/regexp.test: ok! 7 test cases passed, take time 0.014161229 s
+time="2022-07-06T19:35:02+08:00" level=info msg="run test [regexp] ok"
+time="2022-07-06T19:35:02+08:00" level=warning msg="Create new db&{0 0xc0005c0b38 0 {0 0} [0xc0004815f0] map[] 0 1 0xc0002731a0 false map[0xc0004815f0:map[0xc0004815f0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/replace.test: ok! 107 test cases passed, take time 0.295177398 s
+time="2022-07-06T19:35:03+08:00" level=info msg="run test [replace] ok"
+time="2022-07-06T19:35:03+08:00" level=warning msg="Create new db&{0 0xc0005c00d8 0 {0 0} [0xc000382d80] map[] 0 1 0xc000272240 false map[0xc000382d80:map[0xc000382d80:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/round.test: ok! 133 test cases passed, take time 0.23634446 s
+time="2022-07-06T19:35:03+08:00" level=info msg="run test [round] ok"
+time="2022-07-06T19:35:03+08:00" level=warning msg="Create new db&{0 0xc0000b4bd8 0 {0 0} [0xc000382e10] map[] 0 1 0xc000039e00 false map[0xc000382e10:map[0xc000382e10:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/rowid_order_innodb.test: ok! 30 test cases passed, take time 0.145327727 s
+time="2022-07-06T19:35:03+08:00" level=info msg="run test [rowid_order_innodb] ok"
+time="2022-07-06T19:35:03+08:00" level=warning msg="Create new db&{0 0xc000010700 0 {0 0} [0xc000164fc0] map[] 0 1 0xc0003bd7a0 false map[0xc000164fc0:map[0xc000164fc0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/row.test: ok! 183 test cases passed, take time 0.409707043 s
+time="2022-07-06T19:35:03+08:00" level=info msg="run test [row] ok"
+time="2022-07-06T19:35:03+08:00" level=warning msg="Create new db&{0 0xc0000b50c8 0 {0 0} [0xc000401e60] map[] 0 1 0xc0004c1320 false map[0xc000401e60:map[0xc000401e60:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/rpad.test: ok! 26 test cases passed, take time 0.028362379 s
+time="2022-07-06T19:35:03+08:00" level=info msg="run test [rpad] ok"
+time="2022-07-06T19:35:03+08:00" level=warning msg="Create new db&{0 0xc0005c0f08 0 {0 0} [0xc000426d80] map[] 0 1 0xc000361c80 false map[0xc000426d80:map[0xc000426d80:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/savepoint2.test: ok! 38 test cases passed, take time 0.035861831 s
+time="2022-07-06T19:35:04+08:00" level=info msg="run test [savepoint2] ok"
+time="2022-07-06T19:35:04+08:00" level=warning msg="Create new db&{0 0xc0000b5168 0 {0 0} [0xc00044e240] map[] 0 1 0xc0004c1a40 false map[0xc00044e240:map[0xc00044e240:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/savepoint_in_optimistic_txn.test: ok! 72 test cases passed, take time 0.063712954 s
+time="2022-07-06T19:35:04+08:00" level=info msg="run test [savepoint_in_optimistic_txn] ok"
+time="2022-07-06T19:35:04+08:00" level=warning msg="Create new db&{0 0xc0000101a0 0 {0 0} [0xc000276630] map[] 0 1 0xc0004c0240 false map[0xc000276630:map[0xc000276630:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/savepoint_in_pessimistic_txn.test: ok! 72 test cases passed, take time 0.062175086 s
+time="2022-07-06T19:35:04+08:00" level=info msg="run test [savepoint_in_pessimistic_txn] ok"
+time="2022-07-06T19:35:04+08:00" level=warning msg="Create new db&{0 0xc000010328 0 {0 0} [0xc000276d80] map[] 0 1 0xc0004c0ba0 false map[0xc000276d80:map[0xc000276d80:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/savepoint_issue_26288.test: ok! 19 test cases passed, take time 0.01104398 s
+time="2022-07-06T19:35:04+08:00" level=info msg="run test [savepoint_issue_26288] ok"
+time="2022-07-06T19:35:04+08:00" level=warning msg="Create new db&{0 0xc0000b42a8 0 {0 0} [0xc00044f9e0] map[] 0 1 0xc000448cc0 false map[0xc00044f9e0:map[0xc00044f9e0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/savepoint.test: ok! 223 test cases passed, take time 0.221026825 s
+time="2022-07-06T19:35:04+08:00" level=info msg="run test [savepoint] ok"
+time="2022-07-06T19:35:04+08:00" level=warning msg="Create new db&{0 0xc0005c0620 0 {0 0} [0xc000382240] map[] 0 1 0xc000419800 false map[0xc000382240:map[0xc000382240:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/select_all.test: ok! 2427 test cases passed, take time 14.56814438 s
+time="2022-07-06T19:35:19+08:00" level=info msg="run test [select_all] ok"
+time="2022-07-06T19:35:19+08:00" level=warning msg="Create new db&{0 0xc0005c0528 0 {0 0} [0xc000164480] map[] 0 1 0xc000417560 false map[0xc000164480:map[0xc000164480:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/select_qualified.test: ok! 18 test cases passed, take time 0.037348582 s
+time="2022-07-06T19:35:19+08:00" level=info msg="run test [select_qualified] ok"
+time="2022-07-06T19:35:19+08:00" level=warning msg="Create new db&{0 0xc000010bf8 0 {0 0} [0xc0003823f0] map[] 0 1 0xc0004196e0 false map[0xc0003823f0:map[0xc0003823f0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/show_check_cs_myisam.test: ok! 62 test cases passed, take time 0.196598388 s
+time="2022-07-06T19:35:19+08:00" level=info msg="run test [show_check_cs_myisam] ok"
+time="2022-07-06T19:35:19+08:00" level=warning msg="Create new db&{0 0xc0005c0778 0 {0 0} [0xc000330000] map[] 0 1 0xc000417c20 false map[0xc000330000:map[0xc000330000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/show_profile.test: ok! 6 test cases passed, take time 0.005491123 s
+time="2022-07-06T19:35:19+08:00" level=info msg="run test [show_profile] ok"
+time="2022-07-06T19:35:19+08:00" level=warning msg="Create new db&{0 0xc000010d08 0 {0 0} [0xc000165440] map[] 0 1 0xc000419e60 false map[0xc000165440:map[0xc000165440:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/show_variables.test: ok! 22 test cases passed, take time 0.057447462 s
+time="2022-07-06T19:35:19+08:00" level=info msg="run test [show_variables] ok"
+time="2022-07-06T19:35:19+08:00" level=warning msg="Create new db&{0 0xc000010078 0 {0 0} [0xc000382000] map[] 0 1 0xc000418060 false map[0xc000382000:map[0xc000382000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/single_delete_update.test: ok! 130 test cases passed, take time 2.081106008 s
+time="2022-07-06T19:35:21+08:00" level=info msg="run test [single_delete_update] ok"
+time="2022-07-06T19:35:21+08:00" level=warning msg="Create new db&{0 0xc00030c528 0 {0 0} [0xc000383a70] map[] 0 1 0xc0002d73e0 false map[0xc000383a70:map[0xc000383a70:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/sqllogic.test: ok! 39 test cases passed, take time 0.16332099 s
+time="2022-07-06T19:35:21+08:00" level=info msg="run test [sqllogic] ok"
+time="2022-07-06T19:35:21+08:00" level=warning msg="Create new db&{0 0xc00030c670 0 {0 0} [0xc000187050] map[] 0 1 0xc0002d7ce0 false map[0xc000187050:map[0xc000187050:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/strict_autoinc_2innodb.test: ok! 13 test cases passed, take time 0.018617139 s
+time="2022-07-06T19:35:21+08:00" level=info msg="run test [strict_autoinc_2innodb] ok"
+time="2022-07-06T19:35:21+08:00" level=warning msg="Create new db&{0 0xc0000108e8 0 {0 0} [0xc000187200] map[] 0 1 0xc000419c20 false map[0xc000187200:map[0xc000187200:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/strict.test: ok! 482 test cases passed, take time 0.8753209 s
+time="2022-07-06T19:35:22+08:00" level=info msg="run test [strict] ok"
+time="2022-07-06T19:35:22+08:00" level=warning msg="Create new db&{0 0xc0005c06a8 0 {0 0} [0xc000173440] map[] 0 1 0xc000419b60 false map[0xc000173440:map[0xc000173440:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/str_quoted.test: ok! 8 test cases passed, take time 0.018259355 s
+time="2022-07-06T19:35:22+08:00" level=info msg="run test [str_quoted] ok"
+time="2022-07-06T19:35:22+08:00" level=warning msg="Create new db&{0 0xc000010758 0 {0 0} [0xc000498900] map[] 0 1 0xc0004c00c0 false map[0xc000498900:map[0xc000498900:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/subquery_all.test: ok! 2359 test cases passed, take time 111.6606046 s
+time="2022-07-06T19:37:14+08:00" level=info msg="run test [subquery_all] ok"
+time="2022-07-06T19:37:14+08:00" level=warning msg="Create new db&{0 0xc0000b4480 0 {0 0} [0xc000382240] map[] 0 1 0xc0002d6f60 false map[0xc000382240:map[0xc000382240:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/subquery_antijoin.test: ok! 115 test cases passed, take time 0.48661463 s
+time="2022-07-06T19:37:14+08:00" level=info msg="run test [subquery_antijoin] ok"
+time="2022-07-06T19:37:14+08:00" level=warning msg="Create new db&{0 0xc0000b4af0 0 {0 0} [0xc0000f6360] map[] 0 1 0xc0004c0c00 false map[0xc0000f6360:map[0xc0000f6360:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/subquery_bugs.test: ok! 286 test cases passed, take time 1.785451326 s
+time="2022-07-06T19:37:16+08:00" level=info msg="run test [subquery_bugs] ok"
+time="2022-07-06T19:37:16+08:00" level=warning msg="Create new db&{0 0xc00030c928 0 {0 0} [0xc0001c3170] map[] 0 1 0xc000039320 false map[0xc0001c3170:map[0xc0001c3170:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/subquery_mat.test: ok! 501 test cases passed, take time 3.137274253 s
+time="2022-07-06T19:37:19+08:00" level=info msg="run test [subquery_mat] ok"
+time="2022-07-06T19:37:19+08:00" level=warning msg="Create new db&{0 0xc000010220 0 {0 0} [0xc00046a480] map[] 0 1 0xc000272660 false map[0xc00046a480:map[0xc00046a480:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/subquery_sj_innodb_all.test: ok! 67 test cases passed, take time 0.29082853 s
+time="2022-07-06T19:37:20+08:00" level=info msg="run test [subquery_sj_innodb_all] ok"
+time="2022-07-06T19:37:20+08:00" level=warning msg="Create new db&{0 0xc0000104c8 0 {0 0} [0xc000276480] map[] 0 1 0xc0002734a0 false map[0xc000276480:map[0xc000276480:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/sub_query.test: ok! 73 test cases passed, take time 0.148734504 s
+time="2022-07-06T19:37:20+08:00" level=info msg="run test [sub_query] ok"
+time="2022-07-06T19:37:20+08:00" level=warning msg="Create new db&{0 0xc0000105a0 0 {0 0} [0xc00018e6c0] map[] 0 1 0xc000273860 false map[0xc00018e6c0:map[0xc00018e6c0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/sum_distinct-big.test: ok! 31 test cases passed, take time 65.066299354 s
+time="2022-07-06T19:38:25+08:00" level=info msg="run test [sum_distinct-big] ok"
+time="2022-07-06T19:38:25+08:00" level=warning msg="Create new db&{0 0xc0000b4678 0 {0 0} [0xc0004ec900] map[] 0 1 0xc0004c02a0 false map[0xc0004ec900:map[0xc0004ec900:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/sum_distinct.test: ok! 31 test cases passed, take time 1.29260287 s
+time="2022-07-06T19:38:26+08:00" level=info msg="run test [sum_distinct] ok"
+time="2022-07-06T19:38:26+08:00" level=warning msg="Create new db&{0 0xc0000b4708 0 {0 0} [0xc0002b6630] map[] 0 1 0xc0004c0600 false map[0xc0002b6630:map[0xc0002b6630:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/temptable_256_fields.test: ok! 4 test cases passed, take time 0.014914252 s
+time="2022-07-06T19:38:26+08:00" level=info msg="run test [temptable_256_fields] ok"
+time="2022-07-06T19:38:26+08:00" level=warning msg="Create new db&{0 0xc000010b20 0 {0 0} [0xc0003041b0] map[] 0 1 0xc0004a9320 false map[0xc0003041b0:map[0xc0003041b0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/temptable_disk.test: ok! 13 test cases passed, take time 0.270140228 s
+time="2022-07-06T19:38:26+08:00" level=info msg="run test [temptable_disk] ok"
+time="2022-07-06T19:38:26+08:00" level=warning msg="Create new db&{0 0xc000010bd8 0 {0 0} [0xc000382000] map[] 0 1 0xc0004a9f20 false map[0xc000382000:map[0xc000382000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/temp_table.test: ok! 136 test cases passed, take time 1.400917055 s
+time="2022-07-06T19:38:28+08:00" level=info msg="run test [temp_table] ok"
+time="2022-07-06T19:38:28+08:00" level=warning msg="Create new db&{0 0xc00030cb38 0 {0 0} [0xc0003822d0] map[] 0 1 0xc000039320 false map[0xc0003822d0:map[0xc0003822d0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/timestamp_insert.test: ok! 198 test cases passed, take time 2.016371229 s
+time="2022-07-06T19:38:30+08:00" level=info msg="run test [timestamp_insert] ok"
+time="2022-07-06T19:38:30+08:00" level=warning msg="Create new db&{0 0xc00030cf78 0 {0 0} [0xc000173e60] map[] 0 1 0xc0002726c0 false map[0xc000173e60:map[0xc000173e60:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/timestamp_update.test: ok! 74 test cases passed, take time 0.35421886 s
+time="2022-07-06T19:38:30+08:00" level=info msg="run test [timestamp_update] ok"
+time="2022-07-06T19:38:30+08:00" level=warning msg="Create new db&{0 0xc00030d380 0 {0 0} [0xc000385170] map[] 0 1 0xc000273920 false map[0xc000385170:map[0xc000385170:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/time.test: ok! 70 test cases passed, take time 0.428327448 s
+time="2022-07-06T19:38:31+08:00" level=info msg="run test [time] ok"
+time="2022-07-06T19:38:31+08:00" level=warning msg="Create new db&{0 0xc0000b4f98 0 {0 0} [0xc000385440] map[] 0 1 0xc000275c80 false map[0xc000385440:map[0xc000385440:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/tpcc.test: ok! 54 test cases passed, take time 1.3138861259999999 s
+time="2022-07-06T19:38:32+08:00" level=info msg="run test [tpcc] ok"
+time="2022-07-06T19:38:32+08:00" level=warning msg="Create new db&{0 0xc00030d930 0 {0 0} [0xc0002de870] map[] 0 1 0xc00037b320 false map[0xc0002de870:map[0xc0002de870:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/transaction_isolation_func.test: ok! 61 test cases passed, take time 12.42872274 s
+time="2022-07-06T19:38:45+08:00" level=info msg="run test [transaction_isolation_func] ok"
+time="2022-07-06T19:38:45+08:00" level=warning msg="Create new db&{0 0xc0000b52f0 0 {0 0} [0xc000385dd0] map[] 0 1 0xc000428d20 false map[0xc000385dd0:map[0xc000385dd0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/truth_value_transform.test: ok! 18 test cases passed, take time 0.229173977 s
+time="2022-07-06T19:38:45+08:00" level=info msg="run test [truth_value_transform] ok"
+time="2022-07-06T19:38:45+08:00" level=warning msg="Create new db&{0 0xc000011200 0 {0 0} [0xc0002dfe60] map[] 0 1 0xc0005183c0 false map[0xc0002dfe60:map[0xc0002dfe60:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_binary.test: ok! 92 test cases passed, take time 0.271080691 s
+time="2022-07-06T19:38:45+08:00" level=info msg="run test [type_binary] ok"
+time="2022-07-06T19:38:45+08:00" level=warning msg="Create new db&{0 0xc0005c01c0 0 {0 0} [0xc000276870] map[] 0 1 0xc0004c0720 false map[0xc000276870:map[0xc000276870:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_bit_myisam.test: ok! 167 test cases passed, take time 0.741061164 s
+time="2022-07-06T19:38:46+08:00" level=info msg="run test [type_bit_myisam] ok"
+time="2022-07-06T19:38:46+08:00" level=warning msg="Create new db&{0 0xc0005c09c8 0 {0 0} [0xc000553ef0] map[] 0 1 0xc000418d20 false map[0xc000553ef0:map[0xc000553ef0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_datetime.test: ok! 333 test cases passed, take time 1.076456891 s
+time="2022-07-06T19:38:47+08:00" level=info msg="run test [type_datetime] ok"
+time="2022-07-06T19:38:47+08:00" level=warning msg="Create new db&{0 0xc00030c228 0 {0 0} [0xc000382090] map[] 0 1 0xc0004c0a20 false map[0xc000382090:map[0xc000382090:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_decimal.test: ok! 360 test cases passed, take time 0.72524147 s
+time="2022-07-06T19:38:48+08:00" level=info msg="run test [type_decimal] ok"
+time="2022-07-06T19:38:48+08:00" level=warning msg="Create new db&{0 0xc0005c0608 0 {0 0} [0xc0002dc360] map[] 0 1 0xc00056daa0 false map[0xc0002dc360:map[0xc0002dc360:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_enum.test: ok! 122 test cases passed, take time 1.135633184 s
+time="2022-07-06T19:38:49+08:00" level=info msg="run test [type_enum] ok"
+time="2022-07-06T19:38:49+08:00" level=warning msg="Create new db&{0 0xc0000b4898 0 {0 0} [0xc000382b40] map[] 0 1 0xc000272840 false map[0xc000382b40:map[0xc000382b40:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_float.test: ok! 268 test cases passed, take time 1.26904431 s
+time="2022-07-06T19:38:50+08:00" level=info msg="run test [type_float] ok"
+time="2022-07-06T19:38:50+08:00" level=warning msg="Create new db&{0 0xc0005c0938 0 {0 0} [0xc000173d40] map[] 0 1 0xc0005786c0 false map[0xc000173d40:map[0xc000173d40:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_nchar.test: ok! 22 test cases passed, take time 0.053833336 s
+time="2022-07-06T19:38:50+08:00" level=info msg="run test [type_nchar] ok"
+time="2022-07-06T19:38:50+08:00" level=warning msg="Create new db&{0 0xc0005c0b40 0 {0 0} [0xc000276d80] map[] 0 1 0xc000578fc0 false map[0xc000276d80:map[0xc000276d80:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_newdecimal.test: ok! 583 test cases passed, take time 1.844368374 s
+time="2022-07-06T19:38:52+08:00" level=info msg="run test [type_newdecimal] ok"
+time="2022-07-06T19:38:52+08:00" level=warning msg="Create new db&{0 0xc000010fc8 0 {0 0} [0xc00067dcb0] map[] 0 1 0xc000368960 false map[0xc00067dcb0:map[0xc00067dcb0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_ranges.test: ok! 80 test cases passed, take time 1.301981273 s
+time="2022-07-06T19:38:53+08:00" level=info msg="run test [type_ranges] ok"
+time="2022-07-06T19:38:53+08:00" level=warning msg="Create new db&{0 0xc00030c2e0 0 {0 0} [0xc00067cab0] map[] 0 1 0xc000368e40 false map[0xc00067cab0:map[0xc00067cab0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_set.test: ok! 32 test cases passed, take time 0.084342084 s
+time="2022-07-06T19:38:53+08:00" level=info msg="run test [type_set] ok"
+time="2022-07-06T19:38:53+08:00" level=warning msg="Create new db&{0 0xc00030c570 0 {0 0} [0xc000277320] map[] 0 1 0xc000369980 false map[0xc000277320:map[0xc000277320:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type.test: ok! 15 test cases passed, take time 0.033879284 s
+time="2022-07-06T19:38:53+08:00" level=info msg="run test [type] ok"
+time="2022-07-06T19:38:53+08:00" level=warning msg="Create new db&{0 0xc0000b4230 0 {0 0} [0xc000277680] map[] 0 1 0xc000668c00 false map[0xc000277680:map[0xc000277680:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_timestamp_explicit.test: ok! 47 test cases passed, take time 0.143055055 s
+time="2022-07-06T19:38:54+08:00" level=info msg="run test [type_timestamp_explicit] ok"
+time="2022-07-06T19:38:54+08:00" level=warning msg="Create new db&{0 0xc0005c03a0 0 {0 0} [0xc00067ccf0] map[] 0 1 0xc0004c0ea0 false map[0xc00067ccf0:map[0xc00067ccf0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_timestamp_myisam.test: ok! 5 test cases passed, take time 0.011767627 s
+time="2022-07-06T19:38:54+08:00" level=info msg="run test [type_timestamp_myisam] ok"
+time="2022-07-06T19:38:54+08:00" level=warning msg="Create new db&{0 0xc0000b4470 0 {0 0} [0xc0002778c0] map[] 0 1 0xc000669140 false map[0xc0002778c0:map[0xc0002778c0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_timestamp.test: ok! 280 test cases passed, take time 0.628471539 s
+time="2022-07-06T19:38:54+08:00" level=info msg="run test [type_timestamp] ok"
+time="2022-07-06T19:38:54+08:00" level=warning msg="Create new db&{0 0xc0005c0e70 0 {0 0} [0xc00031f320] map[] 0 1 0xc0003b4180 false map[0xc00031f320:map[0xc00031f320:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_time.test: ok! 143 test cases passed, take time 0.399051993 s
+time="2022-07-06T19:38:55+08:00" level=info msg="run test [type_time] ok"
+time="2022-07-06T19:38:55+08:00" level=warning msg="Create new db&{0 0xc0000b45c8 0 {0 0} [0xc000408510] map[] 0 1 0xc0004c1b60 false map[0xc000408510:map[0xc000408510:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_uint.test: ok! 8 test cases passed, take time 0.016331451 s
+time="2022-07-06T19:38:55+08:00" level=info msg="run test [type_uint] ok"
+time="2022-07-06T19:38:55+08:00" level=warning msg="Create new db&{0 0xc00030c1f8 0 {0 0} [0xc0001738c0] map[] 0 1 0xc000272660 false map[0xc0001738c0:map[0xc0001738c0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_unit.test: ok! 8 test cases passed, take time 0.014321333 s
+time="2022-07-06T19:38:55+08:00" level=info msg="run test [type_unit] ok"
+time="2022-07-06T19:38:55+08:00" level=warning msg="Create new db&{0 0xc0000b46e8 0 {0 0} [0xc000408870] map[] 0 1 0xc000038240 false map[0xc000408870:map[0xc000408870:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_varchar.test: ok! 179 test cases passed, take time 3.978812754 s
+time="2022-07-06T19:38:59+08:00" level=info msg="run test [type_varchar] ok"
+time="2022-07-06T19:38:59+08:00" level=warning msg="Create new db&{0 0xc0005c0748 0 {0 0} [0xc000165dd0] map[] 0 1 0xc0003b5aa0 false map[0xc000165dd0:map[0xc000165dd0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/type_year.test: ok! 100 test cases passed, take time 0.225162037 s
+time="2022-07-06T19:38:59+08:00" level=info msg="run test [type_year] ok"
+time="2022-07-06T19:38:59+08:00" level=warning msg="Create new db&{0 0xc0000b52c8 0 {0 0} [0xc000269170] map[] 0 1 0xc000419380 false map[0xc000269170:map[0xc000269170:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/update_myisam.test: ok! 35 test cases passed, take time 0.193919235 s
+time="2022-07-06T19:38:59+08:00" level=info msg="run test [update_myisam] ok"
+time="2022-07-06T19:38:59+08:00" level=warning msg="Create new db&{0 0xc0005c0bb8 0 {0 0} [0xc0004643f0] map[] 0 1 0xc00031cfc0 false map[0xc0004643f0:map[0xc0004643f0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/update_stmt.test: ok! 16 test cases passed, take time 0.027729478 s
+time="2022-07-06T19:38:59+08:00" level=info msg="run test [update_stmt] ok"
+time="2022-07-06T19:38:59+08:00" level=warning msg="Create new db&{0 0xc0000b5348 0 {0 0} [0xc0002695f0] map[] 0 1 0xc000419620 false map[0xc0002695f0:map[0xc0002695f0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/update.test: ok! 245 test cases passed, take time 1.201299794 s
+time="2022-07-06T19:39:00+08:00" level=info msg="run test [update] ok"
+time="2022-07-06T19:39:00+08:00" level=warning msg="Create new db&{0 0xc0000b4b10 0 {0 0} [0xc0002763f0] map[] 0 1 0xc0002729c0 false map[0xc0002763f0:map[0xc0002763f0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/user_var.test: ok! 306 test cases passed, take time 0.74741826 s
+time="2022-07-06T19:39:01+08:00" level=info msg="run test [user_var] ok"
+time="2022-07-06T19:39:01+08:00" level=warning msg="Create new db&{0 0xc0005c0c48 0 {0 0} [0xc000183b00] map[] 0 1 0xc00056d980 false map[0xc000183b00:map[0xc000183b00:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/varbinary.test: ok! 148 test cases passed, take time 0.294895369 s
+time="2022-07-06T19:39:01+08:00" level=info msg="run test [varbinary] ok"
+time="2022-07-06T19:39:01+08:00" level=warning msg="Create new db&{0 0xc00030c2c0 0 {0 0} [0xc000172fc0] map[] 0 1 0xc00056cba0 false map[0xc000172fc0:map[0xc000172fc0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/variables.test: ok! 560 test cases passed, take time 0.893406119 s
+time="2022-07-06T19:39:02+08:00" level=info msg="run test [variables] ok"
+time="2022-07-06T19:39:02+08:00" level=warning msg="Create new db&{0 0xc00030d560 0 {0 0} [0xc000264090] map[] 0 1 0xc000143c80 false map[0xc000264090:map[0xc000264090:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/variable.test: ok! 15 test cases passed, take time 0.015366215 s
+time="2022-07-06T19:39:02+08:00" level=info msg="run test [variable] ok"
+time="2022-07-06T19:39:02+08:00" level=warning msg="Create new db&{0 0xc0005c0fc8 0 {0 0} [0xc000182f30] map[] 0 1 0xc00046b020 false map[0xc000182f30:map[0xc000182f30:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/view_myisam.test: ok! 30 test cases passed, take time 0.079073907 s
+time="2022-07-06T19:39:02+08:00" level=info msg="run test [view_myisam] ok"
+time="2022-07-06T19:39:02+08:00" level=warning msg="Create new db&{0 0xc0000102b8 0 {0 0} [0xc0003a4510] map[] 0 1 0xc0003b4b40 false map[0xc0003a4510:map[0xc0003a4510:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/view.test: ok! 1457 test cases passed, take time 5.113272049 s
+time="2022-07-06T19:39:08+08:00" level=info msg="run test [view] ok"
+time="2022-07-06T19:39:08+08:00" level=warning msg="Create new db&{0 0xc000010c78 0 {0 0} [0xc0001c26c0] map[] 0 1 0xc0002732c0 false map[0xc0001c26c0:map[0xc0001c26c0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/warnings.test: ok! 73 test cases passed, take time 0.33898159 s
+time="2022-07-06T19:39:08+08:00" level=info msg="run test [warnings] ok"
+time="2022-07-06T19:39:08+08:00" level=warning msg="Create new db&{0 0xc00030c620 0 {0 0} [0xc000432480] map[] 0 1 0xc000038d80 false map[0xc000432480:map[0xc000432480:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/window_bitwise_ops.test: ok! 76 test cases passed, take time 0.310511354 s
+time="2022-07-06T19:39:08+08:00" level=info msg="run test [window_bitwise_ops] ok"
+time="2022-07-06T19:39:08+08:00" level=warning msg="Create new db&{0 0xc00030ca88 0 {0 0} [0xc0004837a0] map[] 0 1 0xc000418000 false map[0xc0004837a0:map[0xc0004837a0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/window_functions_big.test: ok! 34 test cases passed, take time 51.780813533 s
+time="2022-07-06T19:40:00+08:00" level=info msg="run test [window_functions_big] ok"
+time="2022-07-06T19:40:00+08:00" level=warning msg="Create new db&{0 0xc0000b4428 0 {0 0} [0xc000164750] map[] 0 1 0xc000272600 false map[0xc000164750:map[0xc000164750:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/window_functions_bugs.test: ok! 156 test cases passed, take time 1.7846565380000001 s
+time="2022-07-06T19:40:02+08:00" level=info msg="run test [window_functions_bugs] ok"
+time="2022-07-06T19:40:02+08:00" level=warning msg="Create new db&{0 0xc0000108e8 0 {0 0} [0xc000276480] map[] 0 1 0xc000292780 false map[0xc000276480:map[0xc000276480:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/window_functions_interesting_orders.test: ok! 26 test cases passed, take time 1.341989802 s
+time="2022-07-06T19:40:03+08:00" level=info msg="run test [window_functions_interesting_orders] ok"
+time="2022-07-06T19:40:03+08:00" level=warning msg="Create new db&{0 0xc0005c0a28 0 {0 0} [0xc000277710] map[] 0 1 0xc0002728a0 false map[0xc000277710:map[0xc000277710:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/window_functions.test: ok! 1302 test cases passed, take time 8.512825614 s
+time="2022-07-06T19:40:12+08:00" level=info msg="run test [window_functions] ok"
+time="2022-07-06T19:40:12+08:00" level=warning msg="Create new db&{0 0xc0005c0680 0 {0 0} [0xc000173950] map[] 0 1 0xc000418c00 false map[0xc000173950:map[0xc000173950:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/window_min_max.test: ok! 289 test cases passed, take time 0.55336836 s
+time="2022-07-06T19:40:12+08:00" level=info msg="run test [window_min_max] ok"
+time="2022-07-06T19:40:12+08:00" level=warning msg="Create new db&{0 0xc0000b42e8 0 {0 0} [0xc000383050] map[] 0 1 0xc00063ac60 false map[0xc000383050:map[0xc000383050:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/with_non_recursive_bugs.test: ok! 98 test cases passed, take time 1.940367285 s
+time="2022-07-06T19:40:14+08:00" level=info msg="run test [with_non_recursive_bugs] ok"
+time="2022-07-06T19:40:14+08:00" level=warning msg="Create new db&{0 0xc0005c0118 0 {0 0} [0xc000277c20] map[] 0 1 0xc00063a420 false map[0xc000277c20:map[0xc000277c20:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/with_non_recursive.test: ok! 180 test cases passed, take time 0.520772963 s
+time="2022-07-06T19:40:15+08:00" level=info msg="run test [with_non_recursive] ok"
+time="2022-07-06T19:40:15+08:00" level=warning msg="Create new db&{0 0xc0000b4d18 0 {0 0} [0xc000326d80] map[] 0 1 0xc0004c10e0 false map[0xc000326d80:map[0xc000326d80:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/with_recursive_bugs.test: ok! 29 test cases passed, take time 0.119359536 s
+time="2022-07-06T19:40:15+08:00" level=info msg="run test [with_recursive_bugs] ok"
+time="2022-07-06T19:40:15+08:00" level=warning msg="Create new db&{0 0xc0000b4050 0 {0 0} [0xc0003263f0] map[] 0 1 0xc0004c0120 false map[0xc0003263f0:map[0xc0003263f0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/with_recursive_innodb_tmp_table.test: ok! 13 test cases passed, take time 0.021316363 s
+time="2022-07-06T19:40:15+08:00" level=info msg="run test [with_recursive_innodb_tmp_table] ok"
+time="2022-07-06T19:40:15+08:00" level=warning msg="Create new db&{0 0xc0005c03c0 0 {0 0} [0xc0002762d0] map[] 0 1 0xc000038e40 false map[0xc0002762d0:map[0xc0002762d0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/with_recursive.test: ok! 85 test cases passed, take time 0.367078283 s
+time="2022-07-06T19:40:15+08:00" level=info msg="run test [with_recursive] ok"
+time="2022-07-06T19:40:15+08:00" level=warning msg="Create new db&{0 0xc0000b4298 0 {0 0} [0xc0000fae10] map[] 0 1 0xc000418420 false map[0xc0000fae10:map[0xc0000fae10:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/xd.test: ok! 6 test cases passed, take time 0.276488895 s
+time="2022-07-06T19:40:16+08:00" level=info msg="run test [xd] ok"
+time="2022-07-06T19:40:16+08:00" level=warning msg="Create new db&{0 0xc0005c0008 0 {0 0} [0xc0000fa000] map[] 0 1 0xc0004180c0 false map[0xc0000fa000:map[0xc0000fa000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/year_innodb.test: ok! 50 test cases passed, take time 0.103656165 s
+time="2022-07-06T19:40:16+08:00" level=info msg="run test [year_innodb] ok"
+time="2022-07-06T19:40:16+08:00" level=warning msg="Create new db&{0 0xc0000102d0 0 {0 0} [0xc0000fa2d0] map[] 0 1 0xc0002729c0 false map[0xc0000fa2d0:map[0xc0000fa2d0:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x48e640}"
+./t/sub_query_more.test: ok! 331 test cases passed, take time 1.139792976 s
+time="2022-07-06T19:40:17+08:00" level=info msg="run test [sub_query_more] ok"
+
+Great, All tests passed
