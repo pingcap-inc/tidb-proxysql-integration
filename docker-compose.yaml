@@ -1,0 +1,20 @@
+version: "3"
+services:
+  tidb:
+    image: pingcap/tidb:v6.1.0
+    volumes:
+    - "./tidb-config.toml:/tidb-config.toml"
+    ports:
+      - 4000:4000
+    command: /tidb-server -config /tidb-config.toml -store unistore -path "" -lease 0s > tidb.log 2>&1 &
+  proxysql:
+    image: proxysql/proxysql:latest
+    volumes:
+    - "./proxysql-docker.cnf:/etc/proxysql.cnf"
+    - "./proxysql:/var/lib/proxysql"
+    depends_on:
+      - tidb
+    links:
+      - tidb
+    ports:
+    - "6033:6033"

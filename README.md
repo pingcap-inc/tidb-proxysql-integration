@@ -15,13 +15,24 @@ Use the [test case](https://github.com/pingcap/tidb-test/tree/master/mysql_test)
 ## Dependency
 
 - Permissions for the [tidb-test](https://github.com/pingcap/tidb-test) code repository tidb-test
-- CentOS 7 machine (can be a physical or virtual machine, but not a Docker container, because ProxySQL uses `systemctl` to start in the background)
 - The machine needs to be connected to the network
-- Git
-- Yum
 - Golang SDK
+- Git
+- One of the following:
+
+    1. Local Startup (Please use [Local Startup](#local-startup) in the "Run" section.)
+
+        - CentOS 7 machine (can be a physical or virtual machine)
+        - Yum
+
+    2. Docker Startup (Please use [Docker Startup](#docker-startup) in the "Run" section.)
+
+        - Docker
+        - Docker Compose
 
 ## Run
+
+### Local Startup
 
 1. Installation, startup, configuration **_ProxySQL_**:
 
@@ -32,7 +43,15 @@ Use the [test case](https://github.com/pingcap/tidb-test/tree/master/mysql_test)
 2. Download test code, compile test programs, compile TiDB programs, run test cases：
 
 ```sh
-./test.sh
+./test-local.sh
+```
+
+### Docker Startup
+
+Use Docker Compose to start and configure a container of ProxySQL with TiDB, and run the test case:
+
+```sh
+./test-docker.sh
 ```
 
 ## Expected output
@@ -41,7 +60,7 @@ Use the [test case](https://github.com/pingcap/tidb-test/tree/master/mysql_test)
 
 ## Incompatible features
 
-Some test cases are skipped, see [test.sh](https://github.com/Icemap/tidb-proxysql-integration-test/blob/main/test.sh#L34-L47).
+Some test cases are skipped, see [run-test.sh](https://github.com/Icemap/tidb-proxysql-integration-test/blob/main/run-test.sh#L12-L25).
 
 This is caused by some incompatible features between **_TiDB_** and **_ProxySQL_** (except for the test cases marked with `legency`, which are consistent with the test cases skipped in the CI flow):
 

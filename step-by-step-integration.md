@@ -1,4 +1,4 @@
-# 手把手教你集成 TiDB 和 ProxySQL
+# Integration TiDB with ProxySQL step by step
 
 此文档以 CentOS 7 为例，简单介绍 **_TiDB_** 与 **_ProxySQL_** 的集成方法，如果你有其他安装需求，可自行参阅以下链接：
 

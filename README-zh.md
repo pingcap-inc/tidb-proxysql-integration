@@ -15,13 +15,23 @@
 ## 依赖
 
 - 测试用例代码仓库 [tidb-test](https://github.com/pingcap/tidb-test) 的权限
-- CentOS 7 机器（可为实体机或虚拟机，但不可为 Docker 容器，因为 ProxySQL 用到 `systemctl` 后台启动）
-- 机器需连接网络
-- Git
-- Yum
+- 测试机器需连接网络
 - Golang SDK
+- Git
+- 以下两者其一：
+    1. 本地启动（请在"运行"一节中使用[本地启动](#本地启动)）
+
+        - CentOS 7 机器（可为实体机或虚拟机）
+        - Yum
+        
+    2. Docker 启动（请在"运行"一节中使用[Docker 启动](#docker-启动)）
+
+        - Docker
+        - Docker Compose
 
 ## 运行
+
+### 本地启动
 
 1. 安装、启动、配置 ProxySQL：
 
@@ -32,7 +42,15 @@
 2. 下载测试代码、编译测试程序、编译 TiDB 程序、运行测试用例：
 
 ```sh
-./test.sh
+./test-local.sh
+```
+
+### Docker 启动
+
+使用 Docker Compose 启动并配置 ProxySQL 与 TiDB 的容器，运行测试用例：
+
+```sh
+./test-docker.sh
 ```
 
 ## 预期输出
@@ -41,7 +59,7 @@
 
 ## 已知不兼容特性
 
-当前跳过了一些测试用例，见 [test.sh](https://github.com/Icemap/tidb-proxysql-integration-test/blob/main/test.sh#L34-L47)。
+当前跳过了一些测试用例，见 [run-test.sh](https://github.com/Icemap/tidb-proxysql-integration-test/blob/main/run-test.sh#L12-L25)。
 
 这是因为 TiDB 与 ProxySQL 的一些不兼容特性导致的（除 `legency` 标注的测试用例，这是为了和 CI 流水线中跳过的测试用例保持一致）：
 
