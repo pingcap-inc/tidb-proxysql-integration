@@ -48,7 +48,7 @@
 - 涉及 `CREATE USER` 语句: TiDB 和 ProxySQL 使用不同的用户管理方式，TiDB 使用 `CREATE USER` 语句，而 ProxySQL 使用 admin interface (在另一个端口上)。
 - 设置的排序方式与字符集不匹配时：TiDB 不报错，ProxySQL 报错。
     
-    - 例如：`Error 1253: COLLATION 'latin1_bin' is not valid for CHARACTER SET 'utf8mb4`
+    - 例如：`Error 1253: COLLATION 'latin1_bin' is not valid for CHARACTER SET 'utf8mb4'`
 
 - ProxySQL 不支持 `LOAD STATS`、`LOAD DATA LOCAL INFILE` 等读取文件语句。
 - 在列涉及二义性时：TiDB 不报错，ProxySQL 报错。

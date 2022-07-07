@@ -48,7 +48,7 @@ This is caused by some incompatible features between **_TiDB_** and **_ProxySQL_
 - Related to the `CREATE USER` statement: TiDB and ProxySQL use different user management methods, TiDB uses the `CREATE USER` statement and ProxySQL uses the admin interface (on a different port).
 - When the set `COLLATION` does not match the `CHARACTER SET`: TiDB doesn't report an error, but ProxySQL does.
     
-    - e.g.: `Error 1253: COLLATION 'latin1_bin' is not valid for CHARACTER SET 'utf8mb4`
+    - e.g.: `Error 1253: COLLATION 'latin1_bin' is not valid for CHARACTER SET 'utf8mb4'`
 
 - ProxySQL does not support `LOAD STATS`, `LOAD DATA LOCAL INFILE`, and other load file statements.
 - When column is ambiguous：TiDB doesn't report an error, but ProxySQL does.
