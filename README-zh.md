@@ -4,7 +4,7 @@
 
 ## 目的
 
-完成 [TiDB](https://docs.pingcap.com/tidb/stable/dev-guide-overview) 与 [ProxySQL](https://proxysql.com/) 的集成测试。
+找出 [TiDB](https://docs.pingcap.com/tidb/stable/dev-guide-overview) 与 [ProxySQL](https://proxysql.com/) 使用时的不兼容特性。
 
 ## 搭建方案
 
@@ -15,7 +15,7 @@
 ## 依赖
 
 - 测试用例代码仓库 [tidb-test](https://github.com/pingcap/tidb-test) 的权限
-- CentOS 7 机器（可为实体机或虚拟机，但不可为 Docker 容器，因为 ProxySQL 用到后台启动）
+- CentOS 7 机器（可为实体机或虚拟机，但不可为 Docker 容器，因为 ProxySQL 用到 `systemctl` 后台启动）
 - 机器需连接网络
 - Git
 - Yum
