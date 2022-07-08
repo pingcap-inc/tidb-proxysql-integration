@@ -89,9 +89,6 @@ We need to write the host of TiDB in the ProxySQL configuration to use it as a p
 
 ProxySQL uses a separate port for configuration management and another port for proxying. We call the entry point for configuration management **_ProxySQL Admin interface_** and the entry point for proxying **_ProxySQL Proxy interface_**.
 
-- **_ProxySQL Admin interface_**: 读写权限用户仅可本地登录，无法开放远程登录。只读权限用户可远程登录。默认端口 `6032`。默认读写权限用户名 `admin`，密码 `admin`。默认只读权限用户名 `radmin`，密码 `radmin`。
-- **_ProxySQL Proxy interface_**: 用于代理，将 SQL 转发到配置的服务中。
-
 - **_ProxySQL Admin interface_**: Read-write access users can log in locally only. Read-only users can log in remotely. The default port is `6032`, default read-write user name is `admin`, password is `admin`. And default read-only user name is `radmin`, password is `radmin`.
 - **_ProxySQL Proxy interface_**: Used as a proxy to forward SQL to the configured service.
 
