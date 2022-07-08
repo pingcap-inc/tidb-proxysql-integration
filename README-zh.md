@@ -2,6 +2,8 @@
 
 [English](/README.md) | **_中文_**
 
+如果你不需要进行集成测试，仅对集成方案感兴趣，可以阅读 [手把手教你集成 TiDB 和 ProxySQL](/step-by-step-integration-zh.md)。
+
 ## 目的
 
 找出 [TiDB](https://docs.pingcap.com/tidb/stable/dev-guide-overview) 与 [ProxySQL](https://proxysql.com/) 使用时的不兼容特性。

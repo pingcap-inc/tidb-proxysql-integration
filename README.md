@@ -2,6 +2,8 @@
 
 **_English_** | [中文](/README-zh.md)
 
+If you don't need to run integration testing and are only interested in the integration solution, you can read [Integration TiDB with ProxySQL step by step](/step-by-step-integration.md).
+
 ## Objective
 
 Figure out the incompatible features of [TiDB](https://docs.pingcap.com/tidb/stable/dev-guide-overview) when used with [ProxySQL](https://proxysql.com/).
