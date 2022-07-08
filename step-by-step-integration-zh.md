@@ -1,6 +1,8 @@
 # 手把手教你集成 TiDB 和 ProxySQL
 
-此文档以 CentOS 7 为例，简单介绍 **_TiDB_** 与 **_ProxySQL_** 的集成方法，如果你有其他安装需求，可自行参阅以下链接：
+[English](/step-by-step-integration.md) | **_中文_**
+
+此文档以 CentOS 7 为例，简单介绍 **_TiDB_** 与 **_ProxySQL_** 的集成方法，如果你有其他系统的集成需求，可查看[快速体验](#4-快速体验)一节，这是使用 Docker 及 Docker Compose 部署测试集成环境的介绍。你也可以自行参阅以下链接，以获得更多信息：
 
 - [TiDB 文档](https://docs.pingcap.com/)
 - [TiDB 开发者文档](https://docs.pingcap.com/zh/tidb/stable/dev-guide-overview)
@@ -207,19 +209,23 @@ mysql -u root -h 127.0.0.1 -P 6033 -e "SELECT VERSION()"
 
 如果你满足以下依赖项：
 
+
 - 测试用例代码仓库 [tidb-test](https://github.com/pingcap/tidb-test) 的权限
-- CentOS 7 机器（可为实体机或虚拟机，但不可为 Docker 容器，因为 ProxySQL 用到 `systemctl` 后台启动）
-- 机器需连接网络
-- Git
-- Yum
+- 测试机器需连接网络
 - Golang SDK
+- Git
+- 以下两者其一：
+    1. 本地启动
 
-那么你可以运行这两个脚本来运行集成测试：
+        - CentOS 7 机器（可为实体机或虚拟机）
+        - Yum
+        
+    2. Docker 启动
 
-```
-./proxysql-initial.sh
-./test-local.sh
-```
+        - Docker
+        - Docker Compose
+
+那么你可以本地运行 `./proxysql-initial.sh && ./test-local.sh` 或使用 Docker 运行 `./test-docker.sh` 来运行集成测试。
 
 在[集成测试文档](/README-zh.md)中有更多信息可供查看。
 
