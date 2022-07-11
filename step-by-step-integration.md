@@ -89,12 +89,12 @@ We need to write the host of TiDB in the ProxySQL configuration to use it as a p
 
 ProxySQL uses a separate port for configuration management and another port for proxying. We call the entry point for configuration management **_ProxySQL Admin interface_** and the entry point for proxying **_ProxySQL MySQL interface_**.
 
-- **_ProxySQL Admin interface_**: Read-write access users can log in locally only. Read-only users can log in remotely. The default port is `6032`, default read-write user name is `admin`, password is `admin`. And default read-only user name is `radmin`, password is `radmin`.
+- **_ProxySQL Admin interface_**: It is possible to connect to the admin interface either using a user with `admin` privileges to read and write configuration or a user with `stats` privileges that can only read certain statistics (no read or write configuration). The default credentials are `admin:admin` and `stats:stats`, but for security reasons, it is possible to connect locally using the default credentials. To connect remotely a new user needs to configure it, and often it is named `radmin`.
 - **_ProxySQL MySQL interface_**: Used as a proxy to forward SQL to the configured service.
 
 ![proxysql config flow](/doc-assert/proxysql_config_flow.png)
 
-ProxySQL has three layers of configuration: `runtime`, `memory`, and `disk`. You can change the configuration of the `memory` layer only. After changing the configuration, you can use `load xxx to runtime` to make the configuration effective, or you can use `save xxx to disk` to save to the disk to prevent data loss.
+ProxySQL has three layers of configuration: `runtime`, `memory`, and `disk`. You can change the configuration of the `memory` layer only. After changing the configuration, you can use `load xxx to runtime` to make the configuration effective, and/or you can use `save xxx to disk` to save to the disk to prevent configuation loss.
 
 ![proxysql config layer](/doc-assert/proxysql_config_layer.png)
 
@@ -129,7 +129,7 @@ Field Explanation:
 - `username`: username
 - `password`: password
 - `active`: `1` is active, `0` is inactive, only the `active = 1` user can login.
-- `default_hostgroup`: This user default **hostgroup**.
+- `default_hostgroup`: This user default **hostgroup**, where its traffic will be sent unless query rules route the traffic to a different hostgroup.
 - `transaction_persistent`: A value of `1` indicates transaction persistence, i.e., when a connection opens a transaction using this user, then until the transaction is committed or rolled back, 
 All statements are routed to the same **hostgroup**.
 
@@ -140,6 +140,8 @@ In addition to configuration using **_ProxySQL Admin interface_**, configuration
 ```sh
 rm /var/lib/proxysql/proxysql.db
 ```
+
+Alternatively, it is also possible to run `LOAD xxx FROM CONFIG` to override the current in-memory configuration with the configuration on config file.
 
 The config file is located at `/etc/proxysql.cnf`, we will translate the above required configuration to the config file way, only change `mysql_servers`, `mysql_users` two nodes, the rest of the configuration items can check `/etc/proxysql.cnf`: `/etc/proxysql.cnf`.
 

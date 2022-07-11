@@ -90,12 +90,12 @@
 
 ProxySQL 使用一个单独的端口进行配置管理，另一个端口进行代理。我们把配置管理的入口，称为 **_ProxySQL Admin interface_**，把代理的入口，称为 **_ProxySQL MySQL interface_**。
 
-- **_ProxySQL Admin interface_**: 读写权限用户仅可本地登录，无法开放远程登录。只读权限用户可远程登录。默认端口 `6032`。默认读写权限用户名 `admin`，密码 `admin`。默认只读权限用户名 `radmin`，密码 `radmin`。
+- **_ProxySQL Admin interface_**: 可以使用具有 `admin` 权限的用户连接到管理界面，以读取和写入配置，或者使用具有 `stats` 权限的用户，只能读取某些统计数据（不读取或写入配置）。默认凭证是 `admin:admin` 和 `stats:stats`，但出于安全考虑，可以使用默认凭证进行本地连接。要远程连接，需要配置一个新的用户，通常它被命名为 `radmin`。
 - **_ProxySQL MySQL interface_**: 用于代理，将 SQL 转发到配置的服务中。
 
 ![proxysql config flow](/doc-assert/proxysql_config_flow.png)
 
-ProxySQL 有三层配置：`runtime`、`memory`、`disk`。你仅能更改 `memory` 层的配置。在更改配置后，可以使用 `load xxx to runtime` 来生效这个配置，也可以使用 `save xxx to disk` 落盘，防止数据丢失。
+ProxySQL 有三层配置：`runtime`、`memory`、`disk`。你仅能更改 `memory` 层的配置。在更改配置后，可以使用 `load xxx to runtime` 来生效这个配置，也可以使用 `save xxx to disk` 落盘，防止配置丢失。
 
 ![proxysql config layer](/doc-assert/proxysql_config_layer.png)
 
@@ -130,7 +130,7 @@ save mysql users to disk;
 - `username`: 用户名
 - `password`: 密码
 - `active`: 是否生效，`1` 为生效，`0` 为不生效，仅 `active = 1` 的用户可登录。
-- `default_hostgroup`: 此账号默认使用的 **hostgroup**。
+- `default_hostgroup`: 此账号默认使用的 **hostgroup**，SQL 将被发送至此 **hostgroup** 中，除非查询规则将流量发送到不同的 **hostgroup**。
 - `transaction_persistent`: 值为 `1` 时，表示事务持久化，即：当某连接使用该用户开启了一个事务后，那么在事务提交或回滚之前，
 所有的语句都路由到同一个 **hostgroup** 中，避免语句分散到不同 **hostgroup**。
 
@@ -141,6 +141,8 @@ save mysql users to disk;
 ```sh
 rm /var/lib/proxysql/proxysql.db
 ```
+
+另外，也可以运行`LOAD xxx FROM CONFIG`，用配置文件中的配置覆盖当前内存中的配置。
 
 配置文件的位置为 `/etc/proxysql.cnf`，我们将上方的必需配置翻译为配置文件方式，仅更改 `mysql_servers`、`mysql_users` 这两个配置节点，其余配置可自行查看 `/etc/proxysql.cnf`：
 
