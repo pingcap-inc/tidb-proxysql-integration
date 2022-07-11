@@ -88,10 +88,10 @@
 
 ### 3.1 ProxySQL 配置的简单介绍
 
-ProxySQL 使用一个单独的端口进行配置管理，另一个端口进行代理。我们把配置管理的入口，称为 **_ProxySQL Admin interface_**，把代理的入口，称为 **_ProxySQL Proxy interface_**。
+ProxySQL 使用一个单独的端口进行配置管理，另一个端口进行代理。我们把配置管理的入口，称为 **_ProxySQL Admin interface_**，把代理的入口，称为 **_ProxySQL MySQL interface_**。
 
 - **_ProxySQL Admin interface_**: 读写权限用户仅可本地登录，无法开放远程登录。只读权限用户可远程登录。默认端口 `6032`。默认读写权限用户名 `admin`，密码 `admin`。默认只读权限用户名 `radmin`，密码 `radmin`。
-- **_ProxySQL Proxy interface_**: 用于代理，将 SQL 转发到配置的服务中。
+- **_ProxySQL MySQL interface_**: 用于代理，将 SQL 转发到配置的服务中。
 
 ![proxysql config flow](/doc-assert/proxysql_config_flow.png)
 
@@ -117,7 +117,7 @@ save mysql servers to disk;
 
 ### 3.3 配置 Proxy 登录账号
 
-在 ProxySQL 中添加 TiDB 后端的登录账号。ProxySQL 将允许此账号来登录 **_ProxySQL Proxy interface_**，而且 ProxySQL 将以此创建与 TiDB 之间的连接，因此，请确保此账号在 TiDB 中拥有相应权限。请在 **_ProxySQL Admin interface_** 进行此操作：
+在 ProxySQL 中添加 TiDB 后端的登录账号。ProxySQL 将允许此账号来登录 **_ProxySQL MySQL interface_**，而且 ProxySQL 将以此创建与 TiDB 之间的连接，因此，请确保此账号在 TiDB 中拥有相应权限。请在 **_ProxySQL Admin interface_** 进行此操作：
 
 ```sql
 insert into mysql_users(username,password,active,default_hostgroup,transaction_persistent) values('root','',1,0,1);

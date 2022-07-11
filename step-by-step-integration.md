@@ -87,10 +87,10 @@ We need to write the host of TiDB in the ProxySQL configuration to use it as a p
 
 ### 3.1 Simple Introduction to ProxySQL Configuration
 
-ProxySQL uses a separate port for configuration management and another port for proxying. We call the entry point for configuration management **_ProxySQL Admin interface_** and the entry point for proxying **_ProxySQL Proxy interface_**.
+ProxySQL uses a separate port for configuration management and another port for proxying. We call the entry point for configuration management **_ProxySQL Admin interface_** and the entry point for proxying **_ProxySQL MySQL interface_**.
 
 - **_ProxySQL Admin interface_**: Read-write access users can log in locally only. Read-only users can log in remotely. The default port is `6032`, default read-write user name is `admin`, password is `admin`. And default read-only user name is `radmin`, password is `radmin`.
-- **_ProxySQL Proxy interface_**: Used as a proxy to forward SQL to the configured service.
+- **_ProxySQL MySQL interface_**: Used as a proxy to forward SQL to the configured service.
 
 ![proxysql config flow](/doc-assert/proxysql_config_flow.png)
 
@@ -116,7 +116,7 @@ Field Explanation:
 
 ### 3.3 Configure Proxy Login User
 
-Add a TiDB backend login user to ProxySQL. ProxySQL will allow this account to login **_ProxySQL Proxy interface_** and ProxySQL will use it to create a connection to TiDB, so make sure this account has the appropriate permissions in TiDB. Please do this at **_ProxySQL Admin interface_**:
+Add a TiDB backend login user to ProxySQL. ProxySQL will allow this account to login **_ProxySQL MySQL interface_** and ProxySQL will use it to create a connection to TiDB, so make sure this account has the appropriate permissions in TiDB. Please do this at **_ProxySQL Admin interface_**:
 
 ```sql
 insert into mysql_users(username,password,active,default_hostgroup,transaction_persistent) values('root','',1,0,1);
