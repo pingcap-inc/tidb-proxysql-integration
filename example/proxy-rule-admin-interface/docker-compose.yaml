@@ -13,7 +13,7 @@ services:
   proxysql:
     image: proxysql/proxysql:latest
     volumes:
-    - "./proxysql-user-split.cnf:/etc/proxysql.cnf"
+    - "./proxy-rule-split.cnf:/etc/proxysql.cnf"
     - "./proxysql-prepare.sql:/proxysql-prepare.sql"
     depends_on:
       - tidb-0
