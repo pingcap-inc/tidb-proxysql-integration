@@ -2,25 +2,19 @@ version: "3"
 services:
   tidb-0:
     image: pingcap/tidb:v6.1.0
-    volumes:
-    - "./tidb-config.toml:/tidb-config.toml"
     ports:
       - 4001:4000
-    command: /tidb-server -config /tidb-config.toml -store unistore -path "" -lease 0s > tidb.log 2>&1 &
+    command: /tidb-server -store unistore -path "" -lease 0s > tidb.log 2>&1 &
   tidb-1:
     image: pingcap/tidb:v6.1.0
-    volumes:
-    - "./tidb-config.toml:/tidb-config.toml"
     ports:
       - 4002:4000
-    command: /tidb-server -config /tidb-config.toml -store unistore -path "" -lease 0s > tidb.log 2>&1 &
+    command: /tidb-server -store unistore -path "" -lease 0s > tidb.log 2>&1 &
   tidb-2:
     image: pingcap/tidb:v6.1.0
-    volumes:
-    - "./tidb-config.toml:/tidb-config.toml"
     ports:
       - 4003:4000
-    command: /tidb-server -config /tidb-config.toml -store unistore -path "" -lease 0s > tidb.log 2>&1 &
+    command: /tidb-server -store unistore -path "" -lease 0s > tidb.log 2>&1 &
   proxysql:
     image: proxysql/proxysql:latest
     volumes:

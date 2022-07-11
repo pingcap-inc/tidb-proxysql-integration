@@ -2,7 +2,7 @@
 
 # start and stop
 docker-compose up -d
-trap 'docker-compose down' EXIT
+# trap 'docker-compose down' EXIT
 
 # waiting for all containers runs well
 
@@ -26,6 +26,10 @@ DROP TABLE IF EXISTS test.test;
 CREATE TABLE test.test (db VARCHAR(255));
 INSERT INTO test.test (db) VALUES ('tidb-2');
 EOF
+
+# using admin interface to configure
+
+docker-compose exec proxysql sh -c "mysql -uadmin -padmin -h127.0.0.1 -P6032 < ./proxysql-prepare.sql"
 
 mysql -u root -h 127.0.0.1 -P 6034 -t << EOF 
 select * from test.test;
