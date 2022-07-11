@@ -21,19 +21,16 @@ CREATE TABLE test.test (db VARCHAR(255));
 INSERT INTO test.test (db) VALUES ('tidb-1');
 EOF
 
-mysql -u root -h 127.0.0.1 -P 4003 << EOF
-DROP TABLE IF EXISTS test.test;
-CREATE TABLE test.test (db VARCHAR(255));
-INSERT INTO test.test (db) VALUES ('tidb-2');
+# tidb-1 need another account
+mysql -u root -h 127.0.0.1 -P 4002 << EOF
+CREATE USER 'root1' IDENTIFIED BY '';
+GRANT ALL PRIVILEGES ON *.* TO 'root1'@'%';
+FLUSH PRIVILEGES;
 EOF
 
 # using admin interface to configure
 docker-compose exec proxysql sh -c "mysql -uadmin -padmin -h127.0.0.1 -P6032 < ./proxysql-prepare.sql"
 
-mysql -u root -h 127.0.0.1 -P 6034 -t << EOF 
-select * from test.test;
-select * from test.test;
-select * from test.test;
-select * from test.test;
-select * from test.test;
-EOF
+# query for different users
+mysql -u root -h 127.0.0.1 -P 6034 -e "select * from test.test;"
+mysql -u root1 -h 127.0.0.1 -P 6034 -e "select * from test.test;"
