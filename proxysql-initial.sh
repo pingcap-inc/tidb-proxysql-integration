@@ -1,12 +1,12 @@
 #!/bin/sh
 
 # Write ProxySQL yum repo
-cat <<EOF | tee /etc/yum.repos.d/proxysql.repo
-[proxysql_repo]
-name= ProxySQL YUM repository
-baseurl=https://repo.proxysql.com/ProxySQL/proxysql-2.1.x/centos/\$releasever
+cat > /etc/yum.repos.d/proxysql.repo << EOF
+[proxysql]
+name=ProxySQL YUM repository
+baseurl=https://repo.proxysql.com/ProxySQL/proxysql-2.4.x/centos/\$releasever
 gpgcheck=1
-gpgkey=https://repo.proxysql.com/ProxySQL/repo_pub_key
+gpgkey=https://repo.proxysql.com/ProxySQL/proxysql-2.4.x/repo_pub_key
 EOF
 
 # Install ProxySQL and MariaDB client
