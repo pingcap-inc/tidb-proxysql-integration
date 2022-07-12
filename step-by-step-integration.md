@@ -45,7 +45,31 @@ This document briefly describes how to integrate **_TiDB_** with **_ProxySQL_** 
     tiup playground
     ```
 
-### 1.3 Formal Environment
+### 1.3 Test Environment - TiDB Cloud Developer Tier
+
+1. If you do not have a TiDB Cloud account, click [TiDB Cloud](https://tidbcloud.com/free-trial) to sign up for an account.
+2. [Sign in](https://tidbcloud.com/) with your TiDB Cloud account.
+3. To create a Developer Tier cluster for one year free, you can either select the **Developer Tier** plan on the [plan page](https://tidbcloud.com/console/plans) or click [Create a Cluster (Dev Tier)](https://tidbcloud.com/console/create-cluster?tier=dev).
+4. On the **Create a Cluster (Dev Tier)** page, set up your cluster name, password, cloud provider (for now, only AWS is available for Developer Tier), and region (a nearby region is recommended). Then click **Create** to create your cluster.
+5. Your TiDB Cloud cluster will be created in approximately 5 to 15 minutes. You can check the creation progress at [Active Clusters](https://tidbcloud.com/console/clusters).
+6. After creating a cluster, on the **Active Clusters** page, click the name of your newly created cluster to navigate to the cluster control panel.
+
+    ![active clusters](/doc-assert/tidb_cloud_1.png)
+
+7. Click **Connect** to create a traffic filter (a list of client IPs allowed for TiDB connection).
+
+    ![connect](/doc-assert/tidb_cloud_2.png)
+
+8. In the popup window, click **Add Your Current IP Address** to fill in your current IP address, and then click **Create Filter** to create a traffic filter.
+9. Copy the string to connect with a SQL client for later use.
+
+    ![SQL string](/doc-assert/tidb_cloud_3.png)
+
+### 1.4 Formal Environment - TiDB Cloud
+
+We recommend using **TiDB Cloud** directly when you need a hosting TiDB services (e.g., you can't manage it yourself, or you need a cloud-native environment, etc.) You can check out [TiDB Cloud - Create a TiDB Cluster](https://docs.pingcap.com/tidbcloud/create-tidb-cluster) to get a TiDB cluster in TiDB Cloud for formal environment.
+
+### 1.5 Formal Environment - Local Deploy
 
 The formal environment is much more complex than the test environment, so we recommend reading the article [Deploy a TiDB Cluster Using TiUP](https://docs.pingcap.com/tidb/stable/production-deployment-using-tiup) and then deploying it based on hardware conditions.
 

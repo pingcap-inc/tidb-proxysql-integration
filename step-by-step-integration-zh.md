@@ -46,7 +46,26 @@
     tiup playground
     ```
 
-### 1.3 正式环境
+### 1.3 测试环境 - TiDB Cloud Developer Tier
+
+1. 如果你还未拥有 TiDB Cloud 帐号，请先在此[注册](https://tidbcloud.com/free-trial)。
+2. 使用你的 TiDB Cloud 帐号[登录](https://tidbcloud.com/)。
+3. 在[方案](https://tidbcloud.com/console/plans)内选择一年内免费的 Developer Tier 方案，或直接点击[创建 Dev Tier 集群](https://tidbcloud.com/console/create-cluster?tier=dev)，进入 **Create a Cluster (Dev Tier)** 页面。
+4. 请在 **Create a Cluster (Dev Tier)** 页面填写集群名称/密码/云服务商（暂时仅可选择 AWS）/ 可用区（建议就近选择）后，点击 **Create** 按钮创建集群。
+5. 稍作等待，在 5~15 分钟后，将创建完毕，可在 [Active Clusters](https://tidbcloud.com/console/clusters) 查看创建进度。
+6. 创建完毕后，在 **Active Clusters** 页面，点击集群名称，进入该集群控制面板。
+    ![active clusters](/doc-assert/tidb_cloud_1.png)
+7. 点击 **Connect**，创建流量过滤器（允许连接的客户端 IP 列表）。
+    ![connect](/doc-assert/tidb_cloud_2.png)
+8. 在弹出框内点击 **Add Your Current IP Address**，此项将由 TiDB Cloud 解析你当前的网络 IP 填入。点击 **Create Filter**，进行流量过滤器的创建。
+9. 复制弹出框 **Step 2: Connect with a SQL client** 中的连接字符串，供后续步骤使用。
+    ![SQL string](/doc-assert/tidb_cloud_3.png)
+
+### 1.4 正式环境 - TiDB Cloud
+
+在需要托管 TiDB 服务的前提下（如无法自行运维，或需要云原生环境等），我们建议直接使用 TiDB Cloud。你可以查看 [TiDB Cloud 的 Create a TiDB Cluster 文档](https://docs.pingcap.com/tidbcloud/create-tidb-cluster)，用以在 TiDB Cloud 中部署正式环境下的 TiDB。
+
+### 1.5 正式环境 - 本地安装
 
 正式环境相对测试环境会复杂许多，建议详阅[使用 TiUP 部署 TiDB 集群](https://docs.pingcap.com/zh/tidb/stable/production-deployment-using-tiup)一文，后根据硬件条件部署。
 
