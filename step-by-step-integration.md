@@ -229,3 +229,250 @@ Then you can run locally: `. /proxysql-initial.sh && . /test-local.sh` or use Do
 
 There is more information available in the [integration test documentation](/README.md).
 
+
+### 5.3 Example of Load Balancing - Admin Interface
+
+#### 5.3.1 Operation Steps
+
+Use **_ProxySQL Admin Interface_** to configure a load balancing traffic as an example. The example will do:
+
+1. Start 3 TiDB containers through **Docker Compose**, all the port in container is `4000`, and mapped to host ports `4001`, `4002`, `4003`.
+2. Start one container of ProxySQL through **Docker Compose**, the port `6033` in container is for **_ProxySQL MySQL Interface_**, and mapped host port 6034. The **_ProxySQL Admin Interface_** port is not exposed because it can only log in locally (i.e., inside the container).
+3. Within the 3 TiDB instances, create the same table structure but write different data: `'tidb-0'`, `'tidb-1'`, `'tidb-2'`, in order to distinguish between the different database instances.
+4. Use the `docker-compose exec` command to run the prepared SQL file for configuring ProxySQL in **_ProxySQL Admin Interface_**, this SQL file will run:
+
+    1. Add 3 TiDB backend hosts with `hostgroup_id` of `0`.
+    2. Take effect the TiDB backend configuration and save it on disk.
+    3. Add user `root` with an empty password and `default_hostgroup` as `0`, corresponding to the TiDB backend `hostgroup_id` above.
+    4. Take effect the user configuration and save it on disk.
+
+5. Log in to **_ProxySQL MySQL Interface_** with the `root` user and query 5 times, expecting three different returns `'tidb-0'`, `'tidb-1'` and `'tidb-2'`.
+6. Stop and clear Docker Compose started resources, such as: containers and network topologys.
+
+
+#### 5.3.2 Run
+
+Dependencies:
+
+- Docker
+- Docker Compose
+- MySQL Client
+
+```sh
+cd example/load-balance-admin-interface/
+./test-load-balance.sh
+```
+
+#### 5.3.3 Expect Output
+
+Because of load balancing, it is expected that the output will have three different results: `'tidb-0'`, `'tidb-1'`, and `'tidb-2'`. But the exact order cannot be expected. One of the expected outputs is:
+
+
+```
+# ./test-load-balance.sh 
+Creating network "load-balance-admin-interface_default" with the default driver
+Creating load-balance-admin-interface_tidb-1_1 ... done
+Creating load-balance-admin-interface_tidb-2_1 ... done
+Creating load-balance-admin-interface_tidb-0_1 ... done
+Creating load-balance-admin-interface_proxysql_1 ... done
++--------+
+| db     |
++--------+
+| tidb-2 |
++--------+
++--------+
+| db     |
++--------+
+| tidb-0 |
++--------+
++--------+
+| db     |
++--------+
+| tidb-1 |
++--------+
++--------+
+| db     |
++--------+
+| tidb-1 |
++--------+
++--------+
+| db     |
++--------+
+| tidb-1 |
++--------+
+Stopping load-balance-admin-interface_proxysql_1 ... done
+Stopping load-balance-admin-interface_tidb-0_1   ... done
+Stopping load-balance-admin-interface_tidb-2_1   ... done
+Stopping load-balance-admin-interface_tidb-1_1   ... done
+Removing load-balance-admin-interface_proxysql_1 ... done
+Removing load-balance-admin-interface_tidb-0_1   ... done
+Removing load-balance-admin-interface_tidb-2_1   ... done
+Removing load-balance-admin-interface_tidb-1_1   ... done
+Removing network load-balance-admin-interface_default
+```
+
+### 5.4 Example of User Split - Admin Interface
+
+#### 5.4.1 Operation Steps
+
+Use **_ProxySQL Admin Interface_** to configure a user split traffic as an example. The different user will use their own TiDB backend. The example will do:
+
+1. Start 2 TiDB containers through **Docker Compose**, all the port in container is `4000`, and mapped to host ports `4001` and `4002`.
+2. Start one container of ProxySQL through **Docker Compose**, the port `6033` in container is for **_ProxySQL MySQL Interface_**, and mapped host port 6034. The **_ProxySQL Admin Interface_** port is not exposed because it can only log in locally (i.e., inside the container).
+3. Within the 2 TiDB instances, create the same table structure but write different data: `'tidb-0'`, `'tidb-1'`, in order to distinguish between the different database instances.
+4. Use the `docker-compose exec` command to run the prepared SQL file for configuring ProxySQL in **_ProxySQL Admin Interface_**, this SQL file will run:
+
+    1. Add 2 TiDB backend hosts. `hostgroup_id` of `tidb-0` is `0`, and `hostgroup_id` of `tidb-1` is `1`.
+    2. Take effect the TiDB backend configuration and save it on disk.
+    3. Add user `root` with an empty password and `default_hostgroup` as `0`. It means that the SQL till default route to `tidb-0`.
+    4. Add user `root1` with an empty password and `default_hostgroup` as `1`. It means that the SQL till default route to `tidb-1`.
+    5. Take effect the user configuration and save it on disk.
+
+5. Log in to **_ProxySQL MySQL Interface_** with the `root` user and `root1` user. Expecting return is `'tidb-0'` and `'tidb-1'`.
+6. Stop and clear Docker Compose started resources, such as: containers and network topologys.
+
+#### 5.4.2 Run
+
+Dependencies:
+
+- Docker
+- Docker Compose
+- MySQL Client
+
+```sh
+cd example/user-split-admin-interface/
+./test-user-split.sh
+```
+
+#### 5.4.3 Expect Output
+
+```
+# ./test-user-split.sh 
+Creating network "user-split-admin-interface_default" with the default driver
+Creating user-split-admin-interface_tidb-1_1 ... done
+Creating user-split-admin-interface_tidb-0_1 ... done
+Creating user-split-admin-interface_proxysql_1 ... done
++--------+
+| db     |
++--------+
+| tidb-0 |
++--------+
++--------+
+| db     |
++--------+
+| tidb-1 |
++--------+
+Stopping user-split-admin-interface_proxysql_1 ... done
+Stopping user-split-admin-interface_tidb-0_1   ... done
+Stopping user-split-admin-interface_tidb-1_1   ... done
+Removing user-split-admin-interface_proxysql_1 ... done
+Removing user-split-admin-interface_tidb-0_1   ... done
+Removing user-split-admin-interface_tidb-1_1   ... done
+Removing network user-split-admin-interface_default
+```
+
+### 5.5 Example of Proxy Rules - Admin Interface
+
+#### 5.5.1 Operation Steps
+
+Use **_ProxySQL Admin Interface_** to configure a common read/write separation traffic as an example. It will use the rules to match the SQL that will be run, thus forwarding the read and write SQL to different TiDB backends (if neither match, the user's `default_hostgroup` will be used). The example will do:
+
+1. Start 2 TiDB containers through **Docker Compose**, all the port in container is `4000`, and mapped to host ports `4001` and `4002`.
+2. Start one container of ProxySQL through **Docker Compose**, the port `6033` in container is for **_ProxySQL MySQL Interface_**, and mapped host port 6034. The **_ProxySQL Admin Interface_** port is not exposed because it can only log in locally (i.e., inside the container).
+3. Within the 2 TiDB instances, create the same table structure but write different data: `'tidb-0'`, `'tidb-1'`, in order to distinguish between the different database instances.
+4. Use the `docker-compose exec` command to run the prepared SQL file for configuring ProxySQL in **_ProxySQL Admin Interface_**, this SQL file will run:
+
+    1. Add 2 TiDB backend hosts. `hostgroup_id` of `tidb-0` is `0`, and `hostgroup_id` of `tidb-1` is `1`.
+    2. Take effect the TiDB backend configuration and save it on disk.
+    3. Add user `root` with an empty password and `default_hostgroup` as `0`. It means that the SQL till default route to `tidb-0`.
+    4. Take effect the user configuration and save it on disk.
+    5. Add the rule `^SELECT.*FOR UPDATE$` with `rule_id` as `1` and `destination_hostgroup` as `0`. It means if SQL statements matching this rule, it will be using the TiDB with `hostgroup` as `0` (this rule is for forwarding `SELECT ... FOR UPDATE` statement to the database where it is written).
+    6. Add the rule `^SELECT` with `rule_id` as `2` and `destination_hostgroup` as `1`. It means if SQL statements matching this rule, it will be using the TiDB with `hostgroup` as `1`.
+    7. Take effect the rule configuration and save it on disk.
+
+> **Note:**
+> 
+> About the matching rules:
+> 
+> - ProxySQL will try to match the rules one by one in the order of `rule_id` from smallest to largest.
+> - `^` matches the beginning of the SQL statement, `$` matches the end.
+> - `match_digest` is to match the parameterized SQL statement, see [query_processor_regex](https://proxysql.com/documentation/global-variables/mysql- variables/#mysql-query_processor_regex).
+> - Important parameters:
+> 
+>   - `digest`: Match the parameterized hash value.
+>   - `match_pattern`: Match the raw SQL statements.
+>   - `negate_match_pattern`: When value is `1`, inverse the match for `match_digest` or `match_pattern`.
+>   - `log`: Whether log the query.
+>   - `replace_pattern`: If it is not empty, the value of this field will be replaced by the content of the matched part of SQL.
+> 
+> - See [mysql_query_rules](https://proxysql.com/documentation/main-runtime/#mysql_query_rules) for full parameters.
+
+5. Log in to **_ProxySQL MySQL Interface_** with the `root`, and run:
+
+    - `select * from test.test;`: Expect to match rules with `rule_id` of `2`. Forwarded to the TiDB backend `tidb-1` with `hostgroup` of `1`.
+    - `select * from test.test for update;`: Expect to match rules with `rule_id` of `1`. Forwarded to the TiDB backend `tidb-0` with `hostgroup` of `0`.
+    - `begin;insert into test.test (db) values ('insert this and rollback later'); select * from test.test; rollback;`: The `insert` statement is expected to not match all rules. It will use the `default_hostgroup` of user (It is `0`) and thus forward to the TiDB backend `tidb-0`(`hostgroup` is `0`). And ProxySQL turns on user `transaction_persistent` by default, this will cause all statements within the same transaction to run in the same `hostgroup`. So `select * from test.test;` will also be forwarded to the TiDB backend `tidb-0`(`hostgroup` is `0`).
+
+6. Stop and clear Docker Compose started resources, such as: containers and network topologys.
+
+#### 5.5.2 Run
+
+依赖：
+
+- Docker
+- Docker Compose
+- MySQL Client
+
+```sh
+cd example/proxy-rule-admin-interface/
+./proxy-rule-split.sh
+```
+
+#### 5.5.3 Expect Output
+
+```
+# ./proxy-rule-split.sh 
+Creating network "proxy-rule-admin-interface_default" with the default driver
+Creating proxy-rule-admin-interface_tidb-1_1 ... done
+Creating proxy-rule-admin-interface_tidb-0_1 ... done
+Creating proxy-rule-admin-interface_proxysql_1 ... done
++--------+
+| db     |
++--------+
+| tidb-1 |
++--------+
++--------+
+| db     |
++--------+
+| tidb-0 |
++--------+
++--------------------------------+
+| db                             |
++--------------------------------+
+| tidb-0                         |
+| insert this and rollback later |
++--------------------------------+
+Stopping proxy-rule-admin-interface_proxysql_1 ... done
+Stopping proxy-rule-admin-interface_tidb-0_1   ... done
+Stopping proxy-rule-admin-interface_tidb-1_1   ... done
+Removing proxy-rule-admin-interface_proxysql_1 ... done
+Removing proxy-rule-admin-interface_tidb-0_1   ... done
+Removing proxy-rule-admin-interface_tidb-1_1   ... done
+Removing network proxy-rule-admin-interface_default
+```
+
+### 5.6 Example of Load Balancing - Config File
+
+Use config file to configure a load balancing traffic as an example. Achieves are same as [5.3 Example of Load Balancing - Admin Interface](#53-example-of-load-balancing---admin-interface), only changed using config file to initializing the ProxySQL configuration.
+
+> **Note:**
+>
+> - The configuration of **ProxySQL** is stored in **SQLite**. Config file is only read when **SQLite** database does not exist.
+> - ProxySQL does **_NOT_** recommend using config file for configuration changes, use them only for initial configuration, do not rely too much on configuration files.
+
+**Run**
+
+```sh
+cd example/load-balance-config-file/
+./test-load-balance.sh
+```

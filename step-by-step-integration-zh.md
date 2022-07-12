@@ -235,7 +235,7 @@ mysql -u root -h 127.0.0.1 -P 6033 -e "SELECT VERSION()"
 
 #### 5.3.1 示例操作步骤
 
-以 ProxySQL Admin Interface 为配置入口，配置负载均衡场景为例。示例将进行以下操作：
+以 **_ProxySQL Admin Interface_** 为配置入口，配置负载均衡场景为例。示例将进行以下操作：
 
 1. 通过 Docker Compose 启动三个 TiDB 容器实例，容器内部端口均为 4000，映射宿主机端口为 4001、4002、4003。
 2. 通过 Docker Compose 启动一个 ProxySQL 实例，容器内部 **_ProxySQL MySQL Interface_** 端口为 6033，映射宿主机端口为 6034。不暴露 **_ProxySQL Admin Interface_** 端口，因为其仅可在本地（即容器内）登录 **_ProxySQL Admin Interface_**。
@@ -314,7 +314,7 @@ Removing network load-balance-admin-interface_default
 
 #### 5.4.1 示例操作步骤
 
-以 ProxySQL Admin Interface 为配置入口，配置负载均衡配置用户分离场景为例，不同用户将使用不同的 TiDB 后端。示例将进行以下操作：
+以 **_ProxySQL Admin Interface_** 为配置入口，配置负载均衡配置用户分离场景为例，不同用户将使用不同的 TiDB 后端。示例将进行以下操作：
 
 1. 通过 Docker Compose 启动两个 TiDB 容器实例，容器内部端口均为 4000，映射宿主机端口为 4001、4002。
 2. 通过 Docker Compose 启动一个 ProxySQL 实例，容器内部 **_ProxySQL MySQL Interface_** 端口为 6033，映射宿主机端口为 6034。不暴露 **_ProxySQL Admin Interface_** 端口，因为其仅可在本地（即容器内）登录 **_ProxySQL Admin Interface_**。
@@ -374,7 +374,7 @@ Removing network user-split-admin-interface_default
 
 #### 5.5.1 示例操作步骤
 
-以 ProxySQL Admin Interface 为配置入口，代理规则场景中，常见的读写分离配置为例，将使用规则匹配将要运行的 SQL，从而将读、写 SQL 转发至不同的 TiDB 后端（若均未匹配，则使用用户的 `default_hostgroup`）。示例将进行以下操作：
+以 **_ProxySQL Admin Interface_** 为配置入口，代理规则场景中，常见的读写分离配置为例，将使用规则匹配将要运行的 SQL，从而将读、写 SQL 转发至不同的 TiDB 后端（若均未匹配，则使用用户的 `default_hostgroup`）。示例将进行以下操作：
 
 1. 通过 Docker Compose 启动两个 TiDB 容器实例，容器内部端口均为 4000，映射宿主机端口为 4001、4002。
 2. 通过 Docker Compose 启动一个 ProxySQL 实例，容器内部 **_ProxySQL MySQL Interface_** 端口为 6033，映射宿主机端口为 6034。不暴露 **_ProxySQL Admin Interface_** 端口，因为其仅可在本地（即容器内）登录 **_ProxySQL Admin Interface_**。
