@@ -1,8 +1,7 @@
 -- -- VARIABLES
-SET mysql-ssl_p2s_cert="/cert.pem";
-SET mysql-ssl_p2s_key="/cert.pem";
-SET mysql-monitor_username="<serverless tier user>";
-SET mysql-monitor_password="<serverless tier password>";
+SET mysql-ssl_p2s_capath="/etc/ssl/certs/ca-certificates.crt";
+SET mysql-monitor_username="HZ5E7ifaDEjJTsh.root";
+SET mysql-monitor_password="wqz1994625";
 SET mysql-monitor_enabled="false";
 -- SELECT * FROM global_variables WHERE variable_name LIKE 'mysql-ssl%'\G;
 LOAD MYSQL VARIABLES TO RUNTIME;
@@ -13,7 +12,7 @@ insert into mysql_users(
 	username,password,default_hostgroup,use_ssl
 ) 
 values(
-	'<serverless tier user>','<serverless tier password>',0,1
+	'HZ5E7ifaDEjJTsh.root','wqz1994625',0,1
 );
 load mysql users to runtime;
 save mysql users to disk;
@@ -27,7 +26,7 @@ insert into mysql_servers (
 	) 
 values (
 	0,
-	'<serverless tier host>',
+	'gateway01.us-west-2.prod.aws.tidbcloud.com',
 	4000,
 	1
 );
