@@ -1,5 +1,6 @@
 -- -- VARIABLES
-SET mysql-ssl_p2s_capath="/etc/ssl/certs/ca-certificates.crt";
+SET mysql-ssl_p2s_cert="/etc/ssl/certs/ca-certificates.crt";
+SET mysql-ssl_p2s_key="/etc/ssl/certs/ca-certificates.crt";
 SET mysql-monitor_username="HZ5E7ifaDEjJTsh.root";
 SET mysql-monitor_password="wqz1994625";
 SET mysql-monitor_enabled="false";
