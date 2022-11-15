@@ -1,6 +1,4 @@
 -- -- VARIABLES
-SET mysql-ssl_p2s_cert="/etc/ssl/certs/ca-certificates.crt";
-SET mysql-ssl_p2s_key="/etc/ssl/certs/ca-certificates.crt";
 SET mysql-monitor_username="HZ5E7ifaDEjJTsh.root";
 SET mysql-monitor_password="wqz1994625";
 SET mysql-monitor_enabled="false";
@@ -10,10 +8,10 @@ SAVE MYSQL VARIABLES TO DISK;
 
 -- Add user
 insert into mysql_users(
-	username,password,default_hostgroup,use_ssl
+	username,password,default_hostgroup
 ) 
 values(
-	'HZ5E7ifaDEjJTsh.root','wqz1994625',0,1
+	'HZ5E7ifaDEjJTsh.root','wqz1994625',0
 );
 load mysql users to runtime;
 save mysql users to disk;
