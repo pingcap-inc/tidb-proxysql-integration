@@ -1,7 +1,6 @@
 -- -- VARIABLES
-SET mysql-monitor_username="HZ5E7ifaDEjJTsh.root";
-SET mysql-monitor_password="wqz1994625";
-SET mysql-monitor_enabled="false";
+SET mysql-monitor_username="<serverless tier username>";
+SET mysql-monitor_password="<serverless tier password>";
 -- SELECT * FROM global_variables WHERE variable_name LIKE 'mysql-ssl%'\G;
 LOAD MYSQL VARIABLES TO RUNTIME;
 SAVE MYSQL VARIABLES TO DISK;
@@ -11,7 +10,7 @@ insert into mysql_users(
 	username,password,default_hostgroup
 ) 
 values(
-	'HZ5E7ifaDEjJTsh.root','wqz1994625',0
+	'<serverless tier username>','<serverless tier password>',0
 );
 load mysql users to runtime;
 save mysql users to disk;
@@ -25,7 +24,7 @@ insert into mysql_servers (
 	) 
 values (
 	0,
-	'gateway01.us-west-2.prod.aws.tidbcloud.com',
+	'<serverless tier host>',
 	4000,
 	1
 );
