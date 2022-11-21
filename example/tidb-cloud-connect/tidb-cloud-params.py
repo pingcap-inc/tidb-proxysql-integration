@@ -1,3 +1,5 @@
+import getpass
+
 PROXYSQL_CNF_FILENAME = 'tidb-cloud-connect.cnf.template'
 PREPARE_SQL_FILENAME = 'proxysql-prepare.sql.template'
 TEMPLATE_SUFFIX = '.template'
@@ -26,10 +28,16 @@ def replace_file_params(template_filename, host, username, password):
         with open(config_filename, mode='w') as config:
             config.write(content)
 
+            print(f'{config_filename} generated successful')
+
 
 serverless_tier_host = input("Serverless Tier Host: ")
 serverless_tier_username = input("Serverless Tier Username: ")
-serverless_tier_password = input("Serverless Tier Password: ")
+serverless_tier_password = getpass.getpass("Serverless Tier Password: ")
+
+print("""
+start generate config files:
+""")
 
 replace_file_params(PROXYSQL_CNF_FILENAME, serverless_tier_host, serverless_tier_username, serverless_tier_password)
 replace_file_params(PREPARE_SQL_FILENAME, serverless_tier_host, serverless_tier_username, serverless_tier_password)
