@@ -41,19 +41,19 @@ mysql_variables=
  mysql_servers =
  (
  	{
- 		address="tidb-0"
+ 		address="tidb-server01"
  		port=4000
  		hostgroup=0
  		max_connections=200
  	},
  	{
- 		address="tidb-1"
+ 		address="tidb-server02"
  		port=4000
  		hostgroup=0
  		max_connections=200
  	},
  	{
- 		address="tidb-2"
+ 		address="tidb-server03"
  		port=4000
  		hostgroup=0
  		max_connections=200

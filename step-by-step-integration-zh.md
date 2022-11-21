@@ -155,7 +155,7 @@ save mysql users to disk;
 
 ### 3.4 配置文件配置
 
-除了使用 **_ProxySQL Admin interface_** 配置，也可以使用配置文件进行配置。[官方解释](https://github.com/sysown/proxysql#configuring-proxysql-through-the-config-file)中，配置文件仅应该被视为是一种辅助初始化的方式，而并非主要配置的手段。配置文件仅在 SQLite 数据库未被创建时读取，后续将不会继续读取配置文件。因此，使用配置文件配置时，你应进行 SQLite 数据库的删除，这将***丢失***你在 **_ProxySQL Admin interface_** 中对配置进行的更改：
+除了使用 ***ProxySQL Admin interface*** 配置，也可以使用配置文件进行配置。[官方解释](https://github.com/sysown/proxysql#configuring-proxysql-through-the-config-file)中，配置文件仅应该被视为是一种辅助初始化的方式，而并非主要配置的手段。配置文件仅在 SQLite 数据库未被创建时读取，后续将不会继续读取配置文件。因此，使用配置文件配置时，你应进行 SQLite 数据库的删除，这将 ***丢失*** 你在 ***ProxySQL Admin interface*** 中对配置进行的更改：
 
 ```sh
 rm /var/lib/proxysql/proxysql.db
@@ -230,7 +230,6 @@ mysql -u root -h 127.0.0.1 -P 6033 -e "SELECT VERSION()"
 
 如果你满足以下依赖项：
 
-
 - 测试用例代码仓库 [tidb-test](https://github.com/pingcap/tidb-test) 的权限
 - 测试机器需连接网络
 - Golang SDK
@@ -258,7 +257,7 @@ mysql -u root -h 127.0.0.1 -P 6033 -e "SELECT VERSION()"
 
 1. 通过 Docker Compose 启动三个 TiDB 容器实例，容器内部端口均为 4000，映射宿主机端口为 4001、4002、4003。
 2. 通过 Docker Compose 启动一个 ProxySQL 实例，容器内部 **_ProxySQL MySQL Interface_** 端口为 6033，映射宿主机端口为 6034。不暴露 **_ProxySQL Admin Interface_** 端口，因为其仅可在本地（即容器内）登录 **_ProxySQL Admin Interface_**。
-3. 在 3 个 TiDB 实例内，创建相同的表结构，但写入不同的数据：`'tidb-0'`、`'tidb-1'`、`'tidb-2'`，以便分辨不同的数据库实例。
+3. 在 3 个 TiDB 实例内，创建相同的表结构，但写入不同的数据：`'tidb-server01-port-4001'`、`'tidb-server02-port-4002'`、`'tidb-server03-port-4003'`，以便分辨不同的数据库实例。
 4. 使用 `docker-compose exec` 命令，在 **_ProxySQL Admin Interface_** 中运行事先准备好的配置 ProxySQL 的 SQL 文件，此 SQL 文件将会运行：
 
     1. 添加 3 个 TiDB 后端的地址，并且 `hostgroup_id` 均为 `0`。
@@ -266,7 +265,7 @@ mysql -u root -h 127.0.0.1 -P 6033 -e "SELECT VERSION()"
     3. 添加用户 `root`，密码为空，`default_hostgroup` 为 `0`，对应上方的 TiDB 后端 `hostgroup_id`。
     4. 生效用户配置，并落盘保存。
 
-5. 使用 `root` 用户登录 **_ProxySQL MySQL Interface_**，连续查询 5 次数据，预期结果将有 `'tidb-0'`、`'tidb-1'`、`'tidb-2'` 三种不同的返回。
+5. 使用 `root` 用户登录 **_ProxySQL MySQL Interface_**，连续查询 5 次数据，预期结果将有 `'tidb-server01-port-4001'`、`'tidb-server02-port-4002'`、`'tidb-server03-port-4003'` 三种不同的返回。
 6. 停止并清除 Docker Compose 启动的容器、网络拓扑等资源。
 
 #### 5.3.2 示例运行
@@ -284,48 +283,48 @@ cd example/load-balance-admin-interface/
 
 #### 5.3.3 预期输出
 
-因为负载均衡的原因，预期输出将有 `'tidb-0'`、`'tidb-1'`、`'tidb-2'` 三种不同的返回。但具体顺序未知。其中一种预期输出为：
+因为负载均衡的原因，预期输出将有 `'tidb-server01-port-4001'`、`'tidb-server02-port-4002'`、`'tidb-server03-port-4003'` 三种不同的返回。但具体顺序未知。其中一种预期输出为：
 
 ```
-# ./test-load-balance.sh 
+# ./test-load-balance.sh
 Creating network "load-balance-admin-interface_default" with the default driver
-Creating load-balance-admin-interface_tidb-1_1 ... done
-Creating load-balance-admin-interface_tidb-2_1 ... done
-Creating load-balance-admin-interface_tidb-0_1 ... done
-Creating load-balance-admin-interface_proxysql_1 ... done
-+--------+
-| db     |
-+--------+
-| tidb-2 |
-+--------+
-+--------+
-| db     |
-+--------+
-| tidb-0 |
-+--------+
-+--------+
-| db     |
-+--------+
-| tidb-1 |
-+--------+
-+--------+
-| db     |
-+--------+
-| tidb-1 |
-+--------+
-+--------+
-| db     |
-+--------+
-| tidb-1 |
-+--------+
-Stopping load-balance-admin-interface_proxysql_1 ... done
-Stopping load-balance-admin-interface_tidb-0_1   ... done
-Stopping load-balance-admin-interface_tidb-2_1   ... done
-Stopping load-balance-admin-interface_tidb-1_1   ... done
-Removing load-balance-admin-interface_proxysql_1 ... done
-Removing load-balance-admin-interface_tidb-0_1   ... done
-Removing load-balance-admin-interface_tidb-2_1   ... done
-Removing load-balance-admin-interface_tidb-1_1   ... done
+Creating load-balance-admin-interface_tidb-server03_1 ... done
+Creating load-balance-admin-interface_tidb-server02_1 ... done
+Creating load-balance-admin-interface_tidb-server01_1 ... done
+Creating load-balance-admin-interface_proxysql_1      ... done
++-------------------------+
+| server_name             |
++-------------------------+
+| tidb-server03-port-4003 |
++-------------------------+
++-------------------------+
+| server_name             |
++-------------------------+
+| tidb-server01-port-4001 |
++-------------------------+
++-------------------------+
+| server_name             |
++-------------------------+
+| tidb-server02-port-4002 |
++-------------------------+
++-------------------------+
+| server_name             |
++-------------------------+
+| tidb-server02-port-4002 |
++-------------------------+
++-------------------------+
+| server_name             |
++-------------------------+
+| tidb-server02-port-4002 |
++-------------------------+
+Stopping load-balance-admin-interface_proxysql_1      ... done
+Stopping load-balance-admin-interface_tidb-server03_1 ... done
+Stopping load-balance-admin-interface_tidb-server01_1 ... done
+Stopping load-balance-admin-interface_tidb-server02_1 ... done
+Removing load-balance-admin-interface_proxysql_1      ... done
+Removing load-balance-admin-interface_tidb-server03_1 ... done
+Removing load-balance-admin-interface_tidb-server01_1 ... done
+Removing load-balance-admin-interface_tidb-server02_1 ... done
 Removing network load-balance-admin-interface_default
 ```
 
@@ -337,16 +336,16 @@ Removing network load-balance-admin-interface_default
 
 1. 通过 Docker Compose 启动两个 TiDB 容器实例，容器内部端口均为 4000，映射宿主机端口为 4001、4002。
 2. 通过 Docker Compose 启动一个 ProxySQL 实例，容器内部 **_ProxySQL MySQL Interface_** 端口为 6033，映射宿主机端口为 6034。不暴露 **_ProxySQL Admin Interface_** 端口，因为其仅可在本地（即容器内）登录 **_ProxySQL Admin Interface_**。
-3. 在 2 个 TiDB 实例内，创建相同的表结构，但写入不同的数据：`'tidb-0'`、`'tidb-1'`，以便分辨不同的数据库实例。
+3. 在 2 个 TiDB 实例内，创建相同的表结构，但写入不同的数据：`'tidb-server01-port-4001'`、`'tidb-server02-port-4002'`，以便分辨不同的数据库实例。
 4. 使用 `docker-compose exec` 命令，在 **_ProxySQL Admin Interface_** 中运行事先准备好的配置 ProxySQL 的 SQL 文件，此 SQL 文件将会运行：
 
-    1. 添加 2 个 TiDB 后端的地址，其中，`tidb-0` 的`hostgroup_id` 为 `0`，`tidb-1` 的`hostgroup_id` 为 `1`。
+    1. 添加 2 个 TiDB 后端的地址，其中，`tidb-server01` 的`hostgroup_id` 为 `0`，`tidb-server02` 的`hostgroup_id` 为 `1`。
     2. 生效 TiDB 后端配置，并落盘保存。
-    3. 添加用户 `root`，密码为空，`default_hostgroup` 为 `0`，即默认将路由至 `tidb-0`。
-    4. 添加用户 `root1`，密码为空，`default_hostgroup` 为 `1`，即默认将路由至 `tidb-1`。
+    3. 添加用户 `root`，密码为空，`default_hostgroup` 为 `0`，即默认将路由至 `tidb-server01`。
+    4. 添加用户 `root1`，密码为空，`default_hostgroup` 为 `1`，即默认将路由至 `tidb-server02`。
     5. 生效用户配置，并落盘保存。
 
-5. 分别使用 `root` 用户及 `root1` 用户登录 **_ProxySQL MySQL Interface_**，预期结果将为 `'tidb-0'`、`'tidb-1'`。
+5. 分别使用 `root` 用户及 `root1` 用户登录 **_ProxySQL MySQL Interface_**，预期结果将为 `'tidb-server01-port-4001'`、`'tidb-server02-port-4002'`。
 6. 停止并清除 Docker Compose 启动的容器、网络拓扑等资源。
 
 #### 5.4.2 示例运行
@@ -367,25 +366,25 @@ cd example/user-split-admin-interface/
 ```
 # ./test-user-split.sh 
 Creating network "user-split-admin-interface_default" with the default driver
-Creating user-split-admin-interface_tidb-1_1 ... done
-Creating user-split-admin-interface_tidb-0_1 ... done
-Creating user-split-admin-interface_proxysql_1 ... done
-+--------+
-| db     |
-+--------+
-| tidb-0 |
-+--------+
-+--------+
-| db     |
-+--------+
-| tidb-1 |
-+--------+
-Stopping user-split-admin-interface_proxysql_1 ... done
-Stopping user-split-admin-interface_tidb-0_1   ... done
-Stopping user-split-admin-interface_tidb-1_1   ... done
-Removing user-split-admin-interface_proxysql_1 ... done
-Removing user-split-admin-interface_tidb-0_1   ... done
-Removing user-split-admin-interface_tidb-1_1   ... done
+Creating user-split-admin-interface_tidb-server01_1 ... done
+Creating user-split-admin-interface_tidb-server02_1 ... done
+Creating user-split-admin-interface_proxysql_1      ... done
++-------------------------+
+| server_name             |
++-------------------------+
+| tidb-server01-port-4001 |
++-------------------------+
++-------------------------+
+| server_name             |
++-------------------------+
+| tidb-server02-port-4002 |
++-------------------------+
+Stopping user-split-admin-interface_proxysql_1      ... done
+Stopping user-split-admin-interface_tidb-server02_1 ... done
+Stopping user-split-admin-interface_tidb-server01_1 ... done
+Removing user-split-admin-interface_proxysql_1      ... done
+Removing user-split-admin-interface_tidb-server02_1 ... done
+Removing user-split-admin-interface_tidb-server01_1 ... done
 Removing network user-split-admin-interface_default
 ```
 
@@ -397,12 +396,12 @@ Removing network user-split-admin-interface_default
 
 1. 通过 Docker Compose 启动两个 TiDB 容器实例，容器内部端口均为 4000，映射宿主机端口为 4001、4002。
 2. 通过 Docker Compose 启动一个 ProxySQL 实例，容器内部 **_ProxySQL MySQL Interface_** 端口为 6033，映射宿主机端口为 6034。不暴露 **_ProxySQL Admin Interface_** 端口，因为其仅可在本地（即容器内）登录 **_ProxySQL Admin Interface_**。
-3. 在 2 个 TiDB 实例内，创建相同的表结构，但写入不同的数据：`'tidb-0'`、`'tidb-1'`，以便分辨不同的数据库实例。
+3. 在 2 个 TiDB 实例内，创建相同的表结构，但写入不同的数据：`'tidb-server01-port-4001'`、`'tidb-server02-port-4002'`，以便分辨不同的数据库实例。
 4. 使用 `docker-compose exec` 命令，在 **_ProxySQL Admin Interface_** 中运行事先准备好的配置 ProxySQL 的 SQL 文件，此 SQL 文件将会运行：
 
-    1. 添加 2 个 TiDB 后端的地址，其中，`tidb-0` 的`hostgroup_id` 为 `0`，`tidb-1` 的`hostgroup_id` 为 `1`。
+    1. 添加 2 个 TiDB 后端的地址，其中，`tidb-server01` 的`hostgroup_id` 为 `0`，`tidb-server02` 的`hostgroup_id` 为 `1`。
     2. 生效 TiDB 后端配置，并落盘保存。
-    3. 添加用户 `root`，密码为空，`default_hostgroup` 为 `0`，即默认将路由至 `tidb-0`。
+    3. 添加用户 `root`，密码为空，`default_hostgroup` 为 `0`，即默认将路由至 `tidb-server01`。
     4. 生效用户配置，并落盘保存。
     5. 添加规则 `^SELECT.*FOR UPDATE$`，`rule_id`  为 `1`，`destination_hostgroup` 为 `0`，即匹配此规则的 SQL 语句将被转发至 `hostgroup` 为 `0` 的 TiDB 中（这条规则是为了将 `SELECT ... FOR UPDATE` 语句转发至写的数据库中）。
     6. 添加规则 `^SELECT`，`rule_id`  为 `2`，`destination_hostgroup` 为 `1`，即匹配此规则的 SQL 语句将被转发至 `hostgroup` 为 `1` 的 TiDB 中。
@@ -426,9 +425,9 @@ Removing network user-split-admin-interface_default
 > - 完整参数，请见 [mysql_query_rules](https://proxysql.com/documentation/main-runtime/#mysql_query_rules)。
 
 5. 使用 `root` 用户登录 **_ProxySQL MySQL Interface_**，运行以下语句：
-    - `select * from test.test;`: 预计匹配 `rule_id`  为 `2` 的规则，从而转发至 `hostgroup` 为 `1` 的 TiDB 后端 `tidb-1` 中。
-    - `select * from test.test for update;`: 预计匹配 `rule_id`  为 `1` 的规则，从而转发至 `hostgroup` 为 `0` 的 TiDB 后端 `tidb-0` 中。
-    - `begin;insert into test.test (db) values ('insert this and rollback later'); select * from test.test; rollback;`: `insert` 语句预计不会匹配所有规则，因此将使用用户的 `default_hostgroup`（为 `0`），从而转发至 `hostgroup` 为 `0` 的 TiDB 后端 `tidb-0` 中。而因为 ProxySQL 默认开启用户的 `transaction_persistent`，这将使同一个事务内的所有语句运行在同一个 `hostgroup` 中，因此，这里的 `select * from test.test;` 也将转发至 `hostgroup` 为 `0` 的 TiDB 后端 `tidb-0` 中。
+    - `select * from test.tidb_server;`: 预计匹配 `rule_id`  为 `2` 的规则，从而转发至 `hostgroup` 为 `1` 的 TiDB 后端 `tidb-server02` 中。
+    - `select * from test.tidb_server for update;`: 预计匹配 `rule_id`  为 `1` 的规则，从而转发至 `hostgroup` 为 `0` 的 TiDB 后端 `tidb-server01` 中。
+    - `begin;insert into test.tidb_server (server_name) values ('insert this and rollback later'); select * from test.tidb_server; rollback;`: `insert` 语句预计不会匹配所有规则，因此将使用用户的 `default_hostgroup`（为 `0`），从而转发至 `hostgroup` 为 `0` 的 TiDB 后端 `tidb-server01` 中。而因为 ProxySQL 默认开启用户的 `transaction_persistent`，这将使同一个事务内的所有语句运行在同一个 `hostgroup` 中，因此，这里的 `select * from test.test;` 也将转发至 `hostgroup` 为 `0` 的 TiDB 后端 `tidb-server01` 中。
 6. 停止并清除 Docker Compose 启动的容器、网络拓扑等资源。
 
 #### 5.5.2 示例运行
@@ -449,31 +448,31 @@ cd example/proxy-rule-admin-interface/
 ```
 # ./proxy-rule-split.sh 
 Creating network "proxy-rule-admin-interface_default" with the default driver
-Creating proxy-rule-admin-interface_tidb-1_1 ... done
-Creating proxy-rule-admin-interface_tidb-0_1 ... done
-Creating proxy-rule-admin-interface_proxysql_1 ... done
-+--------+
-| db     |
-+--------+
-| tidb-1 |
-+--------+
-+--------+
-| db     |
-+--------+
-| tidb-0 |
-+--------+
+Creating proxy-rule-admin-interface_tidb-server01_1 ... done
+Creating proxy-rule-admin-interface_tidb-server02_1 ... done
+Creating proxy-rule-admin-interface_proxysql_1      ... done
++-------------------------+
+| server_name             |
++-------------------------+
+| tidb-server02-port-4002 |
++-------------------------+
++-------------------------+
+| server_name             |
++-------------------------+
+| tidb-server01-port-4001 |
++-------------------------+
 +--------------------------------+
-| db                             |
+| server_name                    |
 +--------------------------------+
-| tidb-0                         |
+| tidb-server01-port-4001        |
 | insert this and rollback later |
 +--------------------------------+
-Stopping proxy-rule-admin-interface_proxysql_1 ... done
-Stopping proxy-rule-admin-interface_tidb-0_1   ... done
-Stopping proxy-rule-admin-interface_tidb-1_1   ... done
-Removing proxy-rule-admin-interface_proxysql_1 ... done
-Removing proxy-rule-admin-interface_tidb-0_1   ... done
-Removing proxy-rule-admin-interface_tidb-1_1   ... done
+Stopping proxy-rule-admin-interface_proxysql_1      ... done
+Stopping proxy-rule-admin-interface_tidb-server01_1 ... done
+Stopping proxy-rule-admin-interface_tidb-server02_1 ... done
+Removing proxy-rule-admin-interface_proxysql_1      ... done
+Removing proxy-rule-admin-interface_tidb-server01_1 ... done
+Removing proxy-rule-admin-interface_tidb-server02_1 ... done
 Removing network proxy-rule-admin-interface_default
 ```
 

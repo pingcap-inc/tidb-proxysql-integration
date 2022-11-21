@@ -1,16 +1,16 @@
 version: "3"
 services:
-  tidb-0:
+  tidb-server01:
     image: pingcap/tidb:v6.1.0
     ports:
       - 4001:4000
     command: /tidb-server -store unistore -path "" -lease 0s > tidb.log 2>&1 &
-  tidb-1:
+  tidb-server02:
     image: pingcap/tidb:v6.1.0
     ports:
       - 4002:4000
     command: /tidb-server -store unistore -path "" -lease 0s > tidb.log 2>&1 &
-  tidb-2:
+  tidb-server03:
     image: pingcap/tidb:v6.1.0
     ports:
       - 4003:4000
@@ -20,12 +20,12 @@ services:
     volumes:
     - "./proxysql-load-balance.cnf:/etc/proxysql.cnf"
     depends_on:
-      - tidb-0
-      - tidb-1
-      - tidb-2
+      - tidb-server01
+      - tidb-server02
+      - tidb-server03
     links:
-      - tidb-0
-      - tidb-1
-      - tidb-2
+      - tidb-server01
+      - tidb-server02
+      - tidb-server03
     ports:
     - "6034:6033"

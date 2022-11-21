@@ -1,5 +1,6 @@
 result.xml
 *.log
+*/.DS_Store
 
 proxysql/
 
