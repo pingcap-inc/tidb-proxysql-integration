@@ -2,3 +2,6 @@ result.xml
 *.log
 
 proxysql/
+
+example/tidb-cloud-connect/tidb-cloud-connect.cnf
+example/tidb-cloud-connect/proxysql-prepare.sql
