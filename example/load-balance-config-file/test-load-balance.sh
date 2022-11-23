@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # start and stop
-docker-compose up -d
-trap 'docker-compose down' EXIT
+docker compose up -d
+trap 'docker compose down' EXIT
 
 # waiting for all containers runs well
 

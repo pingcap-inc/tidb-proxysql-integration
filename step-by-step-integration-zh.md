@@ -201,10 +201,10 @@ mysql_users:
 你可以使用 Docker 及 Docker Compose 快速进行集成后的环境体验，请确认 `4000`、`6033` 端口的空闲：
 
 ```sh
-docker-compose up -d
+docker compose up -d
 ```
 
-这样就已经完成了一个集成了 TiDB 与 ProxySQL 环境的启动，这将启动两个容器，***请勿***在生产环境使用此快速体验方式创建集成。你可以使用用户名`root`，密码为空的账号，登录到本机的 `6033` 端口 (ProxySQL)。容器具体配置可见 [docker-compose.yaml](/docker-compose.yaml)，ProxySQL 具体配置可见 [proxysql-docker.cnf](/proxysql-docker.cnf)。
+这样就已经完成了一个集成了 TiDB 与 ProxySQL 环境的启动，这将启动两个容器，***请勿***在生产环境使用此快速体验方式创建集成。你可以使用用户名`root`，密码为空的账号，登录到本机的 `6033` 端口 (ProxySQL)。容器具体配置可见 [docker compose.yaml](/docker compose.yaml)，ProxySQL 具体配置可见 [proxysql-docker.cnf](/proxysql-docker.cnf)。
 
 ## 5. 使用
 
@@ -258,7 +258,7 @@ mysql -u root -h 127.0.0.1 -P 6033 -e "SELECT VERSION()"
 1. 通过 Docker Compose 启动三个 TiDB 容器实例，容器内部端口均为 4000，映射宿主机端口为 4001、4002、4003。
 2. 通过 Docker Compose 启动一个 ProxySQL 实例，容器内部 **_ProxySQL MySQL Interface_** 端口为 6033，映射宿主机端口为 6034。不暴露 **_ProxySQL Admin Interface_** 端口，因为其仅可在本地（即容器内）登录 **_ProxySQL Admin Interface_**。
 3. 在 3 个 TiDB 实例内，创建相同的表结构，但写入不同的数据：`'tidb-server01-port-4001'`、`'tidb-server02-port-4002'`、`'tidb-server03-port-4003'`，以便分辨不同的数据库实例。
-4. 使用 `docker-compose exec` 命令，在 **_ProxySQL Admin Interface_** 中运行事先准备好的配置 ProxySQL 的 SQL 文件，此 SQL 文件将会运行：
+4. 使用 `docker compose exec` 命令，在 **_ProxySQL Admin Interface_** 中运行事先准备好的配置 ProxySQL 的 SQL 文件，此 SQL 文件将会运行：
 
     1. 添加 3 个 TiDB 后端的地址，并且 `hostgroup_id` 均为 `0`。
     2. 生效 TiDB 后端配置，并落盘保存。
@@ -337,7 +337,7 @@ Removing network load-balance-admin-interface_default
 1. 通过 Docker Compose 启动两个 TiDB 容器实例，容器内部端口均为 4000，映射宿主机端口为 4001、4002。
 2. 通过 Docker Compose 启动一个 ProxySQL 实例，容器内部 **_ProxySQL MySQL Interface_** 端口为 6033，映射宿主机端口为 6034。不暴露 **_ProxySQL Admin Interface_** 端口，因为其仅可在本地（即容器内）登录 **_ProxySQL Admin Interface_**。
 3. 在 2 个 TiDB 实例内，创建相同的表结构，但写入不同的数据：`'tidb-server01-port-4001'`、`'tidb-server02-port-4002'`，以便分辨不同的数据库实例。
-4. 使用 `docker-compose exec` 命令，在 **_ProxySQL Admin Interface_** 中运行事先准备好的配置 ProxySQL 的 SQL 文件，此 SQL 文件将会运行：
+4. 使用 `docker compose exec` 命令，在 **_ProxySQL Admin Interface_** 中运行事先准备好的配置 ProxySQL 的 SQL 文件，此 SQL 文件将会运行：
 
     1. 添加 2 个 TiDB 后端的地址，其中，`tidb-server01` 的`hostgroup_id` 为 `0`，`tidb-server02` 的`hostgroup_id` 为 `1`。
     2. 生效 TiDB 后端配置，并落盘保存。
@@ -397,7 +397,7 @@ Removing network user-split-admin-interface_default
 1. 通过 Docker Compose 启动两个 TiDB 容器实例，容器内部端口均为 4000，映射宿主机端口为 4001、4002。
 2. 通过 Docker Compose 启动一个 ProxySQL 实例，容器内部 **_ProxySQL MySQL Interface_** 端口为 6033，映射宿主机端口为 6034。不暴露 **_ProxySQL Admin Interface_** 端口，因为其仅可在本地（即容器内）登录 **_ProxySQL Admin Interface_**。
 3. 在 2 个 TiDB 实例内，创建相同的表结构，但写入不同的数据：`'tidb-server01-port-4001'`、`'tidb-server02-port-4002'`，以便分辨不同的数据库实例。
-4. 使用 `docker-compose exec` 命令，在 **_ProxySQL Admin Interface_** 中运行事先准备好的配置 ProxySQL 的 SQL 文件，此 SQL 文件将会运行：
+4. 使用 `docker compose exec` 命令，在 **_ProxySQL Admin Interface_** 中运行事先准备好的配置 ProxySQL 的 SQL 文件，此 SQL 文件将会运行：
 
     1. 添加 2 个 TiDB 后端的地址，其中，`tidb-server01` 的`hostgroup_id` 为 `0`，`tidb-server02` 的`hostgroup_id` 为 `1`。
     2. 生效 TiDB 后端配置，并落盘保存。

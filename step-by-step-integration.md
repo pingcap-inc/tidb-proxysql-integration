@@ -204,10 +204,10 @@ The above config items are required. You can get all the config items' names and
 You can use Docker and Docker Compose for quick start. Make sure the ports `4000` and `6033` are free.
 
 ```sh
-docker-compose up -d
+docker compose up -d
 ```
 
-This has completed the startup of an integrated TiDB and ProxySQL environment, which will start two containers. ***DO NOT*** use it to create  in a production environment. You can connect to the port `6033` (ProxySQL) using the username `root` and an empty password. The container specific configuration can be found in [docker-compose.yaml](/docker-compose.yaml) and the ProxySQL specific configuration can be found in [proxysql-docker.cnf](/proxysql-docker.cnf).
+This has completed the startup of an integrated TiDB and ProxySQL environment, which will start two containers. ***DO NOT*** use it to create  in a production environment. You can connect to the port `6033` (ProxySQL) using the username `root` and an empty password. The container specific configuration can be found in [docker compose.yaml](/docker compose.yaml) and the ProxySQL specific configuration can be found in [proxysql-docker.cnf](/proxysql-docker.cnf).
 
 ## 5. Use
 
@@ -263,7 +263,7 @@ Use **_ProxySQL Admin Interface_** to configure a load balancing traffic as an e
 1. Start 3 TiDB containers through **Docker Compose**, all the  ports in the container are `4000`, and mapped to host ports `4001`, `4002`, `4003`.
 2. Start one container of ProxySQL through **Docker Compose**, the port `6033` in the container is for **_ProxySQL MySQL Interface_**, and mapped host port 6034. The **_ProxySQL Admin Interface_** port is not exposed because it can only log in locally (i.e., inside the container).
 3. Within the 3 TiDB instances, create the same table structure but write different data: `'tidb-server01-port-4001'`, `'tidb-server02-port-4002'`, and `'tidb-server03-port-4003'`, in order to distinguish between the different database instances.
-4. Use the `docker-compose exec` command to run the prepared SQL file for configuring ProxySQL in **_ProxySQL Admin Interface_**, this SQL file will run:
+4. Use the `docker compose exec` command to run the prepared SQL file for configuring ProxySQL in **_ProxySQL Admin Interface_**, this SQL file will run:
 
     1. Add 3 TiDB backend hosts with `hostgroup_id` of `0`.
     2. Take effect the TiDB backend configuration and save it on disk.
@@ -344,7 +344,7 @@ Use **_ProxySQL Admin Interface_** to configure a user split traffic as an examp
 1. Start 2 TiDB containers through **Docker Compose**,  all the ports in the container are `4000`, and mapped to host ports `4001` and `4002`.
 2. Start one container of ProxySQL through **Docker Compose**, the port `6033` in the container is for **_ProxySQL MySQL Interface_**, and mapped host port 6034. The **_ProxySQL Admin Interface_** port is not exposed because it can only log in locally (i.e., inside the container).
 3. Within the 2 TiDB instances, create the same table structure but write different data: `'tidb-server01-port-4001'`, `'tidb-server02-port-4002'`, in order to distinguish between the different database instances.
-4. Use the `docker-compose exec` command to run the prepared SQL file for configuring ProxySQL in **_ProxySQL Admin Interface_**, this SQL file will run:
+4. Use the `docker compose exec` command to run the prepared SQL file for configuring ProxySQL in **_ProxySQL Admin Interface_**, this SQL file will run:
 
     1. Add 2 TiDB backend hosts. `hostgroup_id` of `tidb-server01` is `0`, and `hostgroup_id` of `tidb-server02` is `1`.
     2. Take effect the TiDB backend configuration and save it on disk.
@@ -403,8 +403,8 @@ Use **_ProxySQL Admin Interface_** to configure a common read/write separation t
 
 1. Start 2 TiDB containers through **Docker Compose**, all the ports in the container are `4000`, and mapped to host ports `4001` and `4002`.
 2. Start one container of ProxySQL through **Docker Compose**, the port `6033` in the container is for **_ProxySQL MySQL Interface_**, and mapped host port 6034. The **_ProxySQL Admin Interface_** port is not exposed because it can only log in locally (i.e., inside the container).
-3. Within the 2 TiDB instances, create the same table structure but write different data: `'tidb-server01-port-4001'`， `'tidb-server02-port-4002'`, in order to distinguish between the different database instances.
-4. Use the `docker-compose exec` command to run the prepared SQL file for configuring ProxySQL in **_ProxySQL Admin Interface_**, this SQL file will run:
+3. Within the 2 TiDB instances, create the same table structure but write different data: `'tidb-server01-port-4001'`, `'tidb-server02-port-4002'`, in order to distinguish between the different database instances.
+4. Use the `docker compose exec` command to run the prepared SQL file for configuring ProxySQL in **_ProxySQL Admin Interface_**, this SQL file will run:
 
     1. Add 2 TiDB backend hosts. `hostgroup_id` of `tidb-server01` is `0`, and `hostgroup_id` of `tidb-server02` is `1`.
     2. Take effect the TiDB backend configuration and save it on disk.

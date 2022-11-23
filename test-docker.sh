@@ -1,5 +1,5 @@
 #!/bin/sh
 
-docker-compose up -d
+docker compose up -d
 ./run-test.sh
-docker-compose stop
+docker compose stop
