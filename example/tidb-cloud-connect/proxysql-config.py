@@ -35,9 +35,12 @@ serverless_tier_host = input("Serverless Tier Host: ")
 serverless_tier_username = input("Serverless Tier Username: ")
 serverless_tier_password = getpass.getpass("Serverless Tier Password: ")
 
-print("""
-start generate config files:
-""")
+print("[Start] generate config files:")
 
 replace_file_params(PROXYSQL_CNF_FILENAME, serverless_tier_host, serverless_tier_username, serverless_tier_password)
 replace_file_params(PREPARE_SQL_FILENAME, serverless_tier_host, serverless_tier_username, serverless_tier_password)
+
+print(
+    "[Success] generate config files.\n"
+    "[Info] After the ProxySQL configured, you can use this command to link the ProxySQL MySQL Interface:\n\n"
+    f"mysql --connect-timeout 15 -u '{serverless_tier_username}' -h 127.0.0.1 -P 16033 -D test -p")
