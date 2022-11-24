@@ -1,0 +1,6 @@
+import os
+
+username = "<serverless tier username>"
+password = "<serverless tier password>"
+
+os.system(f"mysql --connect-timeout 15 -u'{username}' -h127.0.0.1 -P16033 -Dtest -p{password}")

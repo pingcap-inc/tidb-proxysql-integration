@@ -2,6 +2,7 @@ import getpass
 
 PROXYSQL_CNF_FILENAME = 'tidb-cloud-connect.cnf.template'
 PREPARE_SQL_FILENAME = 'proxysql-prepare.sql.template'
+PROXYSQL_CONNECT_SCRIPT_FILENAME = 'proxysql-connect.py.template'
 TEMPLATE_SUFFIX = '.template'
 
 print("""You can use this script to format your config files.
@@ -28,19 +29,14 @@ def replace_file_params(template_filename, host, username, password):
         with open(config_filename, mode='w') as config:
             config.write(content)
 
-            print(f'{config_filename} generated successful')
-
 
 serverless_tier_host = input("Serverless Tier Host: ")
 serverless_tier_username = input("Serverless Tier Username: ")
 serverless_tier_password = getpass.getpass("Serverless Tier Password: ")
 
-print("[Start] generate config files:")
-
 replace_file_params(PROXYSQL_CNF_FILENAME, serverless_tier_host, serverless_tier_username, serverless_tier_password)
 replace_file_params(PREPARE_SQL_FILENAME, serverless_tier_host, serverless_tier_username, serverless_tier_password)
+replace_file_params(PROXYSQL_CONNECT_SCRIPT_FILENAME, serverless_tier_host,
+                    serverless_tier_username, serverless_tier_password)
 
-print(
-    "[Success] generate config files.\n"
-    "[Info] After the ProxySQL configured, you can use this command to link the ProxySQL MySQL Interface:\n\n"
-    f"mysql --connect-timeout 15 -u '{serverless_tier_username}' -h 127.0.0.1 -P 16033 -D test -p")
+print("[Success] generate config files.")
