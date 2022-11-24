@@ -29,14 +29,17 @@ def replace_file_params(template_filename, host, username, password):
         with open(config_filename, mode='w') as config:
             config.write(content)
 
+        print(f"{config_filename} generated successfully.")
 
 serverless_tier_host = input("Serverless Tier Host: ")
 serverless_tier_username = input("Serverless Tier Username: ")
 serverless_tier_password = getpass.getpass("Serverless Tier Password: ")
+
+print("[Begin] generating configuration files..")
 
 replace_file_params(PROXYSQL_CNF_FILENAME, serverless_tier_host, serverless_tier_username, serverless_tier_password)
 replace_file_params(PREPARE_SQL_FILENAME, serverless_tier_host, serverless_tier_username, serverless_tier_password)
 replace_file_params(PROXYSQL_CONNECT_SCRIPT_FILENAME, serverless_tier_host,
                     serverless_tier_username, serverless_tier_password)
 
-print("[Success] generate config files.")
+print("[End] all files generated successfully and placed in the current folder.")
