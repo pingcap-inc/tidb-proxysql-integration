@@ -4,6 +4,6 @@ result.xml
 
 proxysql/
 
-example/tidb-cloud-connect/tidb-cloud-connect.cnf
-example/tidb-cloud-connect/proxysql-prepare.sql
-example/tidb-cloud-connect/proxysql-connect.py
+example/**/tidb-cloud-connect.cnf
+example/**/proxysql-prepare.sql
+example/**/proxysql-connect.py
