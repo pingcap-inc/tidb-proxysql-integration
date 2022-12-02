@@ -1,0 +1,10 @@
+version: "3"
+services:
+  proxysql:
+    image: proxysql/proxysql:latest
+    volumes:
+      - "./tidb-cloud-connect.cnf:/etc/proxysql.cnf"
+      - "./proxysql-prepare.sql:/proxysql-prepare.sql"
+    ports:
+      - "16033:6033"
+      - "16032:6032"
